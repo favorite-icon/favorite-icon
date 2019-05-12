@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <script src="../dist/badge.js"></script>
+</head>
+<body>
+  <p>
+    Count: <input id="count" type="number" min="0" value="1" />
+  </p>
+  <script>
+    var count = 1;
+    var badge = new FaviconBadge();
+    badge.update(count);
+
+    var input = document.querySelector('#count');
+    input.value = count;
+    input.oninput = function() {
+      badge.update(Number(input.value));
+    };
+
+  </script>
+</body>
+</html>
