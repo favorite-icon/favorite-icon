@@ -16,6 +16,7 @@ A small library for manipulating the favicon, in particular adding alert bubbles
 # API
 
 ## Favicon
+
 ### `Favicon.change(src: string | HTMLCanvasElement)`
 Change the favicon to your own image.
 
@@ -34,7 +35,17 @@ Reset the favicon.
 
 ## FaviconBadge
 
+### `FaviconBadge.update(count: number)`
+
+### `FaviconBadge.destroy()`
+
 ## FaviconVideo
+
+### `FaviconVideo.start()`
+
+### `FaviconVideo.stop()`
+
+### `FaviconVideo.destroy()`
 
 # [License](./LICENSE)
 MIT License
