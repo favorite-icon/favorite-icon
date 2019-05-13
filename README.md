@@ -11,3 +11,30 @@ A small library for manipulating the favicon, in particular adding alert bubbles
 
 # Using
 `npm install favorite-icon`
+
+
+# API
+
+## Favicon
+### `Favicon.change(src: string | HTMLCanvasElement)`
+Change the favicon to your own image.
+
+```js
+Favicon.change('./image.png');
+// or
+Favicon.change('data:image/png;base64,...');
+// or
+const canvas = document.createElement('canvas');
+//...
+Favicon.change(canvas);
+```
+
+### `Favicon.reset()`
+Reset the favicon.
+
+## FaviconBadge
+
+## FaviconVideo
+
+# [License](./LICENSE)
+MIT License
