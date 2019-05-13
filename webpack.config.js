@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = [
   ['index', 'Favicon'],
   ['badge', 'FaviconBadge'],
+  ['emoji', 'FaviconEmoji'],
   ['video', 'FaviconVideo']
 ].map(([file, library]) => {
   return {

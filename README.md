@@ -47,5 +47,12 @@ Reset the favicon.
 
 ### `FaviconVideo.destroy()`
 
+## FaviconEmoji
+
+### `FaviconEmoji.print(symbol: string)`
+```js
+FaviconEmoji.print('❤️');
+```
+
 # [License](./LICENSE)
 MIT License

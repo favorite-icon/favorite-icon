@@ -57,6 +57,14 @@ declare namespace favicon {
 		timeout?: number;
 		videoElement: HTMLVideoElement;
 	}
+
+	interface EmojiStatic {
+		print(symbol: string): void;
+	}
+
+	interface EmojiOptions {
+		size?: number;
+	}
 }
 
 declare module 'favicon' {
@@ -76,3 +84,10 @@ declare module 'favicon/video' {
 
 	export = FaviconVideo;
 }
+
+declare module 'favicon/emoji' {
+	const FaviconEmoji: favicon.EmojiStatic;
+
+	export = FaviconEmoji;
+}
+
