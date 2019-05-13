@@ -8,3 +8,6 @@ Favorite Icon
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon)
 
 A small library for manipulating the favicon, in particular adding alert bubbles and changing images.
+
+# Using
+`npm install favorite-icon`
