@@ -10,8 +10,8 @@ export default class FaviconVideo {
         this.options = options;
 
         this.canvas = document.createElement('canvas');
-        this.canvas.width = options.width;
-        this.canvas.height = options.height;
+        this.canvas.width = options.size;
+        this.canvas.height = options.size;
 
         this.context = this.canvas.getContext('2d');
 
@@ -39,6 +39,7 @@ export default class FaviconVideo {
 
     private draw() {
         const video = this.options.videoElement;
+        const size = this.options.size;
         if (video.paused || video.ended) {
             this.stop();
 
@@ -46,8 +47,8 @@ export default class FaviconVideo {
         }
 
         try {
-            this.context.clearRect(0, 0, this.options.width, this.options.height);
-            this.context.drawImage(this.options.videoElement, 0, 0, this.options.width, this.options.height);
+            this.context.clearRect(0, 0, size, size);
+            this.context.drawImage(video, 0, 0, size, size);
         } catch (e) {}
 
         Favicon.change(this.canvas, this.options.links);

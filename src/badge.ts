@@ -8,8 +8,7 @@ const defaultOptions: favicon.BadgeDefaultOptions = {
     textColor: '#ffffff',
     faviconSrc: Favicon.getOriginalSrc(),
     maxCount: 99,
-    width: Favicon.width,
-    height: Favicon.height,
+    size: Favicon.size,
     links: Favicon.icons
 };
 
@@ -32,8 +31,8 @@ export default class FaviconBadge {
         this.count = Number(this.options.count || 0);
 
         this.canvas = document.createElement('canvas');
-        this.canvas.width = this.options.width;
-        this.canvas.height = this.options.height;
+        this.canvas.width = this.options.size;
+        this.canvas.height = this.options.size;
         this.context = this.canvas.getContext('2d');
 
         this.loadImage();
@@ -92,9 +91,9 @@ export default class FaviconBadge {
 
         this.lastCount = count;
 
-        const { width, height } = this.options;
-        this.context.clearRect(0, 0, width, height);
-        this.context.drawImage(this.image, 0, 0, width, height);
+        const size = this.options.size;
+        this.context.clearRect(0, 0, size, size);
+        this.context.drawImage(this.image, 0, 0, size, size);
 
         if (count) {
             this.drawNumber(count, formattedCount);
@@ -105,7 +104,8 @@ export default class FaviconBadge {
 
     private drawNumber(count: number, formattedCount: string) {
         const padding = 2;
-        const height = this.options.height * 0.6;
+        const size = this.options.size;
+        const height = size * 0.6;
         const fontSize = String(count).length > 1 ? 0.9 : 1;
 
         const context = this.context;
@@ -117,8 +117,8 @@ export default class FaviconBadge {
         context.fillStyle = this.options.backgroundColor;
 
         const width = padding * 2 + context.measureText(formattedCount).width;
-        const x = Math.max(this.options.width - width, 0);
-        const y = this.options.height - height;
+        const x = Math.max(size - width, 0);
+        const y = size - height;
         context.fillRect(x, y, width - 1, height - 1)
         context.strokeRect(x, y, width - 1, height - 1);
         context.fillStyle = this.options.textColor;

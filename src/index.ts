@@ -1,10 +1,8 @@
 const PNG_MIME_TYPE = 'image/png';
 
 export default class Favicon {
-    public static width = 32;
-    public static height = 32;
-
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
+    public static size = 32;
 
     public static change(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>) {
         const items = elems || this.icons;

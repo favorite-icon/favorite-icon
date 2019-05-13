@@ -25,10 +25,9 @@ declare namespace favicon {
 		faviconSrc?: string;
 		fontFamily?: string;
 		fontStyle?: string;
+		size?: number;
 		formatter?(count: number): string;
 		textColor?: string;
-		width?: number;
-		height?: number;
 	}
 
 	interface BadgeDefaultOptions {
@@ -38,9 +37,8 @@ declare namespace favicon {
 		fontStyle: string;
 		links: Array<HTMLLinkElement | HTMLImageElement>;
 		maxCount: number;
+		size?: number;
 		textColor: string;
-		width: number;
-		height: number;
 	}
 
 	interface Video {
@@ -55,10 +53,9 @@ declare namespace favicon {
 
 	interface VideoOptions {
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
+		size?: number;
 		timeout?: number;
 		videoElement: HTMLVideoElement;
-		width?: number;
-		height?: number;
 	}
 }
 
@@ -79,4 +76,3 @@ declare module 'favicon/video' {
 
 	export = FaviconVideo;
 }
-
