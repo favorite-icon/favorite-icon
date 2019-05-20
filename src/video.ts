@@ -7,29 +7,36 @@ export default class FaviconVideo {
     private timer: number;
 
     constructor(options: favicon.VideoOptions) {
-        this.options = options;
+        const size = options.size || Favicon.size;
+        const videoElement = options.videoElement;
+        this.options = {
+            size,
+            videoElement
+        };
 
         this.canvas = document.createElement('canvas');
-        this.canvas.width = options.size;
-        this.canvas.height = options.size;
+        this.canvas.width = size;
+        this.canvas.height = size;
 
         this.context = this.canvas.getContext('2d');
-
-        this.options.videoElement.addEventListener('play', this.onplay, false);
-        this.options.videoElement.addEventListener('endeed', this.onstop, false);
-        this.options.videoElement.addEventListener('abort', this.onstop, false);
+        
+        videoElement.addEventListener('play', this.onplay, false);
+        videoElement.addEventListener('ended', this.onstop, false);
+        videoElement.addEventListener('abort', this.onstop, false);
     }
 
     private onplay = () => {
-        this.start();
+        this.play();
     }
 
     private onstop = () => {
         this.stop();
     }
 
-    public start() {
-        this.timer = setInterval(() => this.draw(), this.options.timeout);
+    public play() {
+        this.options.videoElement.muted = true;
+        this.options.videoElement.play();
+        this.timer = setInterval(() => this.draw(), this.options.timeout || 25);
     }
 
     public stop() {
@@ -38,18 +45,19 @@ export default class FaviconVideo {
     }
 
     private draw() {
-        const video = this.options.videoElement;
-        const size = this.options.size;
-        if (video.paused || video.ended) {
+        const videoElement = this.options.videoElement;
+        if (videoElement.paused || videoElement.ended) {
             this.stop();
-
-            return false;
+            return;
         }
 
         try {
+            const size = this.options.size;
             this.context.clearRect(0, 0, size, size);
-            this.context.drawImage(video, 0, 0, size, size);
-        } catch (e) {}
+            this.context.drawImage(videoElement, 0, 0, size, size);
+        } catch (e) {
+            console.error(e);
+        }
 
         Favicon.change(this.canvas, this.options.links);
     }
@@ -57,9 +65,10 @@ export default class FaviconVideo {
     public destroy() {
         this.stop();
 
-        this.options.videoElement.removeEventListener('play', this.onplay, false);
-        this.options.videoElement.removeEventListener('endeed', this.onstop, false);
-        this.options.videoElement.removeEventListener('abort', this.onstop, false);
+        const videoElement = this.options.videoElement;
+        videoElement.removeEventListener('play', this.onplay, false);
+        videoElement.removeEventListener('endeed', this.onstop, false);
+        videoElement.removeEventListener('abort', this.onstop, false);
 
         delete this.canvas;
         delete this.context;

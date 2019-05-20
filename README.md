@@ -41,11 +41,11 @@ Reset the favicon.
 
 ## FaviconVideo
 
-### `FaviconVideo.start()`
+### `.start()`
 
-### `FaviconVideo.stop()`
+### `.stop()`
 
-### `FaviconVideo.destroy()`
+### `.destroy()`
 
 ## FaviconEmoji
 
