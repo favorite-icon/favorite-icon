@@ -16,8 +16,12 @@ declare namespace favicon {
 		new (options: BadgeOptions): Badge;
 	}
 
+	type PositionX = 'left' | 'center' | 'right';
+	type PositionY = 'top' | 'center' | 'bottom';
+
 	interface BadgeOptions {
 		backgroundColor?: string;
+		strokeColor?: string;
 		count?: string | number;
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
 		maxCount?: number;
@@ -25,6 +29,8 @@ declare namespace favicon {
 		faviconSrc?: string;
 		fontFamily?: string;
 		fontStyle?: string;
+		positionX?: PositionX;
+		positionY?: PositionY;
 		size?: number;
 		formatter?(count: number): string;
 		textColor?: string;
@@ -32,11 +38,14 @@ declare namespace favicon {
 
 	interface BadgeDefaultOptions {
 		backgroundColor: string;
+		strokeColor: string;
 		faviconSrc: string;
 		fontFamily: string;
 		fontStyle: string;
 		links: Array<HTMLLinkElement | HTMLImageElement>;
 		maxCount: number;
+		positionX: PositionX;
+		positionY: PositionY;
 		size?: number;
 		textColor: string;
 	}

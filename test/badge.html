@@ -11,7 +11,10 @@
   </p>
   <script>
     var count = 1;
-    var badge = new FaviconBadge();
+    var badge = new FaviconBadge({
+      positionX: 'center',
+      positionY: 'center'
+    });
     badge.update(count);
 
     var input = document.querySelector('#count');
