@@ -30,6 +30,8 @@
   "typings": "./index.d.ts",
   "scripts": {
     "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production"
+    "build:prod": "webpack --mode production",
+    "test": "npm run test-typings",
+    "test-typings": "tsc -p tsconfig.json"
   }
 }
