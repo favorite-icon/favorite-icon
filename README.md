@@ -21,9 +21,13 @@ Set the favicon with your own image.
 
 ```js
 Favicon.set('./image.png');
+
 // or
+
 Favicon.set('data:image/png;base64,...');
+
 // or
+
 const canvas = document.createElement('canvas');
 //...
 Favicon.set(canvas);
