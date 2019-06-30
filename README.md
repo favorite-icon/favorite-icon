@@ -5,6 +5,7 @@ Favorite Icon
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
 [![Build Status](https://img.shields.io/travis/hcodes/favorite-icon.svg?style=flat)](https://travis-ci.org/hcodes/favorite-icon)
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/favorite-icon)
 
 A small library for manipulating the favicon, in particular adding alert bubbles and changing images.
 
