@@ -5,11 +5,14 @@ const defaultOptions: favicon.BadgeDefaultOptions = {
     backgroundColor: '#ff0000',
     fontFamily: 'arial, sans-serif',
     fontStyle: 'normal',
+    strokeColor: '#000',
     textColor: '#fff',
     faviconSrc: Favicon.getOriginalSrc(),
     maxCount: 99,
     size: Favicon.size,
-    links: Favicon.icons
+    links: Favicon.icons,
+    positionX: 'right',
+    positionY: 'bottom'
 };
 
 export default class FaviconBadge {
@@ -107,26 +110,44 @@ export default class FaviconBadge {
     }
 
     private drawNumber(count: number, formattedCount: string) {
-        const padding = 2;
+        const padding = 4;
         const size = this.options.size;
         const height = size * 0.6;
         const fontSize = String(count).length > 1 ? 0.9 : 1;
 
         const context = this.context;
+        const positionX = this.options.positionX;
+        const positionY = this.options.positionY;
         context.font = `${this.options.fontStyle} ${fontSize * height}px ${this.options.fontFamily}`;
-        context.textAlign = 'center';
+        context.textAlign = 'left';
+        context.textBaseline = 'top';
 
         context.beginPath();
-        context.textBaseline = 'middle';
         context.fillStyle = this.options.backgroundColor;
+        context.strokeStyle = this.options.strokeColor;
 
         const width = padding * 2 + context.measureText(formattedCount).width;
-        const x = Math.max(size - width, 0);
-        const y = size - height;
-        context.fillRect(x, y, width - 1, height - 1)
-        context.strokeRect(x, y, width - 1, height - 1);
+
+        let x = 0;
+        if (positionX === 'center') {
+            x = Math.max((size - width) / 2, 0);
+        } else if (positionX === 'right') {
+            x = Math.max(size - width, 0);
+        }
+
+        let y = 0;
+        if (positionY === 'center') {
+            y = Math.max((size - height) / 2, 0);
+        } else if (positionY === 'bottom') {
+            y = Math.max(size - height, 0);
+        }
+
+        if (this.options.backgroundColor !== 'transparent') {
+            context.fillRect(x, y, width - 1, height - 1)
+            context.strokeRect(x, y, width - 1, height - 1);
+        }
         context.fillStyle = this.options.textColor;
-        context.fillText(formattedCount, x + width / 2, y + height / 2 + 2);
+        context.fillText(formattedCount, x + padding, y + padding);
 
         context.closePath();
     }

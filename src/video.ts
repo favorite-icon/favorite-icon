@@ -7,22 +7,36 @@ export default class FaviconVideo {
     private timer: number;
 
     constructor(options: favicon.VideoOptions) {
-        this.options = options;
+        const size = options.size || Favicon.size;
+        const video = options.video;
+        this.options = {
+            size,
+            video
+        };
 
         this.canvas = document.createElement('canvas');
-        this.canvas.width = options.size;
-        this.canvas.height = options.size;
+        this.canvas.width = size;
+        this.canvas.height = size;
 
         this.context = this.canvas.getContext('2d');
 
-        const video = this.options.video;
         video.addEventListener('play', this.onplay, false);
-        video.addEventListener('endeed', this.onstop, false);
+        video.addEventListener('ended', this.onstop, false);
         video.addEventListener('abort', this.onstop, false);
     }
 
-    public start() {
-        this.timer = setInterval(() => this.draw(), this.options.timeout);
+    private onplay = () => {
+        this.play();
+    }
+
+    private onstop = () => {
+        this.stop();
+    }
+
+    public play() {
+        this.options.video.muted = true;
+        this.options.video.play();
+        this.timer = setInterval(() => this.draw(), this.options.timeout || 25);
     }
 
     public stop() {
@@ -43,27 +57,20 @@ export default class FaviconVideo {
         delete this.options;
     }
 
-    private onplay = () => {
-        this.start();
-    }
-
-    private onstop = () => {
-        this.stop();
-    }
-
     private draw() {
         const video = this.options.video;
-        const size = this.options.size;
         if (video.paused || video.ended) {
             this.stop();
-
-            return false;
+            return;
         }
 
         try {
+            const size = this.options.size;
             this.context.clearRect(0, 0, size, size);
             this.context.drawImage(video, 0, 0, size, size);
-        } catch (e) {}
+        } catch (e) {
+            console.error(e);
+        }
 
         Favicon.set(this.canvas, this.options.links);
     }

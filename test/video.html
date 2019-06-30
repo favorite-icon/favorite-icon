@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="../dist/video.js"></script>
+</head>
+<body>
+  <p>
+    <input type="button" value="Play" onclick="video.play()" />
+  </p>
+  <video src="video.mp4" muted="true" />
+
+  <script>
+        const video = new FaviconVideo({
+            videoElement: document.querySelector('video')
+        });
+  </script>
+</body>
+</html>
