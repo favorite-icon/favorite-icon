@@ -12,7 +12,6 @@ A small library for manipulating the favicon, in particular adding alert bubbles
 # Using
 `npm install favorite-icon`
 
-
 # API
 
 ## Favicon
@@ -40,9 +39,6 @@ Reset the favicon.
 ### `FaviconBadge.set(count: number)`
 Set the favicon with the badge.
 
-### `FaviconBadge.reset()`
-Reset the favicon.
-
 ```js
     const badge = new FaviconBadge({
         fontFamily: 'Helvetica',
@@ -52,17 +48,15 @@ Reset the favicon.
     badge.set(count);
 ```
 
+### `FaviconBadge.reset()`
+Reset the favicon.
+
 ## [FaviconVideo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
 [Demo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
 ### `FaviconVideo.start()`
 Starts tracking the video and changes the favicon.
-
-### `FaviconVideo.stop()`
-Stop tracking the video and changes the favicon.
-
-### `FaviconVideo.destroy`
 
 ```js
 const favVideo = new FaviconVideo({
@@ -72,6 +66,11 @@ const favVideo = new FaviconVideo({
 favVideo.start();
 ```
 
+### `FaviconVideo.stop()`
+Stop tracking the video and changes the favicon.
+
+### `FaviconVideo.destroy()`
+
 ## [FaviconEmoji](https://hcodes.github.io/favorite-icon/examples/emoji.html)
 
 [Demo](https://hcodes.github.io/favorite-icon/examples/emoji.html)
@@ -79,12 +78,12 @@ favVideo.start();
 ### `FaviconEmoji.set(symbol: string)`
 Set the favicon with your own emoji.
 
-### `FaviconEmoji.reset()`
-Reset the favicon.
-
 ```js
 FaviconEmoji.set('❤️');
 ```
+
+### `FaviconEmoji.reset()`
+Reset the favicon.
 
 # [License](./LICENSE)
 MIT License
