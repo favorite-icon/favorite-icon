@@ -9,6 +9,14 @@ Favorite Icon
 
 A small library for manipulating the favicon, in particular adding alert bubbles and changing images.
 
+# Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
+
 # Using
 `npm install favorite-icon`
 
