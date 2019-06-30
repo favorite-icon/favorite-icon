@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="tab.css" />
+  <script src="../dist/badge.js"></script>
+</head>
+<body>
+  <div class="tab">
+    <div class="tab__favicon"><img src="about:blank" id="preview" /></canvas></div>
+    <div class="tab__text">Tab text</div>
+  </div>
+  <p>
+    Count: <input id="count" type="number" min="0" value="1" style="width: 3em" />
+  </p>
+  <script>
+    var count = 1;
+    var favBadge = new FaviconBadge({
+      positionX: 'center',
+      positionY: 'center'
+    });
+
+    var imageBadge = new FaviconBadge({
+      positionX: 'center',
+      positionY: 'center',
+      size: 64,
+      links: [
+        document.querySelector('#preview')
+      ]
+    });
+
+    favBadge.set(count);
+    imageBadge.set(count)
+
+    var input = document.querySelector('#count');
+    input.value = count;
+    input.oninput = function() {
+      var count = Number(input.value);
+      favBadge.set(count);
+      imageBadge.set(count)
+    };
+  </script>
+</body>
+</html>

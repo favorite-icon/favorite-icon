@@ -14,9 +14,9 @@ export default class FaviconEmoji {
         context.textBaseline = 'top';
 
         context.clearRect(0, 0, size, size);
-        context.fillText(symbol, size / 2, size * 0.2);
+        context.fillText(symbol, size / 2, size * 0.1);
 
-        Favicon.set(canvas);
+        Favicon.set(canvas, options && options.links);
     }
 
     public reset() {

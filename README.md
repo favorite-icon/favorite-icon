@@ -33,7 +33,9 @@ Favicon.set(canvas);
 ### `Favicon.reset()`
 Reset the favicon.
 
-## FaviconBadge
+## [FaviconBadge]()
+
+[Demo](./examples/badge.html)
 
 ### `FaviconBadge.set(count: number)`
 Set the favicon with the badge.
@@ -50,7 +52,9 @@ Reset the favicon.
     badge.set(count);
 ```
 
-## FaviconVideo
+## [FaviconVideo](./examples/video.html)
+
+[Demo](./examples/video.html)
 
 ### `FaviconVideo.start()`
 Starts tracking the video and changes the favicon.
@@ -68,8 +72,9 @@ const favVideo = new FaviconVideo({
 favVideo.start();
 ```
 
+## [FaviconEmoji](./examples/emoji.html)
 
-## FaviconEmoji
+[Demo](./examples/emoji.html)
 
 ### `FaviconEmoji.set(symbol: string)`
 Set the favicon to your own emoji.

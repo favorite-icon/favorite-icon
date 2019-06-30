@@ -76,6 +76,7 @@ declare namespace favicon {
 
 	interface EmojiOptions {
 		size?: number;
+		links?: Array<HTMLLinkElement | HTMLImageElement>;
 	}
 }
 

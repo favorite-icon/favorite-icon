@@ -106,7 +106,7 @@ export default class FaviconBadge {
             this.drawNumber(count, formattedCount);
         }
 
-        Favicon.set(this.canvas);
+        Favicon.set(this.canvas, this.options.links);
     }
 
     private drawNumber(count: number, formattedCount: string) {

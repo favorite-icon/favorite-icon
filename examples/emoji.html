@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="tab.css" />
+  <script src="../dist/emoji.js"></script>
+</head>
+<body>
+  <div class="tab">
+    <div class="tab__favicon"><img src="about:blank" id="preview" /></canvas></div>
+    <div class="tab__text">Tab text</div>
+  </div>
+
+  <p>
+    <input type="button" value="😀" onclick="updateFavicon(this.value)" />
+    <input type="button" value="🦊" onclick="updateFavicon(this.value)" />
+    <input type="button" value="👌" onclick="updateFavicon(this.value)" />
+    <input type="button" value="🔥" onclick="updateFavicon(this.value)" />
+    <input type="button" value="🌹" onclick="updateFavicon(this.value)" />
+  </p>
+
+  <script>
+    function updateFavicon(symbol) {
+      FaviconEmoji.set(symbol, {
+        size: 64,
+        links: [
+          document.querySelector('#preview')
+        ]
+      });
+
+      FaviconEmoji.set(symbol);
+    }
+
+    updateFavicon('❤️');
+  </script>
+</body>
+</html>
