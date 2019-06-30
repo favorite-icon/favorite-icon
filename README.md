@@ -17,17 +17,17 @@ A small library for manipulating the favicon, in particular adding alert bubbles
 
 ## Favicon
 
-### `Favicon.change(src: string | HTMLCanvasElement)`
-Change the favicon to your own image.
+### `Favicon.set(src: string | HTMLCanvasElement)`
+Set the favicon to your own image.
 
 ```js
-Favicon.change('./image.png');
+Favicon.set('./image.png');
 // or
-Favicon.change('data:image/png;base64,...');
+Favicon.set('data:image/png;base64,...');
 // or
 const canvas = document.createElement('canvas');
 //...
-Favicon.change(canvas);
+Favicon.set(canvas);
 ```
 
 ### `Favicon.reset()`
@@ -35,23 +35,50 @@ Reset the favicon.
 
 ## FaviconBadge
 
-### `FaviconBadge.update(count: number)`
+### `FaviconBadge.set(count: number)`
+Set the favicon with the badge.
 
-### `FaviconBadge.destroy()`
+### `FaviconBadge.reset()`
+Reset the favicon.
+
+```js
+    const badge = new FaviconBadge({
+        fontFamily: 'Helvetica',
+        color: '#f0f0f0',
+        backgroundColor: '#0f0'
+    });
+    badge.set(count);
+```
 
 ## FaviconVideo
 
 ### `FaviconVideo.start()`
+Starts tracking the video and changes the favicon.
 
 ### `FaviconVideo.stop()`
+Stop tracking the video and changes the favicon.
 
-### `FaviconVideo.destroy()`
+### `FaviconVideo.destroy`
+
+```js
+const favVideo = new FaviconVideo({
+    video: document.querySelector('video')
+})
+
+favVideo.start();
+```
+
 
 ## FaviconEmoji
 
-### `FaviconEmoji.print(symbol: string)`
+### `FaviconEmoji.set(symbol: string)`
+Set the favicon to your own emoji.
+
+### `FaviconEmoji.reset()`
+Reset the favicon.
+
 ```js
-FaviconEmoji.print('❤️');
+FaviconEmoji.set('❤️');
 ```
 
 # [License](./LICENSE)

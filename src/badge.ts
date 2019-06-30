@@ -3,9 +3,9 @@ import Favicon from './index';
 
 const defaultOptions: favicon.BadgeDefaultOptions = {
     backgroundColor: '#ff0000',
-    fontFamily: 'sans-serif',
+    fontFamily: 'arial, sans-serif',
     fontStyle: 'normal',
-    textColor: '#ffffff',
+    textColor: '#fff',
     faviconSrc: Favicon.getOriginalSrc(),
     maxCount: 99,
     size: Favicon.size,
@@ -38,28 +38,7 @@ export default class FaviconBadge {
         this.loadImage();
     }
 
-    public destroy() {
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
-    }
-
-    private loadImage() {
-        this.image = new Image();
-        this.image.setAttribute('crossOrigin', 'anonymous');
-        this.image.onload = this.image.onabort = this.image.onerror = () => {
-            this.imageReady = true;
-            this.update(this.count);
-        };
-
-        this.image.src = this.options.faviconSrc;
-    }
-
-    private setOptionDefault<T extends keyof favicon.BadgeDefaultOptions>(name: T, defaultValue: favicon.BadgeDefaultOptions[T]) {
-        this.options[name] = this.options[name] || defaultValue;
-    }
-
-    public update(count: number) {
+    public set(count: number) {
         this.count = count;
 
         const formattedCount = this.options.formatter ?
@@ -71,6 +50,31 @@ export default class FaviconBadge {
         } else if (this.options.fallback) {
             this.options.fallback(count, formattedCount);
         }
+    }
+
+    public reset() {
+        Favicon.reset();
+    }
+
+    public destroy() {
+        delete this.canvas;
+        delete this.context;
+        delete this.options;
+    }
+
+    private loadImage() {
+        this.image = new Image();
+        this.image.setAttribute('crossOrigin', 'anonymous');
+        this.image.onload = this.image.onabort = this.image.onerror = () => {
+            this.imageReady = true;
+            this.set(this.count);
+        };
+
+        this.image.src = this.options.faviconSrc;
+    }
+
+    private setOptionDefault<T extends keyof favicon.BadgeDefaultOptions>(name: T, defaultValue: favicon.BadgeDefaultOptions[T]) {
+        this.options[name] = this.options[name] || defaultValue;
     }
 
     private formatter(count: number): string {
@@ -99,7 +103,7 @@ export default class FaviconBadge {
             this.drawNumber(count, formattedCount);
         }
 
-        Favicon.change(this.canvas);
+        Favicon.set(this.canvas);
     }
 
     private drawNumber(count: number, formattedCount: string) {

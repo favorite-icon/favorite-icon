@@ -15,17 +15,10 @@ export default class FaviconVideo {
 
         this.context = this.canvas.getContext('2d');
 
-        this.options.videoElement.addEventListener('play', this.onplay, false);
-        this.options.videoElement.addEventListener('endeed', this.onstop, false);
-        this.options.videoElement.addEventListener('abort', this.onstop, false);
-    }
-
-    private onplay = () => {
-        this.start();
-    }
-
-    private onstop = () => {
-        this.stop();
+        const video = this.options.video;
+        video.addEventListener('play', this.onplay, false);
+        video.addEventListener('endeed', this.onstop, false);
+        video.addEventListener('abort', this.onstop, false);
     }
 
     public start() {
@@ -37,8 +30,29 @@ export default class FaviconVideo {
         Favicon.reset();
     }
 
+    public destroy() {
+        this.stop();
+
+        const video = this.options.video;
+        video.removeEventListener('play', this.onplay, false);
+        video.removeEventListener('endeed', this.onstop, false);
+        video.removeEventListener('abort', this.onstop, false);
+
+        delete this.canvas;
+        delete this.context;
+        delete this.options;
+    }
+
+    private onplay = () => {
+        this.start();
+    }
+
+    private onstop = () => {
+        this.stop();
+    }
+
     private draw() {
-        const video = this.options.videoElement;
+        const video = this.options.video;
         const size = this.options.size;
         if (video.paused || video.ended) {
             this.stop();
@@ -51,18 +65,6 @@ export default class FaviconVideo {
             this.context.drawImage(video, 0, 0, size, size);
         } catch (e) {}
 
-        Favicon.change(this.canvas, this.options.links);
-    }
-
-    public destroy() {
-        this.stop();
-
-        this.options.videoElement.removeEventListener('play', this.onplay, false);
-        this.options.videoElement.removeEventListener('endeed', this.onstop, false);
-        this.options.videoElement.removeEventListener('abort', this.onstop, false);
-
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
+        Favicon.set(this.canvas, this.options.links);
     }
 }

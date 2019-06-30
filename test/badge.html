@@ -12,12 +12,12 @@
   <script>
     var count = 1;
     var badge = new FaviconBadge();
-    badge.update(count);
+    badge.set(count);
 
     var input = document.querySelector('#count');
     input.value = count;
     input.oninput = function() {
-      badge.update(Number(input.value));
+      badge.set(Number(input.value));
     };
 
   </script>

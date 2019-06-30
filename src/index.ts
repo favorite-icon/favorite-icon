@@ -4,7 +4,7 @@ export default class Favicon {
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
     public static size = 32;
 
-    public static change(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>) {
+    public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>) {
         const items = elems || this.icons;
 
          (Array.isArray(items) ? items : [items]).forEach((item: HTMLImageElement | HTMLLinkElement) => {
@@ -16,7 +16,7 @@ export default class Favicon {
     }
 
     public static reset() {
-        this.change(this.getOriginalSrc());
+        this.set(this.getOriginalSrc());
     }
 
     public static getOriginalSrc(): string {

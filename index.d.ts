@@ -1,14 +1,15 @@
 declare namespace favicon {
 	interface Static {
 		icons: HTMLLinkElement[];
-		change(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void;
+		set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void;
 		getOriginalSrc(): string;
 		reset(): void;
 		searchIcons(): HTMLLinkElement[];
 	}
 
 	interface Badge {
-		update(count: number): void;
+		set(count: number): void;
+		reset(): void;
 		destroy(): void;
 	}
 
@@ -44,6 +45,7 @@ declare namespace favicon {
 	interface Video {
 		start(): void;
 		stop(): void;
+		reset(): void;
 		destroy(): void;
 	}
 
@@ -55,11 +57,12 @@ declare namespace favicon {
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
 		size?: number;
 		timeout?: number;
-		videoElement: HTMLVideoElement;
+		video: HTMLVideoElement;
 	}
 
 	interface EmojiStatic {
-		print(symbol: string): void;
+		set(symbol: string): void;
+		reset(): void;
 	}
 
 	interface EmojiOptions {

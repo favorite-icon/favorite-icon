@@ -1,7 +1,7 @@
 import Favicon from './index';
 
 export default class FaviconEmoji {
-    public static print(symbol: string, options: favicon.EmojiOptions) {
+    public static set(symbol: string, options: favicon.EmojiOptions) {
         const size = options && options.size || Favicon.size;
         const canvas = document.createElement('canvas');
         canvas.width = size;
@@ -16,7 +16,11 @@ export default class FaviconEmoji {
         context.clearRect(0, 0, size, size);
         context.fillText(symbol, size / 2, size * 0.2);
 
-        Favicon.change(canvas);
+        Favicon.set(canvas);
+    }
+
+    public reset() {
+        Favicon.reset();
     }
 }
 
