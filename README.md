@@ -17,7 +17,7 @@ A small library for manipulating the favicon, in particular adding alert bubbles
 ## Favicon
 
 ### `Favicon.set(src: string | HTMLCanvasElement)`
-Set the favicon to your own image.
+Set the favicon with your own image.
 
 ```js
 Favicon.set('./image.png');
@@ -32,9 +32,9 @@ Favicon.set(canvas);
 ### `Favicon.reset()`
 Reset the favicon.
 
-## [FaviconBadge]()
+## [FaviconBadge](https://hcodes.github.io/favorite-icon/examples/badge.html)
 
-[Demo](./examples/badge.html)
+[Demo](https://hcodes.github.io/favorite-icon/examples/badge.html)
 
 ### `FaviconBadge.set(count: number)`
 Set the favicon with the badge.
@@ -51,9 +51,9 @@ Reset the favicon.
     badge.set(count);
 ```
 
-## [FaviconVideo](./examples/video.html)
+## [FaviconVideo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
-[Demo](./examples/video.html)
+[Demo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
 ### `FaviconVideo.start()`
 Starts tracking the video and changes the favicon.
@@ -71,12 +71,12 @@ const favVideo = new FaviconVideo({
 favVideo.start();
 ```
 
-## [FaviconEmoji](./examples/emoji.html)
+## [FaviconEmoji](https://hcodes.github.io/favorite-icon/examples/emoji.html)
 
-[Demo](./examples/emoji.html)
+[Demo](https://hcodes.github.io/favorite-icon/examples/emoji.html)
 
 ### `FaviconEmoji.set(symbol: string)`
-Set the favicon to your own emoji.
+Set the favicon with your own emoji.
 
 ### `FaviconEmoji.reset()`
 Reset the favicon.
