@@ -1,13 +1,16 @@
 const path = require('path');
 
-module.exports = [
-  ['index', 'Favicon'],
-  ['badge', 'FaviconBadge'],
-  ['emoji', 'FaviconEmoji'],
-  ['video', 'FaviconVideo']
-].map(([file, library]) => {
+const packages = [
+  ['favorite-icon', 'Favicon'],
+  ['favorite-icon-badge', 'FaviconBadge'],
+  ['favorite-icon-emoji', 'FaviconEmoji'],
+  ['favorite-icon-video', 'FaviconVideo'],
+  ['favorite-icon-traffic-lights', 'FaviconTrafficLights']
+];
+
+module.exports = packages.map(([package, library]) => {
   return {
-    entry: `./src/${file}.ts`,
+    entry: `./packages/${package}/src/index.ts`,
     module: {
       rules: [
         {
@@ -21,8 +24,8 @@ module.exports = [
       extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-      filename: `${file}.js`,
-      path: path.resolve(__dirname, 'dist'),
+      filename: `index.js`,
+      path: path.resolve(__dirname, `./packages/${package}/dist/`),
       library,
       libraryExport: 'default',
       libraryTarget: 'umd'

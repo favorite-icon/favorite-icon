@@ -1,10 +1,18 @@
 const PNG_MIME_TYPE = 'image/png';
 
+import { hasSupport } from './support';
+
 export default class Favicon {
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
     public static size = 32;
 
+    public static hasSupport = hasSupport;
+
     public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>) {
+        if (!this.hasSupport) {
+            return;
+        }
+
         const items = elems || this.icons;
 
          (Array.isArray(items) ? items : [items]).forEach((item: HTMLImageElement | HTMLLinkElement) => {
@@ -16,7 +24,9 @@ export default class Favicon {
     }
 
     public static reset() {
-        this.set(this.getOriginalSrc());
+        if (this.hasSupport) {
+            this.set(this.getOriginalSrc());
+        }
     }
 
     public static getOriginalSrc(): string {

@@ -1,12 +1,4 @@
 declare namespace favicon {
-	interface Static {
-		icons: HTMLLinkElement[];
-		set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void;
-		getOriginalSrc(): string;
-		reset(): void;
-		searchIcons(): HTMLLinkElement[];
-	}
-
 	interface Badge {
 		set(count: number): void;
 		reset(): void;
@@ -50,57 +42,10 @@ declare namespace favicon {
 		size?: number;
 		textColor: string;
 	}
-
-	interface Video {
-		start(): void;
-		stop(): void;
-		reset(): void;
-		destroy(): void;
-	}
-
-	interface VideoStatic {
-		new (options: VideoOptions): Video;
-	}
-
-	interface VideoOptions {
-		links?: Array<HTMLLinkElement | HTMLImageElement>;
-		size?: number;
-		timeout?: number;
-		video: HTMLVideoElement;
-	}
-
-	interface EmojiStatic {
-		set(symbol: string): void;
-		reset(): void;
-	}
-
-	interface EmojiOptions {
-		size?: number;
-		links?: Array<HTMLLinkElement | HTMLImageElement>;
-	}
 }
 
-declare module 'favicon' {
-	const Favicon: favicon.Static;
-
-	export = Favicon;
-}
-
-declare module 'favicon/badge' {
+declare module 'favorite-icon-badge' {
 	const FaviconBadge: favicon.BadgeStatic;
 
 	export = FaviconBadge;
 }
-
-declare module 'favicon/video' {
-	const FaviconVideo: favicon.VideoStatic;
-
-	export = FaviconVideo;
-}
-
-declare module 'favicon/emoji' {
-	const FaviconEmoji: favicon.EmojiStatic;
-
-	export = FaviconEmoji;
-}
-

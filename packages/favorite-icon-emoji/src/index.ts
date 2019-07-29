@@ -1,4 +1,4 @@
-import Favicon from './index';
+import Favicon from '../../favorite-icon/src/index';
 
 export default class FaviconEmoji {
     public static set(symbol: string, options: favicon.EmojiOptions) {
@@ -9,6 +9,7 @@ export default class FaviconEmoji {
         const context = canvas.getContext('2d');
 
         const fontSize = size;
+        context.fillStyle = options.color || '#000';
         context.font = `${fontSize}px/0.5 Arial, sans-serif`;
         context.textAlign = 'center';
         context.textBaseline = 'top';

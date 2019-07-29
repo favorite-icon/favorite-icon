@@ -1,5 +1,4 @@
-import { hasSupport } from './support';
-import Favicon from './index';
+import Favicon from '../../favorite-icon/src/index';
 
 const defaultOptions: favicon.BadgeDefaultOptions = {
     backgroundColor: '#ff0000',
@@ -48,7 +47,7 @@ export default class FaviconBadge {
             this.options.formatter(count) :
             this.formatter(count);
 
-        if (hasSupport) {
+        if (Favicon.hasSupport) {
             this.draw(count, formattedCount);
         } else if (this.options.fallback) {
             this.options.fallback(count, formattedCount);

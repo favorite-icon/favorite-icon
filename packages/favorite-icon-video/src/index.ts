@@ -1,4 +1,4 @@
-import Favicon from './index';
+import Favicon from '../../favorite-icon/src/index';
 
 export default class FaviconVideo {
     private options: favicon.VideoOptions;
