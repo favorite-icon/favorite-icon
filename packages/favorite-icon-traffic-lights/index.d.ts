@@ -1,6 +1,9 @@
-declare namespace favicon {
+declare namespace favicon {	
+	type TrafficLightsStatus = 'error' | 'ok' | 'warning';
+
 	interface TrafficLightsStatic {
-		setStatus(status: 'error' | 'done' | 'awaiting'): void;
+		status?: TrafficLightsStatus;
+		set(status: TrafficLightsStatus): void;
 		reset(): void;
 	}
 

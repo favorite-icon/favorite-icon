@@ -2,36 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="tab.css" />
+  <link rel="stylesheet" href="./res/tab.css" />
   <script src="../packages/favorite-icon-video/dist/index.js"></script>
+  <link rel="stylesheet" href="./res/common.css" />
+  <script src="./res/common.js"></script>
 </head>
 <body>
   <div class="tab">
-    <div class="tab__favicon"><img src="about:blank" id="preview" /></canvas></div>
+    <div class="tab__favicon"><img src="about:blank" id="preview" /></div>
     <div class="tab__text">Tab text</div>
   </div>
-  <p>
-    <input type="button" value="Play" onclick="play()" />
-  </p>
-  <video src="video.mp4" muted="true" />
+
+  <video controls src="./res/video.mp4" muted="true" />
 
   <script>
-    const favVideo = new FaviconVideo({
-        video: document.querySelector('video')
-    });
+      const favVideo = new FaviconVideo({
+          video: document.querySelector('video')
+      });
 
-    const previewVideo = new FaviconVideo({
-        video: document.querySelector('video'),
-        size: 64,
-        links: [
-          document.querySelector('#preview')
-        ]
-    });
-
-    function play() {
-      favVideo.play();
-      previewVideo.play();
-    }
+      const previewVideo = new FaviconVideo({
+          video: document.querySelector('video'),
+          size: 64,
+          links: [
+            document.querySelector('#preview')
+          ]
+      });    
   </script>
 </body>
 </html>

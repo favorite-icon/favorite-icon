@@ -31,7 +31,7 @@ export default class FaviconVideo {
     }
 
     private onstop = () => {
-        this.stop();
+        this.pause();
     }
 
     public play() {
@@ -40,13 +40,14 @@ export default class FaviconVideo {
         this.timer = setInterval(() => this.draw(), this.options.timeout || 25);
     }
 
-    public stop() {
+    public pause() {
+        this.options.video.pause();
         window.clearInterval(this.timer);
         Favicon.reset();
     }
 
     public destroy() {
-        this.stop();
+        this.pause();
 
         const video = this.options.video;
         video.removeEventListener('play', this.onplay, false);
@@ -61,7 +62,7 @@ export default class FaviconVideo {
     private draw() {
         const video = this.options.video;
         if (video.paused || video.ended) {
-            this.stop();
+            this.pause();
             return;
         }
 
