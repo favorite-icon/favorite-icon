@@ -8,6 +8,7 @@ declare namespace favicon {
 	}
 
 	interface TrafficLightsOptions {
+		faviconSrc?: string;
 		size?: number;
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
 	}
