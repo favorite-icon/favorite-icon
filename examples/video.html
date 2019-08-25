@@ -17,16 +17,18 @@
   <video controls src="./res/video.mp4" muted="true" />
 
   <script>
+      const video = document.querySelector('video');
+
       const favVideo = new FaviconVideo({
-          video: document.querySelector('video')
+          video: video
       });
 
       const previewVideo = new FaviconVideo({
-          video: document.querySelector('video'),
-          size: 64,
           links: [
             document.querySelector('#preview')
-          ]
+          ],
+          size: 64,
+          video: video
       });    
   </script>
 </body>

@@ -1,9 +1,9 @@
 declare namespace favicon {
 	interface Video {
-		start(): void;
+		destroy(): void;
 		pause(): void;
 		reset(): void;
-		destroy(): void;
+		start(): void;
 	}
 
 	interface VideoStatic {

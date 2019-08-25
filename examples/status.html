@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="./res/favicon.svg"/>
   <link rel="stylesheet" href="./res/tab.css" />
-  <script src="../packages/favorite-icon-traffic-lights/dist/index.js"></script>
+  <script src="../packages/favorite-icon-status/dist/index.js"></script>
   <link rel="stylesheet" href="./res/common.css" />
   <script src="./res/common.js"></script>
 </head>
@@ -21,13 +21,13 @@
   </p>
 
   <script>
-    const preview = new FaviconTrafficLights({
+    const preview = new FaviconStatus({
       size: 64,
       links: [
         document.querySelector('#preview')
       ]
     });
-    const favicon = new FaviconTrafficLights();
+    const favicon = new FaviconStatus();
 
     function updateFavicons(status) {
       preview.set(status);

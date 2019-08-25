@@ -5,7 +5,7 @@ const packages = [
   ['favorite-icon-badge', 'FaviconBadge'],
   ['favorite-icon-emoji', 'FaviconEmoji'],
   ['favorite-icon-video', 'FaviconVideo'],
-  ['favorite-icon-traffic-lights', 'FaviconTrafficLights']
+  ['favorite-icon-status', 'FaviconStatus']
 ];
 
 module.exports = packages.map(([package, library]) => {

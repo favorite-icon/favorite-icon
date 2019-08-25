@@ -40,7 +40,7 @@ Reset the favicon.
 
 [Demo](https://hcodes.github.io/favorite-icon/examples/badge.html)
 
-### `FaviconBadge.set(count: number)`
+### `.set(count: number)`
 Set the favicon with the badge.
 
 ```js
@@ -52,14 +52,18 @@ Set the favicon with the badge.
     badge.set(count);
 ```
 
-### `FaviconBadge.reset()`
+### `.reset()`
 Reset the favicon.
+
+```js
+badge.reset();
+```
 
 ## [FaviconVideo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
 [Demo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
-### `FaviconVideo.start()`
+### `.start()`
 Starts tracking the video and changes the favicon.
 
 ```js
@@ -70,10 +74,25 @@ const favVideo = new FaviconVideo({
 favVideo.start();
 ```
 
-### `FaviconVideo.stop()`
+### `.pause()`
 Stop tracking the video and changes the favicon.
 
-### `FaviconVideo.destroy()`
+```js
+favVideo.pause();
+```
+
+### `.reset()`
+Reset the favicon.
+
+```js
+favVideo.reset();
+```
+
+### `.destroy()`
+
+```js
+favVideo.destroy();
+```
 
 ## [FaviconEmoji](https://hcodes.github.io/favorite-icon/examples/emoji.html)
 
@@ -88,6 +107,25 @@ FaviconEmoji.set('❤️');
 
 ### `FaviconEmoji.reset()`
 Reset the favicon.
+
+## [FaviconStatus](https://hcodes.github.io/favorite-icon/examples/status.html)
+
+[Demo](https://hcodes.github.io/favorite-icon/examples/status.html)
+
+### `.set(status: 'ok' | 'error' | 'warning')`
+Set the favicon with status.
+
+```js
+const status = new FaviconStatus();
+status.set('ok');
+```
+
+### `.reset()`
+Reset the favicon.
+
+```js
+status.reset();
+```
 
 # Browser support
 - Chrome: ✅

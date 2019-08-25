@@ -3,7 +3,7 @@ window.addEventListener('load', function() {
         'emoji',
         'video',
         'badge',
-        'traffic-lights'
+        'status'
     ];
 
     var prev = pages[pages.length - 1], next = pages[1];
