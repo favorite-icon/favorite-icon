@@ -5,8 +5,8 @@ const IMAGE_WIDTH = 12;
 const IMAGE_HEIGHT = 16;
 
 export default class FaviconStatus {
-    private isStatusImagesLoaded: boolean = false;
-    private isFaviconLoaded: boolean = false;
+    private isStatusImagesLoaded = false;
+    private isFaviconLoaded = false;
     private countStatusImages = 0;
     
     private status?: favicon.StatusType;

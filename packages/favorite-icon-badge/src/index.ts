@@ -19,9 +19,9 @@ export default class FaviconBadge {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private image: HTMLImageElement;
-    private imageReady: boolean = false;
+    private imageReady = false;
     private count: number;
-    private lastCount: number = 0;
+    private lastCount = 0;
 
     constructor(options: favicon.BadgeOptions) {
         this.options = options || {};
@@ -150,4 +150,4 @@ export default class FaviconBadge {
 
         context.closePath();
     }
-};
+}

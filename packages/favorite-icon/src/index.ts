@@ -8,7 +8,7 @@ export default class Favicon {
 
     public static hasSupport = hasSupport;
 
-    public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>) {
+    public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void {
         if (!this.hasSupport) {
             return;
         }
@@ -23,7 +23,7 @@ export default class Favicon {
         });
     }
 
-    public static reset() {
+    public static reset(): void {
         if (this.hasSupport) {
             this.set(this.getOriginalSrc());
         }

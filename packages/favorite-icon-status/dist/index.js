@@ -1,1 +1,125 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.FaviconStatus=e():t.FaviconStatus=e()}(window,(function(){return function(t){var e={};function n(o){if(e[o])return e[o].exports;var i=e[o]={i:o,l:!1,exports:{}};return t[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=t,n.c=e,n.d=function(t,e,o){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var i in t)n.d(o,i,function(e){return t[e]}.bind(null,i));return o},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e,n){"use strict";n.r(e);var o=Boolean(window.opera)||navigator.userAgent.indexOf("Opera")>-1,i=void 0!==window.InstallTrigger,r=Boolean(window.chrome)||i||o,s=function(){function t(){}return t.set=function(t,e){if(this.hasSupport){var n=e||this.icons;(Array.isArray(n)?n:[n]).forEach((function(e){e.setAttribute(e instanceof HTMLImageElement?"src":"href",t instanceof HTMLCanvasElement?t.toDataURL("image/png"):t)}))}},t.reset=function(){this.hasSupport&&this.set(this.getOriginalSrc())},t.getOriginalSrc=function(){return this.icons[this.icons.length-1].href},t.searchIcons=function(){for(var t=[],e=document.querySelectorAll("head link"),n=0;n<e.length;n++)/(^|\s)icon(\s|$)/i.test(e[n].rel)&&t.push(e[n]);if(!t.length){var o=document.createElement("link");o.setAttribute("rel","icon"),document.head.appendChild(o),t.push(o)}return t.forEach((function(t){t.setAttribute("type","image/png")})),t},t.icons=t.searchIcons(),t.size=32,t.hasSupport=r,t}(),a=function(){function t(t){this.isStatusImagesLoaded=!1,this.isFaviconLoaded=!1,this.countStatusImages=0,this.options={faviconSrc:t&&t.faviconSrc||s.getOriginalSrc(),links:t&&t.links,size:t&&t.size||s.size},this.loadStatusImages(),this.loadFavicon()}return t.prototype.set=function(t){t&&(this.status=t),this.isStatusImagesLoaded&&this.isFaviconLoaded&&this.status&&this.draw()},t.prototype.draw=function(){var t=this.options.size,e=document.createElement("canvas");e.width=t,e.height=t;var n=e.getContext("2d");n.clearRect(0,0,t,t),n.drawImage(this.favicon,0,0,t,t);var o=t/1.2,i=t/1.2,r=t/3.5,a=t/3.5;n.drawImage({ok:this.okImage,error:this.errorImage,warning:this.warningImage}[this.status],0,0,12,16,r,a,o,i),s.set(e,this.options.links)},t.prototype.loadStatusImages=function(){var t=this;this.okImage=new Image,this.errorImage=new Image,this.warningImage=new Image,this.okImage.onload=this.warningImage.onload=this.errorImage.onload=function(){t.countStatusImages++,3===t.countStatusImages&&(t.isStatusImagesLoaded=!0,t.set())},this.errorImage.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z" fill="rgb(203, 36, 49)" stroke="black" stroke-width="0.5" /></svg>',this.okImage.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z" fill="rgb(40, 167, 69)" stroke="black" stroke-width="0.5" /></svg>',this.warningImage.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><circle cx="6" cy="8" r="4" fill="rgb(255, 165, 0)" stroke="black" stroke-width="0.5" /></svg>'},t.prototype.loadFavicon=function(){var t=this;this.favicon=new Image,this.favicon.onload=this.favicon.onabort=this.favicon.onerror=function(){t.isFaviconLoaded=!0,t.set()},this.favicon.src=this.options.faviconSrc},t.prototype.reset=function(){s.reset()},t}();e.default=a}]).default}));
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./packages/favorite-icon-status/src/index.ts");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./packages/favorite-icon-status/src/index.ts":
+/*!****************************************************!*\
+  !*** ./packages/favorite-icon-status/src/index.ts ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FaviconStatus; });\n/* harmony import */ var _favorite_icon_src_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../favorite-icon/src/index */ \"./packages/favorite-icon/src/index.ts\");\n\nconst MAX_STATUS_IMAGE = 3;\nconst IMAGE_WIDTH = 12;\nconst IMAGE_HEIGHT = 16;\nclass FaviconStatus {\n    constructor(rawOptions) {\n        this.isStatusImagesLoaded = false;\n        this.isFaviconLoaded = false;\n        this.countStatusImages = 0;\n        this.options = {\n            faviconSrc: rawOptions && rawOptions.faviconSrc || _favorite_icon_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getOriginalSrc(),\n            links: rawOptions && rawOptions.links,\n            size: rawOptions && rawOptions.size || _favorite_icon_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].size,\n        };\n        this.loadStatusImages();\n        this.loadFavicon();\n    }\n    set(status) {\n        if (status) {\n            this.status = status;\n        }\n        if (!this.isStatusImagesLoaded || !this.isFaviconLoaded || !this.status) {\n            return;\n        }\n        this.draw();\n    }\n    draw() {\n        const size = this.options.size;\n        const canvas = document.createElement('canvas');\n        canvas.width = size;\n        canvas.height = size;\n        const context = canvas.getContext('2d');\n        context.clearRect(0, 0, size, size);\n        context.drawImage(this.favicon, 0, 0, size, size);\n        const width = size / 1.2;\n        const height = size / 1.2;\n        const x = size / 3.5;\n        const y = size / 3.5;\n        context.drawImage({\n            ok: this.okImage,\n            error: this.errorImage,\n            warning: this.warningImage\n        }[this.status], 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, x, y, width, height);\n        _favorite_icon_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].set(canvas, this.options.links);\n    }\n    loadStatusImages() {\n        this.okImage = new Image();\n        this.errorImage = new Image();\n        this.warningImage = new Image();\n        this.okImage.onload =\n            this.warningImage.onload =\n                this.errorImage.onload = () => {\n                    this.countStatusImages++;\n                    if (this.countStatusImages === MAX_STATUS_IMAGE) {\n                        this.isStatusImagesLoaded = true;\n                        this.set();\n                    }\n                };\n        this.errorImage.src = 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"16\" viewBox=\"0 0 12 16\"><path fill-rule=\"evenodd\" d=\"M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z\" fill=\"rgb(203, 36, 49)\" stroke=\"black\" stroke-width=\"0.5\" /></svg>';\n        this.okImage.src = 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"16\" viewBox=\"0 0 12 16\"><path fill-rule=\"evenodd\" d=\"M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z\" fill=\"rgb(40, 167, 69)\" stroke=\"black\" stroke-width=\"0.5\" /></svg>';\n        this.warningImage.src = 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"16\" viewBox=\"0 0 12 16\"><circle cx=\"6\" cy=\"8\" r=\"4\" fill=\"rgb(255, 165, 0)\" stroke=\"black\" stroke-width=\"0.5\" /></svg>';\n    }\n    loadFavicon() {\n        this.favicon = new Image();\n        this.favicon.onload =\n            this.favicon.onabort =\n                this.favicon.onerror = () => {\n                    this.isFaviconLoaded = true;\n                    this.set();\n                };\n        this.favicon.src = this.options.faviconSrc;\n    }\n    reset() {\n        _favorite_icon_src_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].reset();\n    }\n}\n\n\n//# sourceURL=webpack:///./packages/favorite-icon-status/src/index.ts?");
+
+/***/ }),
+
+/***/ "./packages/favorite-icon/src/index.ts":
+/*!*********************************************!*\
+  !*** ./packages/favorite-icon/src/index.ts ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Favicon; });\n/* harmony import */ var _support__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./support */ \"./packages/favorite-icon/src/support.ts\");\nconst PNG_MIME_TYPE = 'image/png';\n\nclass Favicon {\n    static set(src, elems) {\n        if (!this.hasSupport) {\n            return;\n        }\n        const items = elems || this.icons;\n        (Array.isArray(items) ? items : [items]).forEach((item) => {\n            item.setAttribute(item instanceof HTMLImageElement ? 'src' : 'href', src instanceof HTMLCanvasElement ? src.toDataURL(PNG_MIME_TYPE) : src);\n        });\n    }\n    static reset() {\n        if (this.hasSupport) {\n            this.set(this.getOriginalSrc());\n        }\n    }\n    static getOriginalSrc() {\n        return this.icons[this.icons.length - 1].href;\n    }\n    static searchIcons() {\n        const result = [];\n        const links = document.querySelectorAll('head link');\n        for (let i = 0; i < links.length; i++) {\n            if ((/(^|\\s)icon(\\s|$)/i).test(links[i].rel)) {\n                result.push(links[i]);\n            }\n        }\n        if (!result.length) {\n            const icon = document.createElement('link');\n            icon.setAttribute('rel', 'icon');\n            document.head.appendChild(icon);\n            result.push(icon);\n        }\n        result.forEach((item) => {\n            item.setAttribute('type', PNG_MIME_TYPE);\n        });\n        return result;\n    }\n}\nFavicon.icons = Favicon.searchIcons();\nFavicon.size = 32;\nFavicon.hasSupport = _support__WEBPACK_IMPORTED_MODULE_0__[\"hasSupport\"];\n\n\n//# sourceURL=webpack:///./packages/favorite-icon/src/index.ts?");
+
+/***/ }),
+
+/***/ "./packages/favorite-icon/src/support.ts":
+/*!***********************************************!*\
+  !*** ./packages/favorite-icon/src/support.ts ***!
+  \***********************************************/
+/*! exports provided: hasSupport */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hasSupport\", function() { return hasSupport; });\nconst opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;\nconst firefox = typeof window.InstallTrigger !== 'undefined';\nconst chrome = Boolean(window.chrome);\nconst hasSupport = chrome || firefox || opera;\n\n\n//# sourceURL=webpack:///./packages/favorite-icon/src/support.ts?");
+
+/***/ })
+
+/******/ });

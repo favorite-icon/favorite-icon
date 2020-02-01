@@ -1,0 +1,32 @@
+{
+  "name": "favorite-icon",
+  "version": "0.1.0",
+  "description": "A small library for manipulating the favicon.",
+  "main": "dist/index.common.js",
+  "module": "dist/index.esm.js",
+  "author": {
+    "name": "Denis Seleznev",
+    "email": "hcodes@yandex.ru",
+    "url": "https://github.com/hcodes/favorite-icon"
+  },
+  "license": "MIT",
+  "keywords": [
+    "favorite icon",
+    "favicon",
+    "favico"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md",
+    "index.d.ts"
+  ],
+  "typings": "./index.d.ts",
+  "scripts": {
+    "test": "eslint --ext .ts .",
+    "build": "npm run build:esm && npm run build:common",
+    "build:esm": "rollup src/index.ts --config rollup.config.js --file dist/index.esm.js --format esm",
+    "build:common": "rollup src/index.ts --config rollup.config.js --file dist/index.common.js --format commonjs"
+  }
+}

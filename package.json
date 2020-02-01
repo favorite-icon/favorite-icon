@@ -1,8 +1,7 @@
 {
-  "name": "favorite-icon",
-  "version": "0.2.0",
-  "description": "A small library for manipulating the favicon, in particular adding alert bubbles and changing images.",
-  "main": "dist/index.js",
+  "name": "favorite-icon-main",
+  "version": "0.0.1",
+  "description": "A small library for manipulating the favicon.",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
@@ -14,24 +13,33 @@
     "favicon",
     "favico"
   ],
-  "files": [
-    "dist",
-    "src",
-    "LICENSE",
-    "README.md",
-    "index.d.ts"
-  ],
   "devDependencies": {
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
   },
-  "typings": "./index.d.ts",
   "scripts": {
-    "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
-    "test": "npm run test-typings",
-    "test-typings": "tsc -p tsconfig.json"
-  }
+    "test": "eslint --ext .ts .",
+    "build": "npm run build:index && npm run build:badge && npm run build:emoji && npm run build:status && npm run build:video",
+    "build:index": "npm run build:index:esm && npm run build:index:common",
+    "build:index:esm": "rollup packages/favorite-icon/src/index.ts --config rollup.config.js --file packages/favorite-icon/dist/index.esm.js --format esm",
+    "build:index:common": "rollup packages/favorite-icon/src/index.ts --config rollup.config.js --file packages/favorite-icon/dist/index.common.js --format commonjs",
+    "build:badge": "npm run build:badge:esm && npm run build:badge:common",
+    "build:badge:esm": "rollup packages/favorite-icon-badge/src/index.ts --config rollup.config.js --file packages/favorite-icon-badge/dist/index.esm.js --format esm",
+    "build:badge:common": "rollup packages/favorite-icon-badge/src/index.ts --config rollup.config.js --file packages/favorite-icon-badge/dist/index.common.js --format commonjs",
+    "build:video": "npm run build:video:esm && npm run build:video:common",
+    "build:video:esm": "rollup packages/favorite-icon-video/src/index.ts --config rollup.config.js --file packages/favorite-icon-video/dist/index.esm.js --format esm",
+    "build:video:common": "rollup packages/favorite-icon-video/src/index.ts --config rollup.config.js --file packages/favorite-icon-video/dist/index.common.js --format commonjs",
+    "build:emoji": "npm run build:emoji:esm && npm run build:emoji:common",
+    "build:emoji:esm": "rollup packages/favorite-icon-emoji/src/index.ts --config rollup.config.js --file packages/favorite-icon-emoji/dist/index.esm.js --format esm",
+    "build:emoji:common": "rollup packages/favorite-icon-emoji/src/index.ts --config rollup.config.js --file packages/favorite-icon-emoji/dist/index.common.js --format commonjs",
+    "build:status": "npm run build:status:esm && npm run build:status:common",
+    "build:status:esm": "rollup packages/favorite-icon-status/src/index.ts --config rollup.config.js --file packages/favorite-icon-status/dist/index.esm.js --format esm",
+    "build:status:common": "rollup packages/favorite-icon-status/src/index.ts --config rollup.config.js --file packages/favorite-icon-status/dist/index.common.js --format commonjs"
+  },
+  "private": true
 }
