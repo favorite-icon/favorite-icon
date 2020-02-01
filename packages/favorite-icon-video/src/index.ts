@@ -22,15 +22,16 @@ export default class FaviconVideo {
         this.context = this.canvas.getContext('2d');
 
         video.addEventListener('play', this.onplay, false);
-        video.addEventListener('ended', this.onstop, false);
-        video.addEventListener('abort', this.onstop, false);
+        video.addEventListener('pause', this.onpause, false);
+        video.addEventListener('ended', this.onpause, false);
+        video.addEventListener('abort', this.onpause, false);
     }
 
     private onplay = () => {
         this.play();
     }
 
-    private onstop = () => {
+    private onpause = () => {
         this.pause();
     }
 
@@ -42,7 +43,11 @@ export default class FaviconVideo {
 
     public pause() {
         this.options.video.pause();
+        this.reset();
         window.clearInterval(this.timer);
+    }
+
+    public reset() {
         Favicon.reset();
     }
 
@@ -51,8 +56,9 @@ export default class FaviconVideo {
 
         const video = this.options.video;
         video.removeEventListener('play', this.onplay, false);
-        video.removeEventListener('endeed', this.onstop, false);
-        video.removeEventListener('abort', this.onstop, false);
+        video.removeEventListener('pause', this.onpause, false);
+        video.removeEventListener('endeed', this.onpause, false);
+        video.removeEventListener('abort', this.onpause, false);
 
         delete this.canvas;
         delete this.context;
