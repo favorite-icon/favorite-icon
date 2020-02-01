@@ -10,9 +10,9 @@ export default class FaviconVideo {
         const size = options.size || Favicon.size;
         const video = options.video;
         this.options = {
+            links: options.links,
             size,
             video,
-            links: options.links
         };
 
         this.canvas = document.createElement('canvas');
