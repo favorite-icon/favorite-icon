@@ -23,7 +23,7 @@ export default class FaviconEmoji {
         Favicon.set(canvas, options && options.links);
     }
 
-    public reset() {
+    public static reset() {
         Favicon.reset();
     }
 }
