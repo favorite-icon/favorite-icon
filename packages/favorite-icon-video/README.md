@@ -12,7 +12,7 @@ A small library for manipulating the favicon.
 # Using
 `npm install favorite-icon-video`
 
-# [Demo](https://hcodes.github.io/favorite-icon-video-video/examples/video.html)
+# [Demo](https://hcodes.github.io/favorite-icon/examples/video.html)
 
 # API
 

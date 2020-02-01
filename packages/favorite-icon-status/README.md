@@ -12,7 +12,7 @@ A small library for manipulating the favicon.
 # Using
 `npm install favorite-icon-status`
 
-# [Demo](https://hcodes.github.io/favorite-icon-status/examples/status.html)
+# [Demo](https://hcodes.github.io/favorite-icon/examples/status.html)
 
 # API
 

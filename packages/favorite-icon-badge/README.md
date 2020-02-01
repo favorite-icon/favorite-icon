@@ -12,7 +12,7 @@ A small library for manipulating the favicon.
 # Using
 `npm install favorite-icon-badge`
 
-# [Demo](https://hcodes.github.io/favorite-icon-badge/examples/badge.html)
+# [Demo](https://hcodes.github.io/favorite-icon/examples/badge.html)
 
 # API
 
