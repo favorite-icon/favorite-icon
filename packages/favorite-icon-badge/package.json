@@ -1,7 +1,7 @@
 {
   "name": "favorite-icon-badge",
   "version": "0.1.0",
-  "description": "A small library for manipulating the favicon.",
+  "description": "A small library for manipulating badge in favicon.",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
   "author": {

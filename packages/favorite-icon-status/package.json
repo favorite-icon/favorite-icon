@@ -1,7 +1,7 @@
 {
   "name": "favorite-icon-status",
   "version": "0.1.0",
-  "description": "A small library for manipulating the favicon.",
+  "description": "A small library for manipulating status in favicon.",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
   "author": {
@@ -22,11 +22,5 @@
     "README.md",
     "index.d.ts"
   ],
-  "typings": "./index.d.ts",
-  "scripts": {
-    "test": "eslint --ext .ts .",
-    "build": "npm run build:esm && npm run build:common",
-    "build:esm": "rollup src/index.ts --config rollup.config.js --file dist/index.esm.js --format esm",
-    "build:common": "rollup src/index.ts --config rollup.config.js --file dist/index.common.js --format commonjs"
-  }
+  "typings": "./index.d.ts"
 }

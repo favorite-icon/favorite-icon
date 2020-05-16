@@ -23,10 +23,4 @@
     "index.d.ts"
   ],
   "typings": "./index.d.ts",
-  "scripts": {
-    "test": "eslint --ext .ts .",
-    "build": "npm run build:esm && npm run build:common",
-    "build:esm": "rollup src/index.ts --config rollup.config.js --file dist/index.esm.js --format esm",
-    "build:common": "rollup src/index.ts --config rollup.config.js --file dist/index.common.js --format commonjs"
-  }
 }
