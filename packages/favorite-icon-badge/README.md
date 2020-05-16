@@ -3,7 +3,6 @@ Favorite Icon Badge
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-badge.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-badge)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-badge.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-badge)
-[![Build Status](https://img.shields.io/travis/hcodes/favorite-icon-badge.svg?style=flat)](https://travis-ci.org/hcodes/favorite-icon-badge)
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-badge.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-badge)
 [![Build Status](https://badgen.net/bundlephobia/minzip/favorite-icon-badge)](https://bundlephobia.com/result?p=favorite-icon-badge)
 

@@ -3,7 +3,6 @@ Favorite Icon Status
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
-[![Build Status](https://img.shields.io/travis/hcodes/favorite-icon-status.svg?style=flat)](https://travis-ci.org/hcodes/favorite-icon-status)
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-status.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-status)
 [![Build Status](https://badgen.net/bundlephobia/minzip/favorite-icon-status)](https://bundlephobia.com/result?p=favorite-icon-status)
 
