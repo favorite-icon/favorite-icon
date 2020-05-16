@@ -3,7 +3,6 @@ Favorite Icon Video
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video)
-[![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-video.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-video)
 [![Build Status](https://badgen.net/bundlephobia/minzip/favorite-icon-video)](https://bundlephobia.com/result?p=favorite-icon-video)
 
 A small library for video manipulating in favicon.

@@ -3,7 +3,6 @@ Favorite Icon
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
-[![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon)
 [![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon)](https://bundlephobia.com/result?p=favorite-icon)
 
 A small library for manipulating the favicon.
