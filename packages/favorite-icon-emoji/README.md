@@ -6,7 +6,7 @@ Favorite Icon Emoji
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-emoji.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-emoji)
 [![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-emoji)](https://bundlephobia.com/result?p=favorite-icon-emoji)
 
-A small library for manipulating the favicon, in particular adding alert bubbles and changing images.
+A small library for emoji manipulating in favicon.
 
 # Using
 `npm install favorite-icon-emoji`
