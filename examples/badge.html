@@ -15,33 +15,98 @@
     <div class="tab__text">Favicon Badge</div>
   </div>
   <p>
-    Count: <input id="count" type="number" min="0" value="1" style="width: 3em" />
+    count: <input id="count" type="number" min="0" value="1" style="width: 3em" />
+  </p>
+
+  <p>
+    maxCount: <input id="maxCount" type="number" min="0" value="99" style="width: 3em" />
+  </p>
+
+  <p>
+    backgroundColor: <input id="backgroundColor" type="color" value="#ff0000" />
+  </p>
+  <p>
+    textColor: <input id="textColor" type="color" value="#ffffff" />
+  </p>
+
+  <p>
+    strokeColor: <input id="strokeColor" type="color" value="#000000" />
+  </p>
+
+  <p>
+    positionX: <select id="positionX">
+      <option value="left">left</option>
+      <option value="center" selected>center</option>
+      <option value="right">right</option>
+    </select>
+  </p>
+  <p>
+    positionY: <select id="positionY">
+      <option value="top">top</option>
+      <option value="center" selected>center</option>
+      <option value="bottom">bottom</option>
+    </select>
   </p>
   <script>
-    var count = 1;
-    var favBadge = new FaviconBadge({
-      positionX: 'center',
-      positionY: 'center'
-    });
+    var inputBackgroundColor = document.querySelector('#backgroundColor');
+    var inputTextColor = document.querySelector('#textColor');
+    var inputStrokeColor = document.querySelector('#strokeColor');
+    var inputPositionX = document.querySelector('#positionX');
+    var inputPositionY = document.querySelector('#positionY');
+    var inputCount = document.querySelector('#count');
+    var inputMaxCount = document.querySelector('#maxCount');
 
-    var imageBadge = new FaviconBadge({
-      positionX: 'center',
-      positionY: 'center',
-      size: 64,
-      links: [
-        document.querySelector('#preview')
-      ]
-    });
+    var favBadge;
+    var imageBadge;
+
+    var count = 1;
+
+    function updateSettings() {
+      var maxCount = parseInt(inputMaxCount.value, 10);
+
+      favBadge = new FaviconBadge({
+        backgroundColor: inputBackgroundColor.value,
+        textColor: inputTextColor.value,
+        strokeColor: inputStrokeColor.value,
+        maxCount: maxCount,
+        positionX: inputPositionX.value,
+        positionY: inputPositionY.value,
+      });
+
+      imageBadge = new FaviconBadge({
+        backgroundColor: inputBackgroundColor.value,
+        textColor: inputTextColor.value,
+        strokeColor: inputStrokeColor.value,
+        maxCount: maxCount,
+        positionX: inputPositionX.value,
+        positionY: inputPositionY.value,
+        size: 64,
+        links: [
+          document.querySelector('#preview')
+        ]
+      });
+
+      favBadge.set(count);
+      imageBadge.set(count);
+    }
+
+    updateSettings();
 
     favBadge.set(count);
-    imageBadge.set(count)
+    imageBadge.set(count);
 
-    var input = document.querySelector('#count');
-    input.value = count;
-    input.oninput = function() {
-      var count = Number(input.value);
+    inputCount.value = count;
+    inputCount.oninput = function() {
+      var count = Number(inputCount.value);
       favBadge.set(count);
       imageBadge.set(count)
+    };
+
+    inputBackgroundColor.onchange =
+    inputTextColor.onchange =
+    inputPositionX.onchange =
+    inputPositionY.onchange = function() {
+      updateSettings();
     };
   </script>
 </body>
