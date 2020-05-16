@@ -7,7 +7,7 @@ Favorite Icon Status
 
 A small library for status manipulating in favicon.
 
-# Using
+# Installation
 `npm install favorite-icon-status`
 
 # [Demo](https://hcodes.github.io/favorite-icon/examples/status.html)

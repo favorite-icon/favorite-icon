@@ -7,7 +7,7 @@ Favorite Icon
 
 A small library for manipulating the favicon.
 
-# Using
+# Installation
 `npm install favorite-icon`
 
 # API

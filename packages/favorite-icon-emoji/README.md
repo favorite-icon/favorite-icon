@@ -7,7 +7,7 @@ Favorite Icon Emoji
 
 A small library for emoji manipulating in favicon.
 
-# Using
+# Installation
 `npm install favorite-icon-emoji`
 
 # [Demo](https://hcodes.github.io/favorite-icon/examples/emoji.html)

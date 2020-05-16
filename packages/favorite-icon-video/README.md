@@ -7,7 +7,7 @@ Favorite Icon Video
 
 A small library for video manipulating in favicon.
 
-# Using
+# Installation
 `npm install favorite-icon-video`
 
 # [Demo](https://hcodes.github.io/favorite-icon/examples/video.html)
