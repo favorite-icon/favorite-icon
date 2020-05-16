@@ -6,7 +6,7 @@ Favorite Icon Badge
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-badge.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-badge)
 [![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-badge)](https://bundlephobia.com/result?p=favorite-icon-badge)
 
-A small library for manipulating the favicon.
+A small library for badge manipulating in favicon.
 
 # Using
 `npm install favorite-icon-badge`

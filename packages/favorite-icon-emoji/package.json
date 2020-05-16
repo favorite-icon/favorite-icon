@@ -1,7 +1,7 @@
 {
   "name": "favorite-icon-emoji",
   "version": "0.1.0",
-  "description": "A small library for manipulating emoji in favicon.",
+  "description": "A small library for manipulating the favicon, in particular adding alert bubbles and changing images.",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
   "author": {

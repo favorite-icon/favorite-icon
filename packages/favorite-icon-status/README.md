@@ -6,7 +6,7 @@ Favorite Icon Status
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-status.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-status)
 [![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-status)](https://bundlephobia.com/result?p=favorite-icon-status)
 
-A small library for manipulating the favicon.
+A small library for status manipulating in favicon.
 
 # Using
 `npm install favorite-icon-status`

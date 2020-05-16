@@ -6,7 +6,7 @@ Favorite Icon Video
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-video.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-video)
 [![Build Status](https://badgen.net/bundlephobia/minzip/favorite-icon-video)](https://bundlephobia.com/result?p=favorite-icon-video)
 
-A small library for manipulating the favicon.
+A small library for video manipulating in favicon.
 
 # Using
 `npm install favorite-icon-video`
