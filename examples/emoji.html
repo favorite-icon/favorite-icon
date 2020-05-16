@@ -29,16 +29,14 @@
     <input type="button" value="1" onclick="updateFavicon(this.value)" />
   </p>
 
-  <div>
-    Symbol: <input id="symbol" size="2" value="❤️" oninput="updateFavicon()" /><br/>
-    Color: <input id="color" type="color" value="#ffffff" oninput="updateFavicon()" />
-  </div>
+  <p>Symbol: <input id="symbol" size="2" value="❤️" oninput="updateFavicon()" /></p>
+  <p>Color: <input id="color" type="color" value="#ffffff" oninput="updateFavicon()" /></p>
 
   <script>
     function updateFavicon(value) {
       const color = document.querySelector('#color').value;
       const symbol = value || document.querySelector('#symbol').value;
-      
+
       if (value) {
         document.querySelector('#symbol').value = value;
       }
