@@ -4,7 +4,7 @@ Favorite Icon Emoji
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-emoji.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-emoji)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-emoji.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-emoji)
 [![Dependency Status](https://img.shields.io/david/hcodes/favorite-icon-emoji.svg?style=flat)](https://david-dm.org/hcodes/favorite-icon-emoji)
-[![Build Status](https://badgen.net/bundlephobia/minzip/favorite-icon-emoji)](https://bundlephobia.com/result?p=favorite-icon-emoji)
+[![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-emoji)](https://bundlephobia.com/result?p=favorite-icon-emoji)
 
 A small library for manipulating the favicon, in particular adding alert bubbles and changing images.
 
