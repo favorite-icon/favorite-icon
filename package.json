@@ -26,23 +26,8 @@
     "typescript": "^3.9.2"
   },
   "scripts": {
-    "test": "eslint --ext .ts .",
-    "build": "npm run build:index && npm run build:badge && npm run build:emoji && npm run build:status && npm run build:video",
-    "build:index": "npm run build:index:esm && npm run build:index:common",
-    "build:index:esm": "rollup packages/favorite-icon/src/index.ts --config rollup.config.js --file packages/favorite-icon/dist/index.esm.js --format esm",
-    "build:index:common": "rollup packages/favorite-icon/src/index.ts --config rollup.config.js --file packages/favorite-icon/dist/index.common.js --format commonjs",
-    "build:badge": "npm run build:badge:esm && npm run build:badge:common",
-    "build:badge:esm": "rollup packages/favorite-icon-badge/src/index.ts --config rollup.config.js --file packages/favorite-icon-badge/dist/index.esm.js --format esm",
-    "build:badge:common": "rollup packages/favorite-icon-badge/src/index.ts --config rollup.config.js --file packages/favorite-icon-badge/dist/index.common.js --format commonjs",
-    "build:video": "npm run build:video:esm && npm run build:video:common",
-    "build:video:esm": "rollup packages/favorite-icon-video/src/index.ts --config rollup.config.js --file packages/favorite-icon-video/dist/index.esm.js --format esm",
-    "build:video:common": "rollup packages/favorite-icon-video/src/index.ts --config rollup.config.js --file packages/favorite-icon-video/dist/index.common.js --format commonjs",
-    "build:emoji": "npm run build:emoji:esm && npm run build:emoji:common",
-    "build:emoji:esm": "rollup packages/favorite-icon-emoji/src/index.ts --config rollup.config.js --file packages/favorite-icon-emoji/dist/index.esm.js --format esm",
-    "build:emoji:common": "rollup packages/favorite-icon-emoji/src/index.ts --config rollup.config.js --file packages/favorite-icon-emoji/dist/index.common.js --format commonjs",
-    "build:status": "npm run build:status:esm && npm run build:status:common",
-    "build:status:esm": "rollup packages/favorite-icon-status/src/index.ts --config rollup.config.js --file packages/favorite-icon-status/dist/index.esm.js --format esm",
-    "build:status:common": "rollup packages/favorite-icon-status/src/index.ts --config rollup.config.js --file packages/favorite-icon-status/dist/index.common.js --format commonjs"
+    "test": "eslint --ext .ts ./packages/**",
+    "build": "node build.js"
   },
   "private": true
 }
