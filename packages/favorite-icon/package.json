@@ -22,5 +22,5 @@
     "README.md",
     "index.d.ts"
   ],
-  "typings": "./index.d.ts",
+  "typings": "./index.d.ts"
 }
