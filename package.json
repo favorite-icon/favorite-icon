@@ -1,6 +1,6 @@
 {
   "name": "favorite-icon-main",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A small library for manipulating the favicon.",
   "author": {
     "name": "Denis Seleznev",
@@ -27,7 +27,8 @@
   },
   "scripts": {
     "test": "eslint --ext .ts ./packages/**",
-    "build": "node build.js"
+    "build": "node build.js",
+    "prepare": "npm run build"
   },
   "private": true
 }
