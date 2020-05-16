@@ -5,10 +5,11 @@
     border-radius: 10px 10px 0 0;
     padding: 20px;
     display: flex;
-    width: 300px;
+    width: 450px;
 }
 
 .tab__favicon {
+    flex-shrink: 0;
     width: 64px;
     height: 64px;
 }
