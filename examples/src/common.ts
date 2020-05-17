@@ -1,17 +1,11 @@
-window.addEventListener('load', () => {
-    const pages = [
-        'index',
-        'emoji',
-        'video',
-        'badge',
-        'status'
-    ];
+import pages from '../examples.json';
 
+window.addEventListener('load', () => {
     let prev = pages[pages.length - 1];
     let next = pages[1];
 
     let num = -1;
-    pages.some((item, i) => {
+    pages.some((item: string, i) => {
         num++;
         prev = pages[i - 1] || pages[pages.length - 1];
         next = pages[i + 1] || pages[0];

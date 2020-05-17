@@ -133,14 +133,15 @@
         return FaviconStatus;
     }());
 
+    var pages = [
+    	"index",
+    	"badge",
+    	"status",
+    	"emoji",
+    	"video"
+    ];
+
     window.addEventListener('load', function () {
-        var pages = [
-            'index',
-            'emoji',
-            'video',
-            'badge',
-            'status'
-        ];
         var prev = pages[pages.length - 1];
         var next = pages[1];
         var num = -1;
