@@ -21,7 +21,7 @@ export default class FaviconBadge {
     private image: HTMLImageElement;
     private imageReady = false;
     private count: number;
-    private lastCount = 0;
+    private lastCount: number;
 
     constructor(options?: favicon.BadgeOptions) {
         this.options = options || {};
@@ -109,15 +109,15 @@ export default class FaviconBadge {
     }
 
     private drawNumber(count: number, formattedCount: string) {
-        const padding = 4;
+        const paddingX = 5;
+        const paddingY = 1;
         const size = this.options.size;
-        const height = size * 0.6;
-        const fontSize = String(count).length > 1 ? 0.9 : 1;
+        const height = size * 0.55;
 
         const context = this.context;
         const positionX = this.options.positionX;
         const positionY = this.options.positionY;
-        context.font = `${this.options.fontStyle} ${fontSize * height}px ${this.options.fontFamily}`;
+        context.font = `${this.options.fontStyle} ${height - 2 * paddingY}px ${this.options.fontFamily}`;
         context.textAlign = 'left';
         context.textBaseline = 'top';
 
@@ -125,7 +125,7 @@ export default class FaviconBadge {
         context.fillStyle = this.options.backgroundColor;
         context.strokeStyle = this.options.strokeColor;
 
-        const width = padding * 2 + context.measureText(formattedCount).width;
+        const width = paddingX * 2 + context.measureText(formattedCount).width;
 
         let x = 0;
         if (positionX === 'center') {
@@ -134,7 +134,7 @@ export default class FaviconBadge {
             x = Math.max(size - width, 0);
         }
 
-        let y = 0;
+        let y = paddingY;
         if (positionY === 'middle') {
             y = Math.max((size - height) / 2, 0);
         } else if (positionY === 'bottom') {
@@ -146,7 +146,7 @@ export default class FaviconBadge {
             context.strokeRect(x, y, width - 1, height - 1);
         }
         context.fillStyle = this.options.textColor;
-        context.fillText(formattedCount, x + padding, y + padding);
+        context.fillText(formattedCount, x + paddingX, y + paddingY + 1);
 
         context.closePath();
     }
