@@ -55,13 +55,14 @@
     var FaviconVideo = /** @class */ (function () {
         function FaviconVideo(options) {
             var _this = this;
+            var _a;
             this.onplay = function () {
                 _this.play();
             };
             this.onpause = function () {
                 _this.pause();
             };
-            var size = options.size || Favicon.size;
+            var size = (_a = options.size) !== null && _a !== void 0 ? _a : Favicon.size;
             var video = options.video;
             this.options = {
                 links: options.links,

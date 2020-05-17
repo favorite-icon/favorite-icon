@@ -53,7 +53,7 @@ var FaviconEmoji = /** @class */ (function () {
     function FaviconEmoji() {
     }
     FaviconEmoji.set = function (symbol, rawOptions) {
-        var options = rawOptions || {};
+        var options = rawOptions !== null && rawOptions !== void 0 ? rawOptions : {};
         var size = options && options.size || Favicon.size;
         var canvas = document.createElement('canvas');
         canvas.width = size;

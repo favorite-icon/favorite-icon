@@ -69,7 +69,7 @@
         function FaviconBadge(options) {
             var _this = this;
             this.imageReady = false;
-            this.options = options || {};
+            this.options = options !== null && options !== void 0 ? options : {};
             Object.keys(defaultOptions).forEach(function (name) {
                 _this.setOptionDefault(name, defaultOptions[name]);
             });
@@ -111,7 +111,8 @@
             this.image.src = this.options.faviconSrc;
         };
         FaviconBadge.prototype.setOptionDefault = function (name, defaultValue) {
-            this.options[name] = this.options[name] || defaultValue;
+            var _a;
+            this.options[name] = (_a = this.options[name]) !== null && _a !== void 0 ? _a : defaultValue;
         };
         FaviconBadge.prototype.formatter = function (count) {
             var maxCount = this.options.maxCount;
@@ -152,18 +153,28 @@
             context.strokeStyle = this.options.strokeColor;
             var width = paddingX * 2 + context.measureText(formattedCount).width;
             var x = 0;
-            if (positionX === 'center') {
-                x = Math.max((size - width) / 2, 0);
+            if (typeof positionX === 'number') {
+                x = positionX * size / Favicon.size;
             }
-            else if (positionX === 'right') {
-                x = Math.max(size - width, 0);
+            else {
+                if (positionX === 'center') {
+                    x = Math.max((size - width) / 2, 0);
+                }
+                else if (positionX === 'right') {
+                    x = Math.max(size - width, 0);
+                }
             }
-            var y = paddingY;
-            if (positionY === 'middle') {
-                y = Math.max((size - height) / 2, 0);
+            var y = 0;
+            if (typeof positionY === 'number') {
+                y = positionY * size / Favicon.size;
             }
-            else if (positionY === 'bottom') {
-                y = Math.max(size - height, 0);
+            else {
+                if (positionY === 'middle') {
+                    y = Math.max((size - height) / 2, 0);
+                }
+                else if (positionY === 'bottom') {
+                    y = Math.max(size - height, 0);
+                }
             }
             if (this.options.backgroundColor !== 'transparent') {
                 context.fillRect(x, y, width - 1, height - 1);

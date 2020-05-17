@@ -51,21 +51,23 @@ var FaviconDot = (function () {
     }());
 
     var defaultOptions = {
+        alpha: 1,
         backgroundColor: '#ff0000',
-        strokeColor: '#000',
         faviconSrc: Favicon.originalSrc,
-        size: Favicon.size,
         links: Favicon.icons,
         positionX: 'right',
         positionY: 'top',
         radius: 5,
+        size: Favicon.size,
+        strokeColor: '#000',
     };
     var FaviconDot = /** @class */ (function () {
         function FaviconDot(options) {
             var _this = this;
+            this.options = {};
             this.imageReady = false;
             this.isShow = false;
-            this.options = options || {};
+            this.updateOptions(options);
             Object.keys(defaultOptions).forEach(function (name) {
                 _this.setOptionDefault(name, defaultOptions[name]);
             });
@@ -88,38 +90,59 @@ var FaviconDot = (function () {
             this.image.src = this.options.faviconSrc;
         };
         FaviconDot.prototype.setOptionDefault = function (name, defaultValue) {
-            this.options[name] = this.options[name] || defaultValue;
+            var _a;
+            this.options[name] = (_a = this.options[name]) !== null && _a !== void 0 ? _a : defaultValue;
         };
-        FaviconDot.prototype.show = function () {
+        FaviconDot.prototype.show = function (options) {
             this.isShow = true;
+            if (options) {
+                this.updateOptions(options);
+            }
             if (this.imageReady && Favicon.hasSupport) {
                 this.draw();
             }
         };
+        FaviconDot.prototype.updateOptions = function (options) {
+            var _this = this;
+            Object.keys(options || {}).forEach(function (key) {
+                _this.options[key] = options[key];
+            });
+        };
         FaviconDot.prototype.draw = function () {
             var context = this.context;
-            var size = this.options.size;
+            var _a = this.options, alpha = _a.alpha, size = _a.size, positionX = _a.positionX, positionY = _a.positionY;
             this.context.clearRect(0, 0, size, size);
             this.context.drawImage(this.image, 0, 0, size, size);
-            var positionX = this.options.positionX;
-            var positionY = this.options.positionY;
-            context.beginPath();
+            context.save();
+            context.globalAlpha = alpha;
             context.fillStyle = this.options.backgroundColor;
             context.strokeStyle = this.options.strokeColor;
             var radius = this.options.radius * size / Favicon.size;
-            var x = radius;
-            if (positionX === 'center') {
-                x = Math.max(size / 2, 0);
+            var x = 0;
+            if (typeof positionX === 'number') {
+                x = positionX * size / Favicon.size;
             }
-            else if (positionX === 'right') {
-                x = Math.max(size - radius, 0);
+            else {
+                x = radius;
+                if (positionX === 'center') {
+                    x = Math.max(size / 2, 0);
+                }
+                else if (positionX === 'right') {
+                    x = Math.max(size - radius, 0);
+                }
             }
-            var y = radius;
-            if (positionY === 'middle') {
-                y = Math.max(size / 2, 0);
+            var y = 0;
+            if (typeof positionY === 'number') {
+                y = positionY * size / Favicon.size;
             }
-            else if (positionY === 'bottom') {
-                y = Math.max(size - radius, 0);
+            else {
+                y = radius;
+                if (positionY === 'middle') {
+                    y = Math.max(size / 2, 0);
+                }
+                else if (positionY === 'bottom') {
+                    y = Math.max(size - radius, 0);
+                }
             }
             context.beginPath();
             context.arc(x, y, radius, 0, 2 * Math.PI, false);
@@ -127,6 +150,7 @@ var FaviconDot = (function () {
             context.lineWidth = 1;
             context.stroke();
             context.closePath();
+            context.restore();
             Favicon.set(this.canvas, this.options.links);
         };
         FaviconDot.prototype.hide = function () {
