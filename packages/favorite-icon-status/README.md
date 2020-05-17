@@ -29,6 +29,12 @@ status.set('ok'); // 'ok', 'error' or 'warning'
 Reset the favicon.
 
 ```js
+import FaviconStatus from 'favorite-icon-status';
+
+const status = new FaviconStatus();
+
+// ...
+
 status.reset();
 ```
 

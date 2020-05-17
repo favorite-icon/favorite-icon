@@ -22,7 +22,7 @@ import FaviconVideo from 'favorite-icon-video';
 
 const favVideo = new FaviconVideo({
     video: document.querySelector('video')
-})
+});
 
 favVideo.start();
 ```
@@ -31,6 +31,14 @@ favVideo.start();
 Stop tracking the video and changes the favicon.
 
 ```js
+import FaviconVideo from 'favorite-icon-video';
+
+const favVideo = new FaviconVideo({
+    video: document.querySelector('video')
+});
+
+// ...
+
 favVideo.pause();
 ```
 
@@ -38,12 +46,28 @@ favVideo.pause();
 Reset the favicon.
 
 ```js
+import FaviconVideo from 'favorite-icon-video';
+
+const favVideo = new FaviconVideo({
+    video: document.querySelector('video')
+});
+
+// ...
+
 favVideo.reset();
 ```
 
 ## `.destroy()`
 
 ```js
+import FaviconVideo from 'favorite-icon-video';
+
+const favVideo = new FaviconVideo({
+    video: document.querySelector('video')
+});
+
+// ...
+
 favVideo.destroy();
 ```
 

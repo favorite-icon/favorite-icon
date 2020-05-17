@@ -12,6 +12,36 @@ A small library for badge manipulating in favicon.
 
 # [Demo](https://hcodes.github.io/favorite-icon/examples/badge.html)
 
+# Using
+```js
+import FaviconBadge from 'favorite-icon-badge';
+
+const badge = new FaviconBadge();
+
+badge.set(count);
+```
+
+## Advanced settings
+```js
+import FaviconBadge from 'favorite-icon-badge';
+
+const badge = new FaviconBadge({
+    backgroundColor: '#ff0000',
+    fontFamily: 'arial, sans-serif',
+    fontStyle: 'normal',
+    strokeColor: '#000',
+    textColor: '#fff',
+    faviconSrc: '/my-icon.png',
+    maxCount: 99,
+    size: Favicon.size,
+    links: Favicon.icons,
+    positionX: 'right',
+    positionY: 'bottom'
+});
+
+badge.set(count);
+```
+
 # API
 
 ## `.set(count: number)`
@@ -20,11 +50,7 @@ Set the favicon with the badge.
 ```js
 import FaviconBadge from 'favorite-icon-badge';
 
-const badge = new FaviconBadge({
-    fontFamily: 'Helvetica',
-    color: '#f0f0f0',
-    backgroundColor: '#0f0'
-});
+const badge = new FaviconBadge();
 
 badge.set(count);
 ```
@@ -33,6 +59,12 @@ badge.set(count);
 Reset the favicon.
 
 ```js
+import FaviconBadge from 'favorite-icon-badge';
+
+const badge = new FaviconBadge();
+
+// ...
+
 badge.reset();
 ```
 

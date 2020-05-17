@@ -10,12 +10,21 @@ A small library for manipulating the favicon.
 # Installation
 `npm install favorite-icon`
 
+# Using
+```js
+import FaviconIcon from 'favorite-icon';
+
+FaviconIcon.set('/my-icon.png');
+```
+
 # API
 
 ## `Favicon.set(src: string | HTMLCanvasElement)`
 Set the favicon with your own image.
 
 ```js
+import FaviconIcon from 'favorite-icon';
+
 Favicon.set('./image.png');
 
 // or
@@ -31,6 +40,14 @@ Favicon.set(canvas);
 
 ### `Favicon.reset()`
 Reset the favicon.
+
+```js
+import FaviconIcon from 'favorite-icon';
+
+// ...
+
+Favicon.reset();
+```
 
 # Browser support
 - Chrome: ✅
