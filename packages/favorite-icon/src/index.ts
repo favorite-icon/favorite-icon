@@ -4,6 +4,7 @@ import { hasSupport } from './support';
 
 export default class Favicon {
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
+    public static originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
     public static size = 32;
 
     public static hasSupport = hasSupport;
@@ -25,12 +26,8 @@ export default class Favicon {
 
     public static reset(): void {
         if (this.hasSupport) {
-            this.set(this.getOriginalSrc());
+            this.set(Favicon.originalSrc);
         }
-    }
-
-    public static getOriginalSrc(): string {
-        return this.icons[this.icons.length - 1].href;
     }
 
     public static searchIcons(): HTMLLinkElement[] {

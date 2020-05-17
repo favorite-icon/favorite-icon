@@ -1,10 +1,11 @@
 declare namespace favicon {
 	interface FaviconStatic {
 		icons: HTMLLinkElement[];
-		set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void;
-		getOriginalSrc(): string;
+		originalSrc: string;
+
 		reset(): void;
 		searchIcons(): HTMLLinkElement[];
+		set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void;
 	}
 }
 
