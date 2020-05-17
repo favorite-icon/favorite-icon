@@ -5,9 +5,7 @@
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="./res/favicon.svg"/>
   <link rel="stylesheet" href="./res/tab.css" />
-  <script src="../packages/favorite-icon-badge/dist/index.js"></script>
   <link rel="stylesheet" href="./res/common.css" />
-  <script src="./res/common.js"></script>
 </head>
 <body>
   <div class="tab">
@@ -47,66 +45,6 @@
       <option value="bottom">bottom</option>
     </select>
   </p>
-  <script>
-    var inputBackgroundColor = document.querySelector('#backgroundColor');
-    var inputTextColor = document.querySelector('#textColor');
-    var inputStrokeColor = document.querySelector('#strokeColor');
-    var inputPositionX = document.querySelector('#positionX');
-    var inputPositionY = document.querySelector('#positionY');
-    var inputCount = document.querySelector('#count');
-    var inputMaxCount = document.querySelector('#maxCount');
-
-    var favBadge;
-    var imageBadge;
-
-    var count = 1;
-
-    function updateSettings() {
-      var maxCount = parseInt(inputMaxCount.value, 10);
-
-      favBadge = new FaviconBadge({
-        backgroundColor: inputBackgroundColor.value,
-        textColor: inputTextColor.value,
-        strokeColor: inputStrokeColor.value,
-        maxCount: maxCount,
-        positionX: inputPositionX.value,
-        positionY: inputPositionY.value,
-      });
-
-      imageBadge = new FaviconBadge({
-        backgroundColor: inputBackgroundColor.value,
-        textColor: inputTextColor.value,
-        strokeColor: inputStrokeColor.value,
-        maxCount: maxCount,
-        positionX: inputPositionX.value,
-        positionY: inputPositionY.value,
-        size: 64,
-        links: [
-          document.querySelector('#preview')
-        ]
-      });
-
-      favBadge.set(count);
-      imageBadge.set(count);
-    }
-
-    updateSettings();
-
-    favBadge.set(count);
-    imageBadge.set(count);
-
-    inputCount.value = count;
-    inputCount.oninput = function() {
-      var count = Number(inputCount.value);
-      favBadge.set(count);
-      imageBadge.set(count)
-    };
-
-    inputBackgroundColor.onchange =
-    inputTextColor.onchange =
-    inputStrokeColor.onchange =
-    inputPositionX.onchange =
-    inputPositionY.onchange = updateSettings;
-  </script>
+  <script src="./dist/badge.js" async></script>
 </body>
 </html>

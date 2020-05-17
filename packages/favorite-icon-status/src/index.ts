@@ -18,7 +18,7 @@ export default class FaviconStatus {
 
     private favicon: HTMLImageElement;
 
-    constructor(rawOptions: favicon.StatusOptions) {
+    constructor(rawOptions?: favicon.StatusOptions) {
         this.options = {
             faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.getOriginalSrc(),
             links: rawOptions && rawOptions.links,

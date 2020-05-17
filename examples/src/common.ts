@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-    var pages = [
+    const pages = [
         'index',
         'emoji',
         'video',
@@ -7,7 +7,8 @@ window.addEventListener('load', function() {
         'status'
     ];
 
-    var prev = pages[pages.length - 1], next = pages[1];
+    let prev = pages[pages.length - 1];
+    let next = pages[1];
 
     pages.some(function(item, i) {
         prev = pages[i - 1] || pages[pages.length - 1];
@@ -16,7 +17,7 @@ window.addEventListener('load', function() {
         return location.pathname.search('/' + item + '\\.') > -1;
     });
 
-    var nav = document.createElement('div');
+    const nav = document.createElement('div');
     nav.innerHTML = '<div class="nav">\
         <a href="https://github.com/hcodes/favorite-icon" class="button back">🏠</a>\
         <a href="./' + prev + '.html" class="button prev">◀</a>\

@@ -23,7 +23,7 @@ export default class FaviconBadge {
     private count: number;
     private lastCount = 0;
 
-    constructor(options: favicon.BadgeOptions) {
+    constructor(options?: favicon.BadgeOptions) {
         this.options = options || {};
 
         Object.keys(defaultOptions).forEach((name: keyof favicon.BadgeDefaultOptions) => {

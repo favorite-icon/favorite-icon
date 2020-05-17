@@ -27,7 +27,9 @@
   },
   "scripts": {
     "test": "eslint --ext .ts ./packages/**",
-    "build": "node build.js",
+    "build": "npm run build:packages && npm run build:examples",
+    "build:packages": "node build_packages.js",
+    "build:examples": "node build_examples.js",
     "prepare": "npm run build"
   },
   "private": true

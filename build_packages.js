@@ -1,6 +1,7 @@
 'use strict';
 
 const exec = require('child_process').exec;
+
 [
     {
         package: 'favorite-icon',

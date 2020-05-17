@@ -7,7 +7,7 @@ declare namespace favicon {
 	}
 
 	interface StatusStatic {
-		new (options: StatusOptions): Status;
+		new (options?: StatusOptions): Status;
 	}
 
 	interface StatusOptions {

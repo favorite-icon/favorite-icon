@@ -4,9 +4,7 @@
   <title>Favorite Icon</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./res/tab.css" />
-  <script src="../packages/favorite-icon/dist/index.js"></script>
   <link rel="stylesheet" href="./res/common.css" />
-  <script src="./res/common.js"></script>
 </head>
 <body>
   <div class="tab">
@@ -15,23 +13,8 @@
   </div>
 
   <p>
-    Src: <input id="favicon-src" type="text" value="./res/favicon.svg" /> <input type="button" value="Set" onclick="updateFavicon()" />
+    Src: <input id="favicon-src" type="text" value="./res/favicon.svg" /> <input id="button-set" type="button" value="Set" />
   </p>
-
-  <script>
-    function updateFavicon() {
-      var value = document.querySelector('#favicon-src').value;
-
-      Favicon.set({
-        value: value,
-        size: 64,
-        links: [
-          document.querySelector('#preview')
-        ]
-      });
-
-      Favicon.set(value);
-    }
-  </script>
+  <script src="./dist/index.js" async></script>
 </body>
 </html>

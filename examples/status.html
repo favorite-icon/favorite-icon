@@ -4,9 +4,7 @@
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="./res/favicon.svg"/>
   <link rel="stylesheet" href="./res/tab.css" />
-  <script src="../packages/favorite-icon-status/dist/index.js"></script>
   <link rel="stylesheet" href="./res/common.css" />
-  <script src="./res/common.js"></script>
   <title>Favorite Icon Status</title>
 </head>
 <body>
@@ -16,26 +14,11 @@
   </div>
 
   <p>
-    <input type="button" value="Ok" onclick="updateFavicons('ok')" />
-    <input type="button" value="Error" onclick="updateFavicons('error')" />
-    <input type="button" value="Warning" onclick="updateFavicons('warning')" />
+    <input id="ok" type="button" value="Ok" />
+    <input id="error" type="button" value="Error" />
+    <input id="warning" type="button" value="Warning" />
   </p>
 
-  <script>
-    const preview = new FaviconStatus({
-      size: 64,
-      links: [
-        document.querySelector('#preview')
-      ]
-    });
-    const favicon = new FaviconStatus();
-
-    function updateFavicons(status) {
-      preview.set(status);
-      favicon.set(status);
-    }
-
-    updateFavicons('ok');
-  </script>
+  <script src="./dist/status.js" async></script>
 </body>
 </html>

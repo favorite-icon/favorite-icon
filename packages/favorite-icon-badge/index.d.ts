@@ -6,7 +6,7 @@ declare namespace favicon {
 	}
 
 	interface BadgeStatic {
-		new (options: BadgeOptions): Badge;
+		new (options?: BadgeOptions): Badge;
 	}
 
 	type PositionX = 'left' | 'center' | 'right';
