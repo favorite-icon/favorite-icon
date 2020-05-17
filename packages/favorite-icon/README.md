@@ -1,4 +1,4 @@
-Favorite Icon
+⭐ Favorite Icon
 =============
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
