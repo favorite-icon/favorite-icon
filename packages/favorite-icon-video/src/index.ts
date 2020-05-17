@@ -7,7 +7,7 @@ export default class FaviconVideo {
     private timer: number;
 
     constructor(options: favicon.VideoOptions) {
-        const size = options.size || Favicon.size;
+        const size = options.size ?? Favicon.size;
         const video = options.video;
         this.options = {
             links: options.links,

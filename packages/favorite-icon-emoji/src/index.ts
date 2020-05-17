@@ -2,7 +2,7 @@ import Favicon from '../../favorite-icon/src/index';
 
 export default class FaviconEmoji {
     public static set(symbol: string, rawOptions: favicon.EmojiOptions) {
-        const options = rawOptions || {};
+        const options = rawOptions ?? {};
         const size = options && options.size || Favicon.size;
 
         const canvas = document.createElement('canvas');
