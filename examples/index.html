@@ -4,7 +4,7 @@
   <title>Favorite Icon</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./res/tab.css" />
-  <script src="../packages/favorite-icon-emoji/dist/index.js"></script>
+  <script src="../packages/favorite-icon/dist/index.js"></script>
   <link rel="stylesheet" href="./res/common.css" />
   <script src="./res/common.js"></script>
 </head>
@@ -20,7 +20,7 @@
 
   <script>
     function updateFavicon() {
-      var value = document.querySelector('favicon-src').value;
+      var value = document.querySelector('#favicon-src').value;
 
       Favicon.set({
         value: value,
