@@ -1,18 +1,19 @@
 import Favicon from '../../favorite-icon/src/index';
 
 const defaultOptions: favicon.DotDefaultOptions = {
+    alpha: 1,
     backgroundColor: '#ff0000',
-    strokeColor: '#000',
     faviconSrc: Favicon.originalSrc,
-    size: Favicon.size,
     links: Favicon.icons,
     positionX: 'right',
     positionY: 'top',
     radius: 5,
+    size: Favicon.size,
+    strokeColor: '#000',
 };
 
 export default class FaviconDot {
-    private options: favicon.DotOptions;
+    private options: favicon.DotOptions = {};
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private image: HTMLImageElement;
@@ -20,7 +21,7 @@ export default class FaviconDot {
     private isShow = false;
 
     constructor(options?: favicon.DotOptions) {
-        this.options = options || {};
+        this.updateOptions(options);
 
         Object.keys(defaultOptions).forEach((name: keyof favicon.DotDefaultOptions) => {
             this.setOptionDefault(name, defaultOptions[name]);
@@ -47,45 +48,63 @@ export default class FaviconDot {
         this.image.src = this.options.faviconSrc;
     }
 
-    private setOptionDefault<T extends keyof favicon.DotDefaultOptions>(name: T, defaultValue: favicon.BadgeDefaultOptions[T]) {
-        this.options[name] = this.options[name] || defaultValue;
+    private setOptionDefault<T extends keyof favicon.DotDefaultOptions>(name: T, defaultValue: favicon.DotDefaultOptions[T]) {
+        this.options[name] = this.options[name] ?? defaultValue;
     }
 
-    public show() {
+    public show(options?: favicon.DotOptions) {
         this.isShow = true;
+
+        if (options) {
+            this.updateOptions(options);
+        }
 
         if (this.imageReady && Favicon.hasSupport) {
             this.draw();
         }
     }
 
+    private updateOptions(options?: favicon.DotOptions) {
+        Object.keys(options || {}).forEach(<T extends keyof favicon.DotOptions>(key: T) => {
+            this.options[key] = options[key];
+        });
+    }
+
     private draw() {
         const context = this.context;
-        const size = this.options.size;
+        const { alpha, size, positionX, positionY } = this.options;
         this.context.clearRect(0, 0, size, size);
         this.context.drawImage(this.image, 0, 0, size, size);
 
-        const positionX = this.options.positionX;
-        const positionY = this.options.positionY;
-
-        context.beginPath();
+        context.save();
+        context.globalAlpha = alpha;
         context.fillStyle = this.options.backgroundColor;
         context.strokeStyle = this.options.strokeColor;
 
         const radius = this.options.radius * size / Favicon.size;
 
-        let x = radius;
-        if (positionX === 'center') {
-            x = Math.max(size / 2, 0);
-        } else if (positionX === 'right') {
-            x = Math.max(size - radius, 0);
+        let x = 0;
+        if (typeof positionX === 'number') {
+            x = positionX * size / Favicon.size;
+        } else {
+            x = radius;
+            if (positionX === 'center') {
+                x = Math.max(size / 2, 0);
+            } else if (positionX === 'right') {
+                x = Math.max(size - radius, 0);
+            }
         }
 
-        let y = radius;
-        if (positionY === 'middle') {
-            y = Math.max(size / 2, 0);
-        } else if (positionY === 'bottom') {
-            y = Math.max(size - radius, 0);
+        let y = 0;
+        if (typeof positionY === 'number') {
+            y = positionY * size / Favicon.size;
+        } else {
+            y = radius;
+            if (positionY === 'middle') {
+                y = Math.max(size / 2, 0);
+            } else if (positionY === 'bottom') {
+                y = Math.max(size - radius, 0);
+            }
         }
 
         context.beginPath();
@@ -94,6 +113,8 @@ export default class FaviconDot {
         context.lineWidth = 1;
         context.stroke();
         context.closePath();
+
+        context.restore();
 
         Favicon.set(this.canvas, this.options.links);
     }

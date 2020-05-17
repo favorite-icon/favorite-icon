@@ -9,39 +9,37 @@ const inputStrokeColor: HTMLInputElement = document.querySelector('#strokeColor'
 const inputPositionX: HTMLInputElement = document.querySelector('#positionX');
 const inputPositionY: HTMLInputElement = document.querySelector('#positionY');
 const inputRadius: HTMLInputElement = document.querySelector('#radius');
+const inputAlpha: HTMLInputElement = document.querySelector('#alpha');
 
 let favDot = new FaviconDot();
-let imageDot = new FaviconDot();
+let imageDot = new FaviconDot({
+    size: 64,
+    links: [
+        document.querySelector('#preview')
+    ]
+});
+
 
 function updateSettings() {
     const radius = parseInt(inputRadius.value, 10);
+    const alpha = parseFloat(inputAlpha.value);
     const positionX = inputPositionX.value as favicon.PositionX;
     const positionY = inputPositionY.value as favicon.PositionY;
 
-    favDot = new FaviconDot({
+    const options = {
+        alpha,
         backgroundColor: inputBackgroundColor.value,
         strokeColor: inputStrokeColor.value,
         radius,
         positionX,
         positionY,
-    });
+    };
 
-    imageDot = new FaviconDot({
-        backgroundColor: inputBackgroundColor.value,
-        strokeColor: inputStrokeColor.value,
-        radius,
-        positionX,
-        positionY,
-        size: 64,
-        links: [
-            document.querySelector('#preview')
-        ]
-    });
-
-    favDot.show();
-    imageDot.show();
+    favDot.show(options);
+    imageDot.show(options);
 }
 
+inputAlpha.oninput =
 inputBackgroundColor.oninput =
 inputStrokeColor.oninput =
 inputRadius.oninput =

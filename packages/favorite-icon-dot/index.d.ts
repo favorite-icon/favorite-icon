@@ -10,6 +10,7 @@ declare namespace favicon {
 	}
 
 	interface DotOptions {
+		alpha?: number;
 		backgroundColor?: string;
 		faviconSrc?: string;
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
@@ -21,6 +22,7 @@ declare namespace favicon {
 	}
 
 	interface DotDefaultOptions {
+		alpha: number;
 		backgroundColor: string;
 		faviconSrc: string;
 		links: Array<HTMLLinkElement | HTMLImageElement>;
