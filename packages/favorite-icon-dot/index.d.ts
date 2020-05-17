@@ -9,13 +9,16 @@ declare namespace favicon {
 		new (options?: DotOptions): Dot;
 	}
 
+	type DotPositionX = 'left' | 'center' | 'right' | number;
+	type DotPositionY = 'top' | 'middle' | 'bottom' | number;
+
 	interface DotOptions {
 		alpha?: number;
 		backgroundColor?: string;
 		faviconSrc?: string;
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
-		positionX?: PositionX;
-		positionY?: PositionY;
+		positionX?: DotPositionX;
+		positionY?: DotPositionY;
 		radius?: number;
 		size?: number;
 		strokeColor?: string;
@@ -26,8 +29,8 @@ declare namespace favicon {
 		backgroundColor: string;
 		faviconSrc: string;
 		links: Array<HTMLLinkElement | HTMLImageElement>;
-		positionX: PositionX;
-		positionY: PositionY;
+		positionX: DotPositionX;
+		positionY: DotPositionY;
 		radius: number;
 		size?: number;
 		strokeColor: string;
