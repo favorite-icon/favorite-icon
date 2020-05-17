@@ -1,4 +1,4 @@
-var FaviconBadge = (function () {
+var FaviconDot = (function () {
     'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
@@ -52,128 +52,95 @@ var FaviconBadge = (function () {
 
     var defaultOptions = {
         backgroundColor: '#ff0000',
-        fontFamily: 'arial, sans-serif',
-        fontStyle: 'normal',
         strokeColor: '#000',
-        textColor: '#fff',
         faviconSrc: Favicon.originalSrc,
-        maxCount: 99,
         size: Favicon.size,
         links: Favicon.icons,
         positionX: 'right',
-        positionY: 'bottom'
+        positionY: 'top',
+        radius: 5,
     };
-    var FaviconBadge = /** @class */ (function () {
-        function FaviconBadge(options) {
+    var FaviconDot = /** @class */ (function () {
+        function FaviconDot(options) {
             var _this = this;
             this.imageReady = false;
+            this.isShow = false;
             this.options = options || {};
             Object.keys(defaultOptions).forEach(function (name) {
                 _this.setOptionDefault(name, defaultOptions[name]);
             });
-            this.count = Number(this.options.count || 0);
             this.canvas = document.createElement('canvas');
             this.canvas.width = this.options.size;
             this.canvas.height = this.options.size;
             this.context = this.canvas.getContext('2d');
             this.loadImage();
         }
-        FaviconBadge.prototype.set = function (count) {
-            this.count = count;
-            var formattedCount = this.options.formatter ?
-                this.options.formatter(count) :
-                this.formatter(count);
-            if (Favicon.hasSupport) {
-                this.draw(count, formattedCount);
-            }
-            else if (this.options.fallback) {
-                this.options.fallback(count, formattedCount);
-            }
-        };
-        FaviconBadge.prototype.reset = function () {
-            Favicon.reset();
-        };
-        FaviconBadge.prototype.destroy = function () {
-            delete this.canvas;
-            delete this.context;
-            delete this.options;
-        };
-        FaviconBadge.prototype.loadImage = function () {
+        FaviconDot.prototype.loadImage = function () {
             var _this = this;
             this.image = new Image();
             this.image.setAttribute('crossOrigin', 'anonymous');
             this.image.onload = this.image.onabort = this.image.onerror = function () {
                 _this.imageReady = true;
-                _this.set(_this.count);
+                if (_this.isShow) {
+                    _this.show();
+                }
             };
             this.image.src = this.options.faviconSrc;
         };
-        FaviconBadge.prototype.setOptionDefault = function (name, defaultValue) {
+        FaviconDot.prototype.setOptionDefault = function (name, defaultValue) {
             this.options[name] = this.options[name] || defaultValue;
         };
-        FaviconBadge.prototype.formatter = function (count) {
-            var maxCount = this.options.maxCount;
-            if (count <= 0) {
-                return '';
+        FaviconDot.prototype.show = function () {
+            this.isShow = true;
+            if (this.imageReady && Favicon.hasSupport) {
+                this.draw();
             }
-            else if (maxCount && count > maxCount) {
-                return maxCount + "+";
-            }
-            return String(count);
         };
-        FaviconBadge.prototype.draw = function (count, formattedCount) {
-            if (!this.imageReady || count === this.lastCount) {
-                return;
-            }
-            this.lastCount = count;
+        FaviconDot.prototype.draw = function () {
+            var context = this.context;
             var size = this.options.size;
             this.context.clearRect(0, 0, size, size);
             this.context.drawImage(this.image, 0, 0, size, size);
-            if (count) {
-                this.drawNumber(count, formattedCount);
-            }
-            Favicon.set(this.canvas, this.options.links);
-        };
-        FaviconBadge.prototype.drawNumber = function (count, formattedCount) {
-            var paddingX = 5;
-            var paddingY = 1;
-            var size = this.options.size;
-            var height = size * 0.55;
-            var context = this.context;
             var positionX = this.options.positionX;
             var positionY = this.options.positionY;
-            context.font = this.options.fontStyle + " " + (height - 2 * paddingY) + "px " + this.options.fontFamily;
-            context.textAlign = 'left';
-            context.textBaseline = 'top';
             context.beginPath();
             context.fillStyle = this.options.backgroundColor;
             context.strokeStyle = this.options.strokeColor;
-            var width = paddingX * 2 + context.measureText(formattedCount).width;
-            var x = 0;
+            var radius = this.options.radius * size / Favicon.size;
+            var x = radius;
             if (positionX === 'center') {
-                x = Math.max((size - width) / 2, 0);
+                x = Math.max(size / 2, 0);
             }
             else if (positionX === 'right') {
-                x = Math.max(size - width, 0);
+                x = Math.max(size - radius, 0);
             }
-            var y = paddingY;
+            var y = radius;
             if (positionY === 'middle') {
-                y = Math.max((size - height) / 2, 0);
+                y = Math.max(size / 2, 0);
             }
             else if (positionY === 'bottom') {
-                y = Math.max(size - height, 0);
+                y = Math.max(size - radius, 0);
             }
-            if (this.options.backgroundColor !== 'transparent') {
-                context.fillRect(x, y, width - 1, height - 1);
-                context.strokeRect(x, y, width - 1, height - 1);
-            }
-            context.fillStyle = this.options.textColor;
-            context.fillText(formattedCount, x + paddingX, y + paddingY + 1);
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fill();
+            context.lineWidth = 1;
+            context.stroke();
             context.closePath();
+            Favicon.set(this.canvas, this.options.links);
         };
-        return FaviconBadge;
+        FaviconDot.prototype.hide = function () {
+            this.isShow = false;
+            Favicon.set(this.options.faviconSrc, this.options.links);
+        };
+        FaviconDot.prototype.destroy = function () {
+            delete this.canvas;
+            delete this.context;
+            delete this.options;
+        };
+        return FaviconDot;
     }());
 
-    return FaviconBadge;
+    return FaviconDot;
 
 }());

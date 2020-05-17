@@ -21,11 +21,8 @@ var FaviconStatus = (function () {
         };
         Favicon.reset = function () {
             if (this.hasSupport) {
-                this.set(this.getOriginalSrc());
+                this.set(Favicon.originalSrc);
             }
-        };
-        Favicon.getOriginalSrc = function () {
-            return this.icons[this.icons.length - 1].href;
         };
         Favicon.searchIcons = function () {
             var result = [];
@@ -47,6 +44,7 @@ var FaviconStatus = (function () {
             return result;
         };
         Favicon.icons = Favicon.searchIcons();
+        Favicon.originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
         Favicon.size = 32;
         Favicon.hasSupport = hasSupport;
         return Favicon;
@@ -61,7 +59,7 @@ var FaviconStatus = (function () {
             this.isFaviconLoaded = false;
             this.countStatusImages = 0;
             this.options = {
-                faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.getOriginalSrc(),
+                faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.originalSrc,
                 links: rawOptions && rawOptions.links,
                 size: rawOptions && rawOptions.size || Favicon.size,
             };

@@ -6,7 +6,7 @@ const defaultOptions: favicon.BadgeDefaultOptions = {
     fontStyle: 'normal',
     strokeColor: '#000',
     textColor: '#fff',
-    faviconSrc: Favicon.getOriginalSrc(),
+    faviconSrc: Favicon.originalSrc,
     maxCount: 99,
     size: Favicon.size,
     links: Favicon.icons,
