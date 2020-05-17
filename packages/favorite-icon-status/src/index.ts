@@ -20,7 +20,7 @@ export default class FaviconStatus {
 
     constructor(rawOptions?: favicon.StatusOptions) {
         this.options = {
-            faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.getOriginalSrc(),
+            faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.originalSrc,
             links: rawOptions && rawOptions.links,
             size: rawOptions && rawOptions.size || Favicon.size,
         };
