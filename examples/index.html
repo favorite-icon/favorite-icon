@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favorite Icon</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./res/tab.css" />
+  <script src="../packages/favorite-icon-emoji/dist/index.js"></script>
+  <link rel="stylesheet" href="./res/common.css" />
+  <script src="./res/common.js"></script>
+</head>
+<body>
+  <div class="tab">
+    <div class="tab__favicon"><img src="about:blank" id="preview" /></div>
+    <div class="tab__text">Favicon</div>
+  </div>
+
+  <p>
+    Url: <input id="favicon-src" type="text" value="./res/favicon.svg" onclick="updateFavicon(this.value)" />
+  </p>
+
+  <script>
+    function updateFavicon(value) {
+      Favicon.set({
+        value,
+        size: 64,
+        links: [
+          document.querySelector('#preview')
+        ]
+      });
+
+      Favicon.set(value);
+    }
+  </script>
+</body>
+</html>

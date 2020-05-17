@@ -1,5 +1,6 @@
 window.addEventListener('load', function() {
     var pages = [
+        'index',
         'emoji',
         'video',
         'badge',
