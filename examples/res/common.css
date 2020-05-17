@@ -35,6 +35,8 @@ body
     background: rgba(0, 0, 0, .5);
 
     border-radius: 5px;
+
+    color: #fff;
 }
 
 .back
@@ -44,7 +46,11 @@ body
 
 .prev
 {
-    margin-right: 3px;
+    margin-right: 5px;
+}
+
+.next {
+    margin-left: 5px;
 }
 
 .button
