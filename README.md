@@ -1,4 +1,4 @@
-Favorite Icon
+⭐ Favorite Icon
 =============
 
 A small libraries for manipulating the favicon.
