@@ -1,4 +1,4 @@
-Favorite Icon Badge
+📛 Favorite Icon Badge
 ===================
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-badge.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-badge)

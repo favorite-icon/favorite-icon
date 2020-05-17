@@ -1,4 +1,4 @@
-Favorite Icon Video
+⏩ Favorite Icon Video
 ===================
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video)
