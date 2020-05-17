@@ -9,8 +9,8 @@ declare namespace favicon {
 		new (options?: BadgeOptions): Badge;
 	}
 
-	type PositionX = 'left' | 'center' | 'right';
-	type PositionY = 'top' | 'middle' | 'bottom';
+	type PositionX = 'left' | 'center' | 'right' | number;
+	type PositionY = 'top' | 'middle' | 'bottom' | number;
 
 	interface BadgeOptions {
 		backgroundColor?: string;

@@ -24,7 +24,7 @@ export default class FaviconBadge {
     private lastCount: number;
 
     constructor(options?: favicon.BadgeOptions) {
-        this.options = options || {};
+        this.options = options ?? {};
 
         Object.keys(defaultOptions).forEach((name: keyof favicon.BadgeDefaultOptions) => {
             this.setOptionDefault(name, defaultOptions[name]);
@@ -76,7 +76,7 @@ export default class FaviconBadge {
     }
 
     private setOptionDefault<T extends keyof favicon.BadgeDefaultOptions>(name: T, defaultValue: favicon.BadgeDefaultOptions[T]) {
-        this.options[name] = this.options[name] || defaultValue;
+        this.options[name] = this.options[name] ?? defaultValue;
     }
 
     private formatter(count: number): string {
@@ -128,17 +128,25 @@ export default class FaviconBadge {
         const width = paddingX * 2 + context.measureText(formattedCount).width;
 
         let x = 0;
-        if (positionX === 'center') {
-            x = Math.max((size - width) / 2, 0);
-        } else if (positionX === 'right') {
-            x = Math.max(size - width, 0);
+        if (typeof positionX === 'number') {
+            x = positionX * size / Favicon.size;
+        } else {
+            if (positionX === 'center') {
+                x = Math.max((size - width) / 2, 0);
+            } else if (positionX === 'right') {
+                x = Math.max(size - width, 0);
+            }
         }
 
-        let y = paddingY;
-        if (positionY === 'middle') {
-            y = Math.max((size - height) / 2, 0);
-        } else if (positionY === 'bottom') {
-            y = Math.max(size - height, 0);
+        let y = 0;
+        if (typeof positionY === 'number') {
+            y = positionY * size / Favicon.size;
+        } else {
+            if (positionY === 'middle') {
+                y = Math.max((size - height) / 2, 0);
+            } else if (positionY === 'bottom') {
+                y = Math.max(size - height, 0);
+            }
         }
 
         if (this.options.backgroundColor !== 'transparent') {
