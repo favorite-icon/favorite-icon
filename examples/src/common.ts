@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
     const pages = [
         'index',
         'emoji',
@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
     let prev = pages[pages.length - 1];
     let next = pages[1];
 
-    pages.some(function(item, i) {
+    pages.some((item, i) => {
         prev = pages[i - 1] || pages[pages.length - 1];
         next = pages[i + 1] || pages[0];
 
