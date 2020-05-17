@@ -1,9 +1,13 @@
-declare namespace favicon {	
+declare namespace favicon {
 	type StatusType = 'error' | 'ok' | 'warning';
 
-	interface StatusStatic {
+	interface Status {
 		set(status: StatusType): void;
 		reset(): void;
+	}
+
+	interface StatusStatic {
+		new (options: StatusOptions): Status;
 	}
 
 	interface StatusOptions {
