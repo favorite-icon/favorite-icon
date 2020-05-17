@@ -71,7 +71,6 @@
         function FaviconBadge(options) {
             var _this = this;
             this.imageReady = false;
-            this.lastCount = 0;
             this.options = options || {};
             Object.keys(defaultOptions).forEach(function (name) {
                 _this.setOptionDefault(name, defaultOptions[name]);
@@ -140,20 +139,20 @@
             Favicon.set(this.canvas, this.options.links);
         };
         FaviconBadge.prototype.drawNumber = function (count, formattedCount) {
-            var padding = 4;
+            var paddingX = 5;
+            var paddingY = 1;
             var size = this.options.size;
-            var height = size * 0.6;
-            var fontSize = String(count).length > 1 ? 0.9 : 1;
+            var height = size * 0.55;
             var context = this.context;
             var positionX = this.options.positionX;
             var positionY = this.options.positionY;
-            context.font = this.options.fontStyle + " " + fontSize * height + "px " + this.options.fontFamily;
+            context.font = this.options.fontStyle + " " + (height - 2 * paddingY) + "px " + this.options.fontFamily;
             context.textAlign = 'left';
             context.textBaseline = 'top';
             context.beginPath();
             context.fillStyle = this.options.backgroundColor;
             context.strokeStyle = this.options.strokeColor;
-            var width = padding * 2 + context.measureText(formattedCount).width;
+            var width = paddingX * 2 + context.measureText(formattedCount).width;
             var x = 0;
             if (positionX === 'center') {
                 x = Math.max((size - width) / 2, 0);
@@ -161,7 +160,7 @@
             else if (positionX === 'right') {
                 x = Math.max(size - width, 0);
             }
-            var y = 0;
+            var y = paddingY;
             if (positionY === 'middle') {
                 y = Math.max((size - height) / 2, 0);
             }
@@ -173,7 +172,7 @@
                 context.strokeRect(x, y, width - 1, height - 1);
             }
             context.fillStyle = this.options.textColor;
-            context.fillText(formattedCount, x + padding, y + padding);
+            context.fillText(formattedCount, x + paddingX, y + paddingY + 1);
             context.closePath();
         };
         return FaviconBadge;
@@ -211,8 +210,8 @@
     var inputMaxCount = document.querySelector('#maxCount');
     var favBadge = new FaviconBadge();
     var imageBadge = new FaviconBadge();
-    var count = 1;
     function updateSettings() {
+        var count = parseInt(inputCount.value, 10);
         var maxCount = parseInt(inputMaxCount.value, 10);
         var positionX = inputPositionX.value;
         var positionY = inputPositionY.value;
@@ -238,20 +237,15 @@
         });
         favBadge.set(count);
         imageBadge.set(count);
+        console.log(count);
     }
+    inputBackgroundColor.oninput =
+        inputTextColor.oninput =
+            inputStrokeColor.oninput =
+                inputCount.oninput =
+                    inputMaxCount.oninput =
+                        inputPositionX.onchange =
+                            inputPositionY.onchange = updateSettings;
     updateSettings();
-    favBadge.set(count);
-    imageBadge.set(count);
-    inputCount.value = String(count);
-    inputCount.oninput = function () {
-        var count = Number(inputCount.value);
-        favBadge.set(count);
-        imageBadge.set(count);
-    };
-    inputBackgroundColor.onchange =
-        inputTextColor.onchange =
-            inputStrokeColor.onchange =
-                inputPositionX.onchange =
-                    inputPositionY.onchange = updateSettings;
 
 })));

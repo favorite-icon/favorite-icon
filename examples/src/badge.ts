@@ -12,9 +12,8 @@ const inputMaxCount: HTMLInputElement = document.querySelector('#maxCount');
 let favBadge = new FaviconBadge();
 let imageBadge = new FaviconBadge();
 
-let count = 1;
-
 function updateSettings() {
+    const count = parseInt(inputCount.value, 10);
     const maxCount = parseInt(inputMaxCount.value, 10);
     const positionX = inputPositionX.value as favicon.PositionX;
     const positionY = inputPositionY.value as favicon.PositionY;
@@ -23,7 +22,7 @@ function updateSettings() {
         backgroundColor: inputBackgroundColor.value,
         textColor: inputTextColor.value,
         strokeColor: inputStrokeColor.value,
-        maxCount: maxCount,
+        maxCount,
         positionX,
         positionY,
     });
@@ -32,7 +31,7 @@ function updateSettings() {
         backgroundColor: inputBackgroundColor.value,
         textColor: inputTextColor.value,
         strokeColor: inputStrokeColor.value,
-        maxCount: maxCount,
+        maxCount,
         positionX,
         positionY,
         size: 64,
@@ -43,22 +42,16 @@ function updateSettings() {
 
     favBadge.set(count);
     imageBadge.set(count);
+
+    console.log(count);
 }
 
-updateSettings();
-
-favBadge.set(count);
-imageBadge.set(count);
-
-inputCount.value = String(count);
-inputCount.oninput = function() {
-    const count = Number(inputCount.value);
-    favBadge.set(count);
-    imageBadge.set(count)
-};
-
-inputBackgroundColor.onchange =
-inputTextColor.onchange =
-inputStrokeColor.onchange =
+inputBackgroundColor.oninput =
+inputTextColor.oninput =
+inputStrokeColor.oninput =
+inputCount.oninput =
+inputMaxCount.oninput =
 inputPositionX.onchange =
 inputPositionY.onchange = updateSettings;
+
+updateSettings();
