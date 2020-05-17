@@ -12,6 +12,25 @@ A small library for status manipulating in favicon.
 
 # [Demo](https://hcodes.github.io/favorite-icon/examples/status.html)
 
+# Using
+```js
+import FaviconStatus from 'favorite-icon-status';
+
+const status = new FaviconStatus();
+status.set('ok'); // 'ok', 'error' or 'warning'
+```
+
+## Advanced options
+```js
+import FaviconStatus from 'favorite-icon-status';
+
+const status = new FaviconStatus({
+    faviconSrc: '/icons/favicon.png'
+});
+
+status.set('ok'); // 'ok', 'error' or 'warning'
+```
+
 # API
 
 ## `.set(status: 'ok' | 'error' | 'warning')`
