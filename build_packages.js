@@ -22,6 +22,10 @@ const exec = require('child_process').exec;
     {
         package: 'favorite-icon-video',
         name: 'FaviconVideo'
+    },
+    {
+        package: 'favorite-icon-dot',
+        name: 'FaviconDot'
     }
 ].map(item => {
     [

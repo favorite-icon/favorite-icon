@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favorite Icon Dot</title>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="./res/favicon.svg"/>
+  <link rel="stylesheet" href="./res/tab.css" />
+  <link rel="stylesheet" href="./res/common.css" />
+</head>
+<body>
+  <div class="tab">
+    <div class="tab__favicon"><img src="about:blank" id="preview" /></div>
+    <div class="tab__text">Favicon Dot</div>
+  </div>
+
+  <p>
+    backgroundColor: <input id="backgroundColor" type="color" value="#ff0000" />
+  </p>
+
+  <p>
+    strokeColor: <input id="strokeColor" type="color" value="#000000" />
+  </p>
+
+  <p>
+    positionX: <select id="positionX">
+      <option value="left">left</option>
+      <option value="center">center</option>
+      <option value="right" selected>right</option>
+    </select>
+  </p>
+  <p>
+    positionY: <select id="positionY">
+      <option value="top" selected>top</option>
+      <option value="middle">middle</option>
+      <option value="bottom">bottom</option>
+    </select>
+  </p>
+
+  <p>
+    radius: <input id="radius" type="number" value="5" style="width: 3em" />
+  </p>
+
+  <p>
+    <input id="show" type="button" value="Show" /> <input id="hide" type="button" value="Hide" />
+  </p>
+
+  <script src="./dist/dot.js" async></script>
+</body>
+</html>
