@@ -15,13 +15,15 @@
   </div>
 
   <p>
-    Url: <input id="favicon-src" type="text" value="./res/favicon.svg" onclick="updateFavicon(this.value)" />
+    Src: <input id="favicon-src" type="text" value="./res/favicon.svg" /> <input type="button" value="Set" onclick="updateFavicon()" />
   </p>
 
   <script>
-    function updateFavicon(value) {
+    function updateFavicon() {
+      var value = document.querySelector('favicon-src').value;
+
       Favicon.set({
-        value,
+        value: value,
         size: 64,
         links: [
           document.querySelector('#preview')
