@@ -159,7 +159,7 @@ var FaviconBadge = /** @class */ (function () {
             x = Math.max(size - width, 0);
         }
         var y = 0;
-        if (positionY === 'center') {
+        if (positionY === 'middle') {
             y = Math.max((size - height) / 2, 0);
         }
         else if (positionY === 'bottom') {

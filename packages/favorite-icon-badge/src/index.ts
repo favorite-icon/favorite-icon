@@ -135,7 +135,7 @@ export default class FaviconBadge {
         }
 
         let y = 0;
-        if (positionY === 'center') {
+        if (positionY === 'middle') {
             y = Math.max((size - height) / 2, 0);
         } else if (positionY === 'bottom') {
             y = Math.max(size - height, 0);

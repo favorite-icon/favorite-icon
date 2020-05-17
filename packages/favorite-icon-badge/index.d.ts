@@ -10,7 +10,7 @@ declare namespace favicon {
 	}
 
 	type PositionX = 'left' | 'center' | 'right';
-	type PositionY = 'top' | 'center' | 'bottom';
+	type PositionY = 'top' | 'middle' | 'bottom';
 
 	interface BadgeOptions {
 		backgroundColor?: string;
