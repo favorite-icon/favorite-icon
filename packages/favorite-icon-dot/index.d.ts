@@ -1,6 +1,6 @@
 declare namespace favicon {
 	interface Dot {
-		show(): void;
+		show(options?: DotOptions): void;
 		hide(): void;
 		destroy(): void;
 	}
