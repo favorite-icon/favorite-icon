@@ -42,8 +42,6 @@ function updateSettings() {
 
     favBadge.set(count);
     imageBadge.set(count);
-
-    console.log(count);
 }
 
 inputBackgroundColor.oninput =
