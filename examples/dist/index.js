@@ -23,11 +23,8 @@
         };
         Favicon.reset = function () {
             if (this.hasSupport) {
-                this.set(this.getOriginalSrc());
+                this.set(Favicon.originalSrc);
             }
-        };
-        Favicon.getOriginalSrc = function () {
-            return this.icons[this.icons.length - 1].href;
         };
         Favicon.searchIcons = function () {
             var result = [];
@@ -49,6 +46,7 @@
             return result;
         };
         Favicon.icons = Favicon.searchIcons();
+        Favicon.originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
         Favicon.size = 32;
         Favicon.hasSupport = hasSupport;
         return Favicon;
@@ -59,7 +57,8 @@
     	"badge",
     	"status",
     	"emoji",
-    	"video"
+    	"video",
+    	"dot"
     ];
 
     window.addEventListener('load', function () {
