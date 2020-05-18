@@ -11,6 +11,7 @@ declare namespace favicon {
 	}
 
 	interface StatusOptions {
+		scale?: number;
 		faviconSrc?: string;
 		links?: Array<HTMLLinkElement | HTMLImageElement>;
 		size?: number;

@@ -22,6 +22,7 @@ export default class FaviconStatus {
         this.options = {
             faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.originalSrc,
             links: rawOptions && rawOptions.links,
+            scale: rawOptions && rawOptions.scale || 0.8,
             size: rawOptions && rawOptions.size || Favicon.size,
         };
 
@@ -43,6 +44,7 @@ export default class FaviconStatus {
 
     private draw() {
         const size =  this.options.size;
+        const scale = this.options.scale;
         const canvas = document.createElement('canvas');
         canvas.width = size;
         canvas.height = size;
@@ -51,10 +53,11 @@ export default class FaviconStatus {
         context.clearRect(0, 0, size, size);
         context.drawImage(this.favicon, 0, 0, size, size);
 
-        const width = size / 1.2;
-        const height = size / 1.2;
-        const x = size / 3.5;
-        const y = size / 3.5;
+        const svgSize = scale * size;
+        const width = svgSize * IMAGE_WIDTH / IMAGE_HEIGHT;
+        const height = svgSize;
+        const x = size - width;
+        const y = size - height * 0.85;
 
         context.drawImage({
             ok: this.okImage,
@@ -81,9 +84,9 @@ export default class FaviconStatus {
             }
         };
 
-        this.errorImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z" fill="rgb(203, 36, 49)" stroke="black" stroke-width="0.5" /></svg>';
-        this.okImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z" fill="rgb(40, 167, 69)" stroke="black" stroke-width="0.5" /></svg>';
-        this.warningImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><circle cx="6" cy="8" r="4" fill="rgb(255, 165, 0)" stroke="black" stroke-width="0.5" /></svg>';
+        this.errorImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z" fill="rgb(203, 36, 49)" stroke="black" stroke-width="0.3" /></svg>';
+        this.okImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z" fill="rgb(40, 167, 69)" stroke="black" stroke-width="0.3" /></svg>';
+        this.warningImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><circle cx="6" cy="8" r="4" fill="rgb(255, 165, 0)" stroke="black" stroke-width="0.3" /></svg>';
     }
 
     private loadFavicon() {
