@@ -83,7 +83,8 @@
     	"status",
     	"emoji",
     	"video",
-    	"dot"
+    	"dot",
+    	"blinking-dot"
     ];
 
     window.addEventListener('load', function () {
