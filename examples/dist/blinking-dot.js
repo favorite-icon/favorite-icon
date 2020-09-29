@@ -271,14 +271,6 @@
         document.body.appendChild(nav);
     }, false);
 
-    var buttonShow = document.querySelector('#show');
-    var buttonHide = document.querySelector('#hide');
-    var inputBackgroundColor = document.querySelector('#backgroundColor');
-    var inputStrokeColor = document.querySelector('#strokeColor');
-    var inputPositionX = document.querySelector('#positionX');
-    var inputPositionY = document.querySelector('#positionY');
-    var inputRadius = document.querySelector('#radius');
-    var inputAlpha = document.querySelector('#alpha');
     var favDot = new FaviconDot();
     var imageDot = new FaviconDot({
         size: 64,

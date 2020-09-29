@@ -2,16 +2,6 @@ import FaviconDot from '../../packages/favorite-icon-dot/dist/index.esm';
 import TimeoutWorker from '../../packages/timeout-worker/dist/index.esm';
 import './common';
 
-const buttonShow: HTMLInputElement = document.querySelector('#show');
-const buttonHide: HTMLInputElement = document.querySelector('#hide');
-
-const inputBackgroundColor: HTMLInputElement = document.querySelector('#backgroundColor');
-const inputStrokeColor: HTMLInputElement = document.querySelector('#strokeColor');
-const inputPositionX: HTMLInputElement = document.querySelector('#positionX');
-const inputPositionY: HTMLInputElement = document.querySelector('#positionY');
-const inputRadius: HTMLInputElement = document.querySelector('#radius');
-const inputAlpha: HTMLInputElement = document.querySelector('#alpha');
-
 let favDot = new FaviconDot();
 let imageDot = new FaviconDot({
     size: 64,
