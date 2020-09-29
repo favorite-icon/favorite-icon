@@ -26,7 +26,11 @@ const exec = require('child_process').exec;
     {
         package: 'favorite-icon-dot',
         name: 'FaviconDot'
-    }
+    },
+    {
+        package: 'timeout-worker',
+        name: 'TimeoutWorker'
+    },
 ].map(item => {
     [
         { name: 'iife', file: '' },
