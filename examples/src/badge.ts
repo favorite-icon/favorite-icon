@@ -1,4 +1,4 @@
-import FaviconBadge from '../../packages/favorite-icon-badge/src/index';
+import FaviconBadge from '../../packages/favorite-icon-badge/dist/index.esm';
 import './common';
 
 const inputBackgroundColor: HTMLInputElement = document.querySelector('#backgroundColor');

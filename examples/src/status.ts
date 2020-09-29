@@ -1,4 +1,4 @@
-import FaviconStatus from '../../packages/favorite-icon-status/src/index';
+import FaviconStatus from '../../packages/favorite-icon-status/dist/index.esm';
 import './common';
 
 const preview = new FaviconStatus({

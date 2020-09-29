@@ -1,4 +1,4 @@
-import Favicon from '../../packages/favorite-icon/src/index';
+import Favicon from '../../packages/favorite-icon/dist/index.esm';
 import './common';
 
 document.querySelector<HTMLInputElement>('#button-set').onclick = function() {

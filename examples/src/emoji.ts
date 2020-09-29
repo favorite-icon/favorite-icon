@@ -1,4 +1,4 @@
-import FaviconEmoji from '../../packages/favorite-icon-emoji/src/index';
+import FaviconEmoji from '../../packages/favorite-icon-emoji/dist/index.esm';
 import './common';
 
 const button1 = document.querySelector<HTMLInputElement>('#button1');

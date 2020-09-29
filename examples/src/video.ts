@@ -1,4 +1,4 @@
-import FaviconVideo from '../../packages/favorite-icon-video/src/index';
+import FaviconVideo from '../../packages/favorite-icon-video/dist/index.esm';
 import './common';
 
 const video = document.querySelector('video');
