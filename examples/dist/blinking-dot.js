@@ -286,36 +286,6 @@
             document.querySelector('#preview')
         ]
     });
-    function updateSettings() {
-        var radius = parseInt(inputRadius.value, 10);
-        var alpha = parseFloat(inputAlpha.value);
-        var positionX = inputPositionX.value;
-        var positionY = inputPositionY.value;
-        var options = {
-            alpha: alpha,
-            backgroundColor: inputBackgroundColor.value,
-            strokeColor: inputStrokeColor.value,
-            radius: radius,
-            positionX: positionX,
-            positionY: positionY,
-        };
-        favDot.show(options);
-        imageDot.show(options);
-    }
-    inputAlpha.oninput =
-        inputBackgroundColor.oninput =
-            inputStrokeColor.oninput =
-                inputRadius.oninput =
-                    inputPositionX.onchange =
-                        inputPositionY.onchange = updateSettings;
-    buttonShow.onclick = function () {
-        imageDot.show();
-        favDot.show();
-    };
-    buttonHide.onclick = function () {
-        imageDot.hide();
-        favDot.hide();
-    };
     var koef = -1;
     var step = 0.2;
     var value = 1;
@@ -330,10 +300,9 @@
             koef = 1;
             value = 0;
         }
-        favDot.show({
-            alpha: value,
-        });
+        var options = { alpha: value };
+        favDot.show(options);
+        imageDot.show(options);
     }, 100);
-    updateSettings();
 
 })));

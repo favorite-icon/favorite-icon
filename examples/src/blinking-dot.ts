@@ -21,43 +21,6 @@ let imageDot = new FaviconDot({
 });
 
 
-function updateSettings() {
-    const radius = parseInt(inputRadius.value, 10);
-    const alpha = parseFloat(inputAlpha.value);
-    const positionX = inputPositionX.value as favicon.PositionX;
-    const positionY = inputPositionY.value as favicon.PositionY;
-
-    const options = {
-        alpha,
-        backgroundColor: inputBackgroundColor.value,
-        strokeColor: inputStrokeColor.value,
-        radius,
-        positionX,
-        positionY,
-    };
-
-    favDot.show(options);
-    imageDot.show(options);
-}
-
-inputAlpha.oninput =
-inputBackgroundColor.oninput =
-inputStrokeColor.oninput =
-inputRadius.oninput =
-inputPositionX.onchange =
-inputPositionY.onchange = updateSettings;
-
-buttonShow.onclick = () => {
-    imageDot.show();
-    favDot.show();
-};
-
-buttonHide.onclick = () => {
-    imageDot.hide();
-    favDot.hide();
-};
-
-
 let koef = -1;
 let step = 0.2;
 let value = 1;
@@ -76,9 +39,7 @@ worker.setInterval(() => {
         value = 0;
     }
 
-    favDot.show({
-        alpha: value,
-    });
+    const options = { alpha: value };
+    favDot.show(options);
+    imageDot.show(options);
 }, 100);
-
-updateSettings();
