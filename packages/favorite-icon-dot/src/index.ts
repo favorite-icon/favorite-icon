@@ -1,6 +1,7 @@
 import Favicon from '../../favorite-icon/src/index';
+import { FaviconDotDefaultOptions, FaviconDotOptions } from './types';
 
-const defaultOptions: favicon.DotDefaultOptions = {
+const defaultOptions: FaviconDotDefaultOptions = {
     alpha: 1,
     backgroundColor: '#ff0000',
     faviconSrc: Favicon.originalSrc,
@@ -13,19 +14,15 @@ const defaultOptions: favicon.DotDefaultOptions = {
 };
 
 export default class FaviconDot {
-    private options: favicon.DotOptions = {};
+    private options: FaviconDotOptions = {};
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private image: HTMLImageElement;
     private imageReady = false;
     private isShow = false;
 
-    constructor(options?: favicon.DotOptions) {
-        this.updateOptions(options);
-
-        Object.keys(defaultOptions).forEach((name: keyof favicon.DotDefaultOptions) => {
-            this.setOptionDefault(name, defaultOptions[name]);
-        });
+    constructor(options?: FaviconDotOptions) {
+        this.setOptions(options || {});
 
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.options.size;
@@ -35,7 +32,7 @@ export default class FaviconDot {
         this.loadImage();
     }
 
-    private loadImage() {
+    private loadImage(): void {
         this.image = new Image();
         this.image.setAttribute('crossOrigin', 'anonymous');
         this.image.onload = this.image.onabort = this.image.onerror = () => {
@@ -48,15 +45,15 @@ export default class FaviconDot {
         this.image.src = this.options.faviconSrc;
     }
 
-    private setOptionDefault<T extends keyof favicon.DotDefaultOptions>(name: T, defaultValue: favicon.DotDefaultOptions[T]) {
+    private setOptionDefault<T extends keyof FaviconDotDefaultOptions>(name: T, defaultValue: FaviconDotDefaultOptions[T]): void {
         this.options[name] = this.options[name] ?? defaultValue;
     }
 
-    public show(options?: favicon.DotOptions) {
+    public show(options?: FaviconDotOptions): void {
         this.isShow = true;
 
         if (options) {
-            this.updateOptions(options);
+            this.setOptions(options);
         }
 
         if (this.imageReady && Favicon.hasSupport) {
@@ -64,13 +61,17 @@ export default class FaviconDot {
         }
     }
 
-    private updateOptions(options?: favicon.DotOptions) {
-        Object.keys(options || {}).forEach(<T extends keyof favicon.DotOptions>(key: T) => {
-            this.options[key] = options[key];
+    private setOptions(options?: FaviconDotOptions): void {
+        const result = {};
+
+        Object.keys(defaultOptions).forEach(key => {
+            result[key] = options[key] ?? (result[key] ?? defaultOptions[key]);
         });
+
+        this.options = result as FaviconDotDefaultOptions;
     }
 
-    private draw() {
+    private draw(): void {
         const context = this.context;
         const { alpha, size, positionX, positionY } = this.options;
         this.context.clearRect(0, 0, size, size);
@@ -119,12 +120,12 @@ export default class FaviconDot {
         Favicon.set(this.canvas, this.options.links);
     }
 
-    public hide() {
+    public hide(): void {
         this.isShow = false;
         Favicon.set(this.options.faviconSrc, this.options.links);
     }
 
-    public destroy() {
+    public destroy(): void {
         delete this.canvas;
         delete this.context;
         delete this.options;

@@ -80,7 +80,7 @@ var FaviconVideo = (function () {
             var _this = this;
             this.options.video.muted = true;
             this.options.video.play();
-            this.timer = setInterval(function () { return _this.draw(); }, this.options.timeout || 25);
+            this.timer = window.setInterval(function () { return _this.draw(); }, this.options.timeout || 25);
         };
         FaviconVideo.prototype.pause = function () {
             this.options.video.pause();
@@ -95,7 +95,7 @@ var FaviconVideo = (function () {
             var video = this.options.video;
             video.removeEventListener('play', this.onplay, false);
             video.removeEventListener('pause', this.onpause, false);
-            video.removeEventListener('endeed', this.onpause, false);
+            video.removeEventListener('ended', this.onpause, false);
             video.removeEventListener('abort', this.onpause, false);
             delete this.canvas;
             delete this.context;

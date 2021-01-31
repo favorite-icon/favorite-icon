@@ -1,7 +1,7 @@
 interface Window {
-    opera?: object;
-    InstallTrigger?: object;
-    chrome: object;
+    opera?: unknown;
+    InstallTrigger?: unknown;
+    chrome: unknown;
 }
 
 declare const window: Window;

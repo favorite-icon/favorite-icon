@@ -20,7 +20,7 @@ var TimeoutWorker = /** @class */ (function () {
     }
     TimeoutWorker.prototype.setTimeout = function (callback, delay) {
         if (!this.hasSupport) {
-            return setTimeout(callback, delay);
+            return window.setTimeout(callback, delay);
         }
         var timeoutId = this.getTimeoutId();
         var message = {
@@ -34,7 +34,7 @@ var TimeoutWorker = /** @class */ (function () {
     };
     TimeoutWorker.prototype.setInterval = function (callback, delay) {
         if (!this.hasSupport) {
-            return setInterval(callback, delay);
+            return window.setInterval(callback, delay);
         }
         var timeoutId = this.getTimeoutId();
         var message = {

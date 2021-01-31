@@ -25,7 +25,7 @@ export default class TimeoutWorker {
 
     setTimeout(callback: () => number, delay: number): number {
         if (!this.hasSupport) {
-            return setTimeout(callback, delay);
+            return window.setTimeout(callback, delay);
         }
 
         const timeoutId = this.getTimeoutId();
@@ -43,7 +43,7 @@ export default class TimeoutWorker {
 
     setInterval(callback: () => number, delay: number): number {
         if (!this.hasSupport) {
-            return setInterval(callback, delay);
+            return window.setInterval(callback, delay);
         }
 
         const timeoutId = this.getTimeoutId();
@@ -59,7 +59,7 @@ export default class TimeoutWorker {
         return timeoutId;
     }
 
-    clearTimeout(timeoutId: number) {
+    clearTimeout(timeoutId: number): void {
         if (!this.hasSupport) {
             return clearTimeout(timeoutId);
         }
@@ -73,7 +73,7 @@ export default class TimeoutWorker {
         this.idMap.delete(timeoutId);
     }
 
-    clearInterval(timeoutId: number) {
+    clearInterval(timeoutId: number): void {
         if (!this.hasSupport) {
             return clearInterval(timeoutId);
         }
@@ -91,7 +91,7 @@ export default class TimeoutWorker {
         return TimeoutWorker.gid++;
     }
 
-    terminate() {
+    terminate(): void {
         this.idMap.clear();
         this.worker.terminate();
     }

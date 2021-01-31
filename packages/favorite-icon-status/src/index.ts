@@ -1,4 +1,5 @@
 import Favicon from '../../favorite-icon/src/index';
+import { FaviconStatusType, FaviconStatusOptions } from './types';
 
 const MAX_STATUS_IMAGE = 3;
 const IMAGE_WIDTH = 12;
@@ -9,8 +10,8 @@ export default class FaviconStatus {
     private isFaviconLoaded = false;
     private countStatusImages = 0;
 
-    private status?: favicon.StatusType;
-    private options?: favicon.StatusOptions;
+    private status?: FaviconStatusType;
+    private options?: FaviconStatusOptions;
 
     private errorImage: HTMLImageElement;
     private okImage: HTMLImageElement;
@@ -18,7 +19,7 @@ export default class FaviconStatus {
 
     private favicon: HTMLImageElement;
 
-    constructor(rawOptions?: favicon.StatusOptions) {
+    constructor(rawOptions?: FaviconStatusOptions) {
         this.options = {
             faviconSrc: rawOptions && rawOptions.faviconSrc || Favicon.originalSrc,
             links: rawOptions && rawOptions.links,
@@ -30,7 +31,7 @@ export default class FaviconStatus {
         this.loadFavicon();
     }
 
-    public set(status?: favicon.StatusType) {
+    public set(status?: FaviconStatusType): void {
         if (status) {
             this.status = status;
         }
@@ -42,7 +43,7 @@ export default class FaviconStatus {
         this.draw();
     }
 
-    private draw() {
+    private draw(): void {
         const size =  this.options.size;
         const scale = this.options.scale;
         const canvas = document.createElement('canvas');
@@ -68,7 +69,7 @@ export default class FaviconStatus {
         Favicon.set(canvas, this.options.links);
     }
 
-    private loadStatusImages() {
+    private loadStatusImages(): void {
         this.okImage = new Image();
         this.errorImage = new Image();
         this.warningImage = new Image();
@@ -89,7 +90,7 @@ export default class FaviconStatus {
         this.warningImage.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><circle cx="6" cy="8" r="4" fill="rgb(255, 165, 0)" stroke="black" stroke-width="0.3" /></svg>';
     }
 
-    private loadFavicon() {
+    private loadFavicon(): void {
         this.favicon = new Image();
 
         this.favicon.onload =
@@ -102,7 +103,7 @@ export default class FaviconStatus {
         this.favicon.src = this.options.faviconSrc;
     }
 
-    public reset() {
+    public reset(): void {
         Favicon.reset();
     }
 }

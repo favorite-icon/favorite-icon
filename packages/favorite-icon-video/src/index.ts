@@ -1,12 +1,13 @@
 import Favicon from '../../favorite-icon/src/index';
+import { FaviconVideoOptions } from './types';
 
 export default class FaviconVideo {
-    private options: favicon.VideoOptions;
+    private options: FaviconVideoOptions;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private timer: number;
 
-    constructor(options: favicon.VideoOptions) {
+    constructor(options: FaviconVideoOptions) {
         const size = options.size ?? Favicon.size;
         const video = options.video;
         this.options = {
@@ -35,29 +36,29 @@ export default class FaviconVideo {
         this.pause();
     }
 
-    public play() {
+    public play(): void {
         this.options.video.muted = true;
         this.options.video.play();
-        this.timer = setInterval(() => this.draw(), this.options.timeout || 25);
+        this.timer = window.setInterval(() => this.draw(), this.options.timeout || 25);
     }
 
-    public pause() {
+    public pause(): void {
         this.options.video.pause();
         this.reset();
         window.clearInterval(this.timer);
     }
 
-    public reset() {
+    public reset(): void {
         Favicon.reset();
     }
 
-    public destroy() {
+    public destroy(): void {
         this.pause();
 
         const video = this.options.video;
         video.removeEventListener('play', this.onplay, false);
         video.removeEventListener('pause', this.onpause, false);
-        video.removeEventListener('endeed', this.onpause, false);
+        video.removeEventListener('ended', this.onpause, false);
         video.removeEventListener('abort', this.onpause, false);
 
         delete this.canvas;
@@ -65,7 +66,7 @@ export default class FaviconVideo {
         delete this.options;
     }
 
-    private draw() {
+    private draw(): void {
         const video = this.options.video;
         if (video.paused || video.ended) {
             this.pause();

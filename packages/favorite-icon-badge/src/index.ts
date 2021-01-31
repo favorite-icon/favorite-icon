@@ -1,21 +1,33 @@
 import Favicon from '../../favorite-icon/src/index';
+import { FaviconBadgeDefaultOptions, FaviconBadgeOptions } from './types';
 
-const defaultOptions: favicon.BadgeDefaultOptions = {
+const defaultOptions: FaviconBadgeDefaultOptions = {
     backgroundColor: '#ff0000',
+    count: 0,
+    fallback: () => {/* */},
+    faviconSrc: Favicon.originalSrc,
+    formatter: (count: number, maxCount: number) => {
+        if (count <= 0) {
+            return '';
+        } else if (maxCount && count > maxCount) {
+            return `${maxCount}+`;
+        }
+
+        return String(count);
+    },
     fontFamily: 'arial, sans-serif',
     fontStyle: 'normal',
+    links: Favicon.icons,
+    maxCount: 99,
+    positionX: 'right',
+    positionY: 'bottom',
+    size: Favicon.size,
     strokeColor: '#000',
     textColor: '#fff',
-    faviconSrc: Favicon.originalSrc,
-    maxCount: 99,
-    size: Favicon.size,
-    links: Favicon.icons,
-    positionX: 'right',
-    positionY: 'bottom'
 };
 
 export default class FaviconBadge {
-    private options: favicon.BadgeOptions;
+    private options: FaviconBadgeDefaultOptions;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private image: HTMLImageElement;
@@ -23,14 +35,10 @@ export default class FaviconBadge {
     private count: number;
     private lastCount: number;
 
-    constructor(options?: favicon.BadgeOptions) {
-        this.options = options ?? {};
+    constructor(options?: FaviconBadgeOptions) {
+        this.setDefaultOptions(options || {});
 
-        Object.keys(defaultOptions).forEach((name: keyof favicon.BadgeDefaultOptions) => {
-            this.setOptionDefault(name, defaultOptions[name]);
-        });
-
-        this.count = Number(this.options.count || 0);
+        this.count = this.options.count;
 
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.options.size;
@@ -40,31 +48,28 @@ export default class FaviconBadge {
         this.loadImage();
     }
 
-    public set(count: number) {
+    public set(count: number): void {
         this.count = count;
 
-        const formattedCount = this.options.formatter ?
-            this.options.formatter(count) :
-            this.formatter(count);
-
+        const formattedCount = this.options.formatter(count, this.options.maxCount);
         if (Favicon.hasSupport) {
             this.draw(count, formattedCount);
-        } else if (this.options.fallback) {
+        } else {
             this.options.fallback(count, formattedCount);
         }
     }
 
-    public reset() {
+    public reset(): void {
         Favicon.reset();
     }
 
-    public destroy() {
+    public destroy(): void {
         delete this.canvas;
         delete this.context;
         delete this.options;
     }
 
-    private loadImage() {
+    private loadImage(): void {
         this.image = new Image();
         this.image.setAttribute('crossOrigin', 'anonymous');
         this.image.onload = this.image.onabort = this.image.onerror = () => {
@@ -75,22 +80,16 @@ export default class FaviconBadge {
         this.image.src = this.options.faviconSrc;
     }
 
-    private setOptionDefault<T extends keyof favicon.BadgeDefaultOptions>(name: T, defaultValue: favicon.BadgeDefaultOptions[T]) {
-        this.options[name] = this.options[name] ?? defaultValue;
+    private setDefaultOptions(options: FaviconBadgeOptions): void {
+        const result = {};
+        Object.keys(defaultOptions).forEach(name => {
+            result[name] = options[name] ?? defaultOptions[name];
+        });
+
+        this.options = result as FaviconBadgeDefaultOptions;
     }
 
-    private formatter(count: number): string {
-        const maxCount = this.options.maxCount;
-        if (count <= 0) {
-            return '';
-        } else if (maxCount && count > maxCount) {
-            return `${maxCount}+`;
-        }
-
-        return String(count);
-    }
-
-    private draw(count: number, formattedCount: string) {
+    private draw(count: number, formattedCount: string): void {
         if (!this.imageReady || count === this.lastCount) {
             return;
         }
@@ -102,13 +101,13 @@ export default class FaviconBadge {
         this.context.drawImage(this.image, 0, 0, size, size);
 
         if (count) {
-            this.drawNumber(count, formattedCount);
+            this.drawNumber(formattedCount);
         }
 
         Favicon.set(this.canvas, this.options.links);
     }
 
-    private drawNumber(count: number, formattedCount: string) {
+    private drawNumber(formattedCount: string): void {
         const paddingX = 5;
         const paddingY = 1;
         const size = this.options.size;
