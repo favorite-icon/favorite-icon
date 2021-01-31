@@ -15,5 +15,9 @@
         "noImplicitThis": true,
         "strictNullChecks": false,
         "forceConsistentCasingInFileNames": true
-    }
+    },
+    "include": [
+        "src/**/*.ts",
+        "examples/src/**/*.ts"
+    ]
 }
