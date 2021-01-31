@@ -14,7 +14,7 @@ A small library for manipulating the favicon.
 ```js
 import Favicon from 'favorite-icon';
 
-FaviconIcon.set('/my-icon.png');
+Favicon.set('/my-icon.png');
 ```
 
 # API
