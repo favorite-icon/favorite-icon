@@ -23,7 +23,7 @@ dot.show();
 
 ## Advanced settings
 ```js
-import Favicondot from 'favorite-icon-dot';
+import FaviconDot from 'favorite-icon-dot';
 
 const dot = new FaviconDot({
     backgroundColor: '#ff0000',
