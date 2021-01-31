@@ -18,7 +18,7 @@ A small library for emoji manipulating in favicon.
 Set the favicon with your own emoji.
 
 ```js
-import FaviconEmoji from 'favorite-icon-emoji';
+import { FaviconEmoji } from 'favorite-icon-emoji';
 
 FaviconEmoji.set('❤️');
 ```
@@ -27,7 +27,7 @@ FaviconEmoji.set('❤️');
 Reset the favicon.
 
 ```js
-import FaviconEmoji from 'favorite-icon-emoji';
+import { FaviconEmoji } from 'favorite-icon-emoji';
 // ...
 FaviconEmoji.reset();
 ```

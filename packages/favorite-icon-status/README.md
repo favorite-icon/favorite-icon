@@ -14,7 +14,7 @@ A small library for status manipulating in favicon.
 
 # Using
 ```js
-import FaviconStatus from 'favorite-icon-status';
+import { FaviconStatus } from 'favorite-icon-status';
 
 const status = new FaviconStatus();
 status.set('ok'); // 'ok', 'error' or 'warning'
@@ -22,7 +22,7 @@ status.set('ok'); // 'ok', 'error' or 'warning'
 
 ## Advanced options
 ```js
-import FaviconStatus from 'favorite-icon-status';
+import { FaviconStatus } from 'favorite-icon-status';
 
 const status = new FaviconStatus({
     faviconSrc: '/icons/favicon.png'
@@ -37,7 +37,7 @@ status.set('ok'); // 'ok', 'error' or 'warning'
 Set the favicon with status.
 
 ```js
-import FaviconStatus from 'favorite-icon-status';
+import { FaviconStatus } from 'favorite-icon-status';
 
 const status = new FaviconStatus();
 status.set('ok'); // 'ok', 'error' or 'warning'
@@ -48,7 +48,7 @@ status.set('ok'); // 'ok', 'error' or 'warning'
 Reset the favicon.
 
 ```js
-import FaviconStatus from 'favorite-icon-status';
+import { FaviconStatus } from 'favorite-icon-status';
 
 const status = new FaviconStatus();
 

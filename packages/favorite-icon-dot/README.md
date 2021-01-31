@@ -14,7 +14,7 @@ A small library for dot manipulating in favicon.
 
 # Using
 ```js
-import FaviconDot from 'favorite-icon-dot';
+import { FaviconDot } from 'favorite-icon-dot';
 
 const dot = new FaviconDot();
 
@@ -23,7 +23,7 @@ dot.show();
 
 ## Advanced settings
 ```js
-import FaviconDot from 'favorite-icon-dot';
+import { FaviconDot } from 'favorite-icon-dot';
 
 const dot = new FaviconDot({
     backgroundColor: '#ff0000',
@@ -43,7 +43,7 @@ dot.show();
 Show dot in favicon.
 
 ```js
-import FaviconDot from 'favorite-icon-dot';
+import { FaviconDot } from 'favorite-icon-dot';
 
 const dot = new FaviconDot();
 
@@ -54,7 +54,7 @@ dot.show(count);
 Reset the favicon.
 
 ```js
-import FaviconDot from 'favorite-icon-dot';
+import { FaviconDot } from 'favorite-icon-dot';
 
 const dot = new FaviconDot();
 

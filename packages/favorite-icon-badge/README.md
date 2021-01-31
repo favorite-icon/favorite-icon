@@ -14,7 +14,7 @@ A small library for badge manipulating in favicon.
 
 # Using
 ```js
-import FaviconBadge from 'favorite-icon-badge';
+import { FaviconBadge } from 'favorite-icon-badge';
 
 const badge = new FaviconBadge();
 
@@ -23,7 +23,7 @@ badge.set(count);
 
 ## Advanced settings
 ```js
-import FaviconBadge from 'favorite-icon-badge';
+import { FaviconBadge } from 'favorite-icon-badge';
 
 const badge = new FaviconBadge({
     backgroundColor: '#ff0000',
@@ -48,7 +48,7 @@ badge.set(count);
 Set the favicon with the badge.
 
 ```js
-import FaviconBadge from 'favorite-icon-badge';
+import { FaviconBadge } from 'favorite-icon-badge';
 
 const badge = new FaviconBadge();
 
@@ -59,7 +59,7 @@ badge.set(count);
 Reset the favicon.
 
 ```js
-import FaviconBadge from 'favorite-icon-badge';
+import { FaviconBadge } from 'favorite-icon-badge';
 
 const badge = new FaviconBadge();
 

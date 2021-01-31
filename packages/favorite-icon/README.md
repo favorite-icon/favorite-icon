@@ -12,7 +12,7 @@ A small library for manipulating the favicon.
 
 # Using
 ```js
-import Favicon from 'favorite-icon';
+import { Favicon } from 'favorite-icon';
 
 Favicon.set('/my-icon.png');
 ```
@@ -23,7 +23,7 @@ Favicon.set('/my-icon.png');
 Set the favicon with your own image.
 
 ```js
-import Favicon from 'favorite-icon';
+import { Favicon } from 'favorite-icon';
 
 Favicon.set('./image.png');
 
@@ -42,7 +42,7 @@ Favicon.set(canvas);
 Reset the favicon.
 
 ```js
-import FaviconIcon from 'favorite-icon';
+import { FaviconIcon } from 'favorite-icon';
 
 // ...
 
