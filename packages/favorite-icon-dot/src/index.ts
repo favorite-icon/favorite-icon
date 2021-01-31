@@ -1,4 +1,4 @@
-import Favicon from '../../favorite-icon/src/index';
+import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconDotDefaultOptions, FaviconDotOptions } from './types';
 
 const defaultOptions: FaviconDotDefaultOptions = {
@@ -13,7 +13,7 @@ const defaultOptions: FaviconDotDefaultOptions = {
     strokeColor: '#000',
 };
 
-export default class FaviconDot {
+export class FaviconDot {
     private options: FaviconDotOptions = {};
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;

@@ -1,5 +1,5 @@
-import FaviconDot from '../../packages/favorite-icon-dot/dist/index.esm';
-import TimeoutWorker from '../../packages/timeout-worker/dist/index.esm';
+import { FaviconDot } from '../../packages/favorite-icon-dot/dist/index.esm';
+import { TimeoutWorker } from '../../packages/timeout-worker/dist/index.esm';
 import './common';
 
 let favDot = new FaviconDot();
@@ -11,21 +11,21 @@ let imageDot = new FaviconDot({
 });
 
 
-let koef = -1;
+let coefficient = -1;
 let step = 0.2;
 let value = 1;
 
 const worker = new TimeoutWorker();
 worker.setInterval(() => {
-    value += koef * step;
+    value += coefficient * step;
 
     if (value >= 1) {
-        koef = -1;
+        coefficient = -1;
         value = 1;
     }
 
     if (value <= 0) {
-        koef = 1;
+        coefficient = 1;
         value = 0;
     }
 

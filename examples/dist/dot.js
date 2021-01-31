@@ -65,14 +65,10 @@
     };
     var FaviconDot = /** @class */ (function () {
         function FaviconDot(options) {
-            var _this = this;
             this.options = {};
             this.imageReady = false;
             this.isShow = false;
-            this.updateOptions(options);
-            Object.keys(defaultOptions).forEach(function (name) {
-                _this.setOptionDefault(name, defaultOptions[name]);
-            });
+            this.setOptions(options || {});
             this.canvas = document.createElement('canvas');
             this.canvas.width = this.options.size;
             this.canvas.height = this.options.size;
@@ -98,17 +94,19 @@
         FaviconDot.prototype.show = function (options) {
             this.isShow = true;
             if (options) {
-                this.updateOptions(options);
+                this.setOptions(options);
             }
             if (this.imageReady && Favicon.hasSupport) {
                 this.draw();
             }
         };
-        FaviconDot.prototype.updateOptions = function (options) {
-            var _this = this;
-            Object.keys(options || {}).forEach(function (key) {
-                _this.options[key] = options[key];
+        FaviconDot.prototype.setOptions = function (options) {
+            var result = {};
+            Object.keys(defaultOptions).forEach(function (key) {
+                var _a, _b;
+                result[key] = (_a = options[key]) !== null && _a !== void 0 ? _a : ((_b = result[key]) !== null && _b !== void 0 ? _b : defaultOptions[key]);
             });
+            this.options = result;
         };
         FaviconDot.prototype.draw = function () {
             var context = this.context;
@@ -210,8 +208,8 @@
     function updateSettings() {
         var radius = parseInt(inputRadius.value, 10);
         var alpha = parseFloat(inputAlpha.value);
-        var positionX = inputPositionX.value;
-        var positionY = inputPositionY.value;
+        var positionX = parseInt(inputPositionX.value, 10);
+        var positionY = parseInt(inputPositionY.value, 10);
         var options = {
             alpha: alpha,
             backgroundColor: inputBackgroundColor.value,

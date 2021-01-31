@@ -1,11 +1,11 @@
-import Favicon from '../../favorite-icon/src/index';
+import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconStatusType, FaviconStatusOptions } from './types';
 
 const MAX_STATUS_IMAGE = 3;
 const IMAGE_WIDTH = 12;
 const IMAGE_HEIGHT = 16;
 
-export default class FaviconStatus {
+export class FaviconStatus {
     private isStatusImagesLoaded = false;
     private isFaviconLoaded = false;
     private countStatusImages = 0;

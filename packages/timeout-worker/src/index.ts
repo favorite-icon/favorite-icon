@@ -1,6 +1,6 @@
 import { TimeoutWorkerMethod, TimeoutWorkerEvent } from './types';
 
-export default class TimeoutWorker {
+export class TimeoutWorker {
     static gid = 1;
 
     private idMap: Map<number, () => void>;

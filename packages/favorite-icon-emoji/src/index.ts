@@ -1,7 +1,7 @@
-import Favicon from '../../favorite-icon/src/index';
+import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconEmojiOptions } from './types';
 
-export default class FaviconEmoji {
+export class FaviconEmoji {
     public static set(symbol: string, rawOptions: FaviconEmojiOptions): void {
         const options = rawOptions ?? {};
         const size = options && options.size || Favicon.size;

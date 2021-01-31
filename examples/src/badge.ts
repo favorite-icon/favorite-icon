@@ -1,4 +1,4 @@
-import FaviconBadge from '../../packages/favorite-icon-badge/dist/index.esm';
+import { FaviconBadge } from '../../packages/favorite-icon-badge/dist/index.esm';
 import './common';
 
 const inputBackgroundColor: HTMLInputElement = document.querySelector('#backgroundColor');
@@ -15,8 +15,8 @@ let imageBadge = new FaviconBadge();
 function updateSettings() {
     const count = parseInt(inputCount.value, 10);
     const maxCount = parseInt(inputMaxCount.value, 10);
-    const positionX = inputPositionX.value as favicon.PositionX;
-    const positionY = inputPositionY.value as favicon.PositionY;
+    const positionX = inputPositionX.value;
+    const positionY = inputPositionY.value;
 
     favBadge = new FaviconBadge({
         backgroundColor: inputBackgroundColor.value,

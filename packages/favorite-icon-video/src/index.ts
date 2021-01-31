@@ -1,7 +1,7 @@
-import Favicon from '../../favorite-icon/src/index';
+import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconVideoOptions } from './types';
 
-export default class FaviconVideo {
+export class FaviconVideo {
     private options: FaviconVideoOptions;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;

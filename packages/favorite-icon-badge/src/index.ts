@@ -1,4 +1,4 @@
-import Favicon from '../../favorite-icon/src/index';
+import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconBadgeDefaultOptions, FaviconBadgeOptions } from './types';
 
 const defaultOptions: FaviconBadgeDefaultOptions = {
@@ -26,7 +26,7 @@ const defaultOptions: FaviconBadgeDefaultOptions = {
     textColor: '#fff',
 };
 
-export default class FaviconBadge {
+export class FaviconBadge {
     private options: FaviconBadgeDefaultOptions;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;

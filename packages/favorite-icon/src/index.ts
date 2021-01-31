@@ -2,7 +2,7 @@ const PNG_MIME_TYPE = 'image/png';
 
 import { hasSupport } from './support';
 
-export default class Favicon {
+export class Favicon {
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
     public static originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
     public static size = 32;

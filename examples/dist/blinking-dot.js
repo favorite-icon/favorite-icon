@@ -65,14 +65,10 @@
     };
     var FaviconDot = /** @class */ (function () {
         function FaviconDot(options) {
-            var _this = this;
             this.options = {};
             this.imageReady = false;
             this.isShow = false;
-            this.updateOptions(options);
-            Object.keys(defaultOptions).forEach(function (name) {
-                _this.setOptionDefault(name, defaultOptions[name]);
-            });
+            this.setOptions(options || {});
             this.canvas = document.createElement('canvas');
             this.canvas.width = this.options.size;
             this.canvas.height = this.options.size;
@@ -98,17 +94,19 @@
         FaviconDot.prototype.show = function (options) {
             this.isShow = true;
             if (options) {
-                this.updateOptions(options);
+                this.setOptions(options);
             }
             if (this.imageReady && Favicon.hasSupport) {
                 this.draw();
             }
         };
-        FaviconDot.prototype.updateOptions = function (options) {
-            var _this = this;
-            Object.keys(options || {}).forEach(function (key) {
-                _this.options[key] = options[key];
+        FaviconDot.prototype.setOptions = function (options) {
+            var result = {};
+            Object.keys(defaultOptions).forEach(function (key) {
+                var _a, _b;
+                result[key] = (_a = options[key]) !== null && _a !== void 0 ? _a : ((_b = result[key]) !== null && _b !== void 0 ? _b : defaultOptions[key]);
             });
+            this.options = result;
         };
         FaviconDot.prototype.draw = function () {
             var context = this.context;
@@ -187,7 +185,7 @@
         }
         TimeoutWorker.prototype.setTimeout = function (callback, delay) {
             if (!this.hasSupport) {
-                return setTimeout(callback, delay);
+                return window.setTimeout(callback, delay);
             }
             var timeoutId = this.getTimeoutId();
             var message = {
@@ -201,7 +199,7 @@
         };
         TimeoutWorker.prototype.setInterval = function (callback, delay) {
             if (!this.hasSupport) {
-                return setInterval(callback, delay);
+                return window.setInterval(callback, delay);
             }
             var timeoutId = this.getTimeoutId();
             var message = {
@@ -278,18 +276,18 @@
             document.querySelector('#preview')
         ]
     });
-    var koef = -1;
+    var coefficient = -1;
     var step = 0.2;
     var value = 1;
     var worker = new TimeoutWorker();
     worker.setInterval(function () {
-        value += koef * step;
+        value += coefficient * step;
         if (value >= 1) {
-            koef = -1;
+            coefficient = -1;
             value = 1;
         }
         if (value <= 0) {
-            koef = 1;
+            coefficient = 1;
             value = 0;
         }
         var options = { alpha: value };
