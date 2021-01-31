@@ -27,7 +27,7 @@ self.onmessage = (event: TimeoutWorkerEvent) => {
             {
                 const delay = event.data.delay;
 
-                idMap.set(timeoutId, setTimeout(() => {
+                idMap.set(timeoutId, self.setTimeout(() => {
                     const message: TimeoutWorkerMethod = {
                         method: 'setTimeout',
                         timeoutId,
@@ -43,7 +43,7 @@ self.onmessage = (event: TimeoutWorkerEvent) => {
             {
                 const delay = event.data.delay;
 
-                idMap.set(timeoutId, setInterval(() => {
+                idMap.set(timeoutId, self.setInterval(() => {
                     const message: TimeoutWorkerMethod = {
                         method: 'setInterval',
                         timeoutId,
