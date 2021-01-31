@@ -1,4 +1,4 @@
-var Favicon = (function () {
+var Favicon = (function (exports) {
     'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
@@ -50,6 +50,8 @@ var Favicon = (function () {
         return Favicon;
     }());
 
-    return Favicon;
+    exports.Favicon = Favicon;
 
-}());
+    return exports;
+
+}({}));

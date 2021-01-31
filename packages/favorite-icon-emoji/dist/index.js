@@ -1,4 +1,4 @@
-var FaviconEmoji = (function () {
+var FaviconEmoji = (function (exports) {
     'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
@@ -75,6 +75,8 @@ var FaviconEmoji = (function () {
         return FaviconEmoji;
     }());
 
-    return FaviconEmoji;
+    exports.FaviconEmoji = FaviconEmoji;
 
-}());
+    return exports;
+
+}({}));

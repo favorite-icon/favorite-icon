@@ -47,4 +47,4 @@ var Favicon = /** @class */ (function () {
     return Favicon;
 }());
 
-export default Favicon;
+export { Favicon };

@@ -1,4 +1,4 @@
-var FaviconBadge = (function () {
+var FaviconBadge = (function (exports) {
     'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
@@ -184,6 +184,8 @@ var FaviconBadge = (function () {
         return FaviconBadge;
     }());
 
-    return FaviconBadge;
+    exports.FaviconBadge = FaviconBadge;
 
-}());
+    return exports;
+
+}({}));

@@ -181,4 +181,4 @@ var FaviconBadge = /** @class */ (function () {
     return FaviconBadge;
 }());
 
-export default FaviconBadge;
+export { FaviconBadge };

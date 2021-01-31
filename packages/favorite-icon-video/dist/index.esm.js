@@ -117,4 +117,4 @@ var FaviconVideo = /** @class */ (function () {
     return FaviconVideo;
 }());
 
-export default FaviconVideo;
+export { FaviconVideo };

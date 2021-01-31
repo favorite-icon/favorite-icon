@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
 var firefox = typeof window.InstallTrigger !== 'undefined';
 var chrome = Boolean(window.chrome);
@@ -74,4 +76,4 @@ var FaviconEmoji = /** @class */ (function () {
     return FaviconEmoji;
 }());
 
-module.exports = FaviconEmoji;
+exports.FaviconEmoji = FaviconEmoji;

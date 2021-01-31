@@ -1,4 +1,4 @@
-var FaviconVideo = (function () {
+var FaviconVideo = (function (exports) {
     'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
@@ -120,6 +120,8 @@ var FaviconVideo = (function () {
         return FaviconVideo;
     }());
 
-    return FaviconVideo;
+    exports.FaviconVideo = FaviconVideo;
 
-}());
+    return exports;
+
+}({}));

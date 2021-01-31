@@ -129,4 +129,4 @@ var FaviconStatus = /** @class */ (function () {
     return FaviconStatus;
 }());
 
-export default FaviconStatus;
+export { FaviconStatus };

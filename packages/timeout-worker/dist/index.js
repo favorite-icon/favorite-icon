@@ -1,4 +1,4 @@
-var TimeoutWorker = (function () {
+var TimeoutWorker = (function (exports) {
     'use strict';
 
     var TimeoutWorker = /** @class */ (function () {
@@ -80,6 +80,8 @@ var TimeoutWorker = (function () {
         return TimeoutWorker;
     }());
 
-    return TimeoutWorker;
+    exports.TimeoutWorker = TimeoutWorker;
 
-}());
+    return exports;
+
+}({}));

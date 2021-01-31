@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var TimeoutWorker = /** @class */ (function () {
     function TimeoutWorker() {
         var _this = this;
@@ -79,4 +81,4 @@ var TimeoutWorker = /** @class */ (function () {
     return TimeoutWorker;
 }());
 
-module.exports = TimeoutWorker;
+exports.TimeoutWorker = TimeoutWorker;

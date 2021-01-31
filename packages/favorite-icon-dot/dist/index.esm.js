@@ -160,4 +160,4 @@ var FaviconDot = /** @class */ (function () {
     return FaviconDot;
 }());
 
-export default FaviconDot;
+export { FaviconDot };

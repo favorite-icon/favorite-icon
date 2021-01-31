@@ -77,4 +77,4 @@ var TimeoutWorker = /** @class */ (function () {
     return TimeoutWorker;
 }());
 
-export default TimeoutWorker;
+export { TimeoutWorker };

@@ -72,4 +72,4 @@ var FaviconEmoji = /** @class */ (function () {
     return FaviconEmoji;
 }());
 
-export default FaviconEmoji;
+export { FaviconEmoji };
