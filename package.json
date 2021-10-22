@@ -1,12 +1,13 @@
 {
   "name": "favorite-icon-main",
   "version": "1.0.0",
-  "description": "A small library for manipulating the favicon.",
+  "description": "Libraries for manipulating the favicon.",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
     "url": "https://github.com/hcodes/favorite-icon"
   },
+  "type": "module",
   "license": "MIT",
   "keywords": [
     "favorite icon",
@@ -14,7 +15,6 @@
     "favico"
   ],
   "devDependencies": {
-    "@rollup/plugin-json": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "eslint": "^8.0.1",
@@ -26,8 +26,8 @@
   "scripts": {
     "test": "eslint --ext .ts ./packages/**",
     "build": "npm run build:packages && npm run build:examples",
-    "build:packages": "node build/packages.js",
-    "build:examples": "node build/examples.js",
+    "build:packages": "node build/build-packages.js",
+    "build:examples": "node build/build-examples.js",
     "prepare": "npm run build"
   },
   "private": true
