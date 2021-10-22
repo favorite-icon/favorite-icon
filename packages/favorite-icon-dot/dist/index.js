@@ -165,6 +165,8 @@ var FaviconDot = (function (exports) {
 
     exports.FaviconDot = FaviconDot;
 
+    Object.defineProperty(exports, '__esModule', { value: true });
+
     return exports;
 
-}({}));
+})({});

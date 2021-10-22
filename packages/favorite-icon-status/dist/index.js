@@ -134,6 +134,8 @@ var FaviconStatus = (function (exports) {
 
     exports.FaviconStatus = FaviconStatus;
 
+    Object.defineProperty(exports, '__esModule', { value: true });
+
     return exports;
 
-}({}));
+})({});

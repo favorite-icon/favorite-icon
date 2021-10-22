@@ -77,6 +77,8 @@ var FaviconEmoji = (function (exports) {
 
     exports.FaviconEmoji = FaviconEmoji;
 
+    Object.defineProperty(exports, '__esModule', { value: true });
+
     return exports;
 
-}({}));
+})({});

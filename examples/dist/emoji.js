@@ -1,7 +1,7 @@
 (function (factory) {
     typeof define === 'function' && define.amd ? define(factory) :
     factory();
-}((function () { 'use strict';
+})((function () { 'use strict';
 
     var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
     var firefox = typeof window.InstallTrigger !== 'undefined';
@@ -139,4 +139,4 @@
         updateFavicon();
     };
 
-})));
+}));

@@ -52,6 +52,8 @@ var Favicon = (function (exports) {
 
     exports.Favicon = Favicon;
 
+    Object.defineProperty(exports, '__esModule', { value: true });
+
     return exports;
 
-}({}));
+})({});
