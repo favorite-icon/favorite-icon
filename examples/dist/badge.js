@@ -186,28 +186,28 @@
         return FaviconBadge;
     }());
 
-    var pages = [
-    	"index",
-    	"badge",
-    	"status",
-    	"emoji",
-    	"video",
-    	"dot",
-    	"blinking-dot"
+    const examples = [
+        "index",
+        "badge",
+        "status",
+        "emoji",
+        "video",
+        "dot",
+        "blinking-dot"
     ];
 
     window.addEventListener('load', function () {
-        var prev = pages[pages.length - 1];
-        var next = pages[1];
+        var prev = examples[examples.length - 1];
+        var next = examples[1];
         var num = -1;
-        pages.some(function (item, i) {
+        examples.some(function (item, i) {
             num++;
-            prev = pages[i - 1] || pages[pages.length - 1];
-            next = pages[i + 1] || pages[0];
+            prev = examples[i - 1] || examples[examples.length - 1];
+            next = examples[i + 1] || examples[0];
             return location.pathname.search('/' + item + '\\.') > -1;
         });
         var nav = document.createElement('div');
-        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./" + prev + ".html\" class=\"button prev\">\u25C0</a>        " + (num + 1) + "/" + pages.length + "\n        <a href=\"./" + next + ".html\" class=\"button next\">\u25B6</a>        </div>";
+        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./" + prev + ".html\" class=\"button prev\">\u25C0</a>        " + (num + 1) + "/" + examples.length + "\n        <a href=\"./" + next + ".html\" class=\"button next\">\u25B6</a>        </div>";
         document.body.appendChild(nav);
     }, false);
 

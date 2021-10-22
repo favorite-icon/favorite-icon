@@ -1,4 +1,4 @@
-import pages from '../../build/examples.json';
+import { examples as pages } from '../../build/examples.js';
 
 window.addEventListener('load', () => {
     let prev = pages[pages.length - 1];
