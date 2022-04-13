@@ -10,7 +10,7 @@ A small library for badge manipulating in favicon.
 # Installation
 `npm install favorite-icon-badge`
 
-# [Demo](https://hcodes.github.io/favorite-icon/examples/badge.html)
+# [Demo](https://favorite-icon.github.io/favorite-icon/examples/badge.html)
 
 # Using
 ```js
