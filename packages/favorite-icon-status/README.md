@@ -10,7 +10,7 @@ A small library for status manipulating in favicon.
 # Installation
 `npm install favorite-icon-status`
 
-# [Demo](https://hcodes.github.io/favorite-icon/examples/status.html)
+# [Demo](https://favorite-icon.github.io/favorite-icon/examples/status.html)
 
 # Using
 ```js
