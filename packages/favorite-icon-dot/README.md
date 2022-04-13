@@ -10,7 +10,7 @@ A small library for dot manipulating in favicon.
 # Installation
 `npm install favorite-icon-dot`
 
-# [Demo](https://hcodes.github.io/favorite-icon/examples/dot.html)
+# [Demo](https://favorite-icon.github.io/favorite-icon/examples/dot.html)
 
 # Using
 ```js
