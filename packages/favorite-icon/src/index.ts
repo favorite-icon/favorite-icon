@@ -7,7 +7,7 @@ export class Favicon {
     public static originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
     public static size = 32;
 
-    public static hasSupport = hasSupport;
+    public static hasSupport = hasSupport();
 
     public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void {
         if (!this.hasSupport) {
@@ -31,6 +31,10 @@ export class Favicon {
     }
 
     public static searchIcons(): HTMLLinkElement[] {
+        if (typeof window === 'undefined') {
+            return [];
+        }
+        
         const result: HTMLLinkElement[] = [];
 
         const links: NodeListOf<HTMLLinkElement> = document.querySelectorAll('head link');

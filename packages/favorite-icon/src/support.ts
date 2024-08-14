@@ -5,9 +5,15 @@ interface Window {
 
 declare const window: Window;
 
-const ua = navigator.userAgent;
-const opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
-const firefox = ua.toLowerCase().indexOf('firefox') > -1;
-const chrome = Boolean(window.chrome);
+export function hasSupport() {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+    
+    const ua = navigator.userAgent;
+    const opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    const firefox = ua.toLowerCase().indexOf('firefox') > -1;
+    const chrome = Boolean(window.chrome);
 
-export const hasSupport = chrome || firefox || opera;
+    return chrome || firefox || opera;
+}
