@@ -30,19 +30,21 @@ function updateFavicon(value?: string) {
 
 updateFavicon('❤️');
 
-
 symbol.oninput =
-button1.onclick =
-button2.onclick =
-button3.onclick =
-button4.onclick =
-button5.onclick =
-button6.onclick = function(e) {
-    const target = e.target as HTMLInputElement;
-    updateFavicon(target.value);
-};
+    button1.onclick =
+    button2.onclick =
+    button3.onclick =
+    button4.onclick =
+    button5.onclick =
+    button6.onclick = function(e) {
+        const target = e.target as HTMLInputElement;
+        updateFavicon(target.value);
+    };
 
 color.oninput = function() {
     updateFavicon();
 };
 
+window.addEventListener('load', () => {
+    updateFavicon('❤️');
+});

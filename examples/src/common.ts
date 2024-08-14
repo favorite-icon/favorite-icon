@@ -1,4 +1,4 @@
-import { examples as pages } from '../../build/examples.js';
+import { examples as pages } from '../../build/examples.mjs';
 
 window.addEventListener('load', () => {
     let prev = pages[pages.length - 1];
