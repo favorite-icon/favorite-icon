@@ -2,50 +2,41 @@ import { Favicon } from '../../favorite-icon/src/index';
 import { FaviconVideoOptions } from './types';
 
 export class FaviconVideo {
-    private options: FaviconVideoOptions;
+    private options: Required<FaviconVideoOptions>;
     private canvas: HTMLCanvasElement;
-    private context: CanvasRenderingContext2D;
-    private timer: number;
+    private context: CanvasRenderingContext2D | null;
 
     constructor(options: FaviconVideoOptions) {
-        const size = options.size ?? Favicon.size;
-        const video = options.video;
+        const size = options.size || Favicon.size;
         this.options = {
             links: options.links,
             size,
-            video,
+            video: options.video,
         };
 
         this.canvas = document.createElement('canvas');
+
         this.canvas.width = size;
         this.canvas.height = size;
 
         this.context = this.canvas.getContext('2d');
-
-        video.addEventListener('play', this.onplay, false);
-        video.addEventListener('pause', this.onpause, false);
-        video.addEventListener('ended', this.onpause, false);
-        video.addEventListener('abort', this.onpause, false);
     }
 
-    private onplay = () => {
-        this.play();
+    public start() {
+        this.unbindEvents();
+        this.bindEvents();
     }
 
-    private onpause = () => {
-        this.pause();
+    public stop() {
+        this.unbindEvents();
     }
 
-    public play(): void {
-        this.options.video.muted = true;
-        this.options.video.play();
-        this.timer = window.setInterval(() => this.draw(), this.options.timeout || 25);
+    private bindEvents() {
+        this.options.video.addEventListener('timeupdate', this.handleTimeupdate, false);
     }
 
-    public pause(): void {
-        this.options.video.pause();
-        this.reset();
-        window.clearInterval(this.timer);
+    private unbindEvents() {
+        this.options.video.removeEventListener('timeupdate', this.handleTimeupdate, false);
     }
 
     public reset(): void {
@@ -53,28 +44,17 @@ export class FaviconVideo {
     }
 
     public destroy(): void {
-        this.pause();
-
         const video = this.options.video;
-        video.removeEventListener('play', this.onplay, false);
-        video.removeEventListener('pause', this.onpause, false);
-        video.removeEventListener('ended', this.onpause, false);
-        video.removeEventListener('abort', this.onpause, false);
-
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
+        video.removeEventListener('timeupdate', this.handleTimeupdate, false);
     }
 
-    private draw(): void {
-        const video = this.options.video;
-        if (video.paused || video.ended) {
-            this.pause();
+    private handleTimeupdate = () => {
+        if (!this.context) {
             return;
         }
 
         try {
-            const size = this.options.size;
+            const { size, video } = this.options;
             this.context.clearRect(0, 0, size, size);
             this.context.drawImage(video, 0, 0, size, size);
         } catch (e) {

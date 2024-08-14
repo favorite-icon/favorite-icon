@@ -14,20 +14,20 @@ A small library for video manipulating in favicon.
 
 # API
 
-## `.play()`
+## `.start()`
 Starts tracking the video and changes the favicon.
 
 ```js
 import { FaviconVideo } from 'favorite-icon-video';
 
-const favVideo = new FaviconVideo({
-    video: document.querySelector('video')
-});
+const video = document.querySelector('video');
+const favVideo = new FaviconVideo({ video });
 
 favVideo.start();
+video.play();
 ```
 
-## `.pause()`
+## `.stop()`
 Stop tracking the video and changes the favicon.
 
 ```js
@@ -39,7 +39,7 @@ const favVideo = new FaviconVideo({
 
 // ...
 
-favVideo.pause();
+favVideo.stop();
 ```
 
 ## `.reset()`
