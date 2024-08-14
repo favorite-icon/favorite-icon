@@ -18,7 +18,7 @@ export class TimeoutWorker {
             const method = event?.data?.method;
             if (method === 'setTimeout' || method === 'setInterval') {
                 const callback = this.idMap.get(event.data.timeoutId);
-                callback && callback();
+                callback?.();
             }
         };
     }
