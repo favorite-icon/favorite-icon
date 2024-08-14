@@ -1,9 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
-var firefox = typeof window.InstallTrigger !== 'undefined';
+var ua = navigator.userAgent;
+var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+var firefox = ua.toLowerCase().indexOf('firefox') > -1;
 var chrome = Boolean(window.chrome);
 var hasSupport = chrome || firefox || opera;
 

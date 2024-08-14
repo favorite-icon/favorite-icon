@@ -1,5 +1,6 @@
-var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
-var firefox = typeof window.InstallTrigger !== 'undefined';
+var ua = navigator.userAgent;
+var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+var firefox = ua.toLowerCase().indexOf('firefox') > -1;
 var chrome = Boolean(window.chrome);
 var hasSupport = chrome || firefox || opera;
 
@@ -57,7 +58,7 @@ var defaultOptions = {
             return '';
         }
         else if (maxCount && count > maxCount) {
-            return maxCount + "+";
+            return "".concat(maxCount, "+");
         }
         return String(count);
     },
@@ -74,7 +75,7 @@ var defaultOptions = {
 var FaviconBadge = /** @class */ (function () {
     function FaviconBadge(options) {
         this.imageReady = false;
-        this.setDefaultOptions(options || {});
+        this.options = this.prepareOptions(options);
         this.count = this.options.count;
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.options.size;
@@ -96,9 +97,7 @@ var FaviconBadge = /** @class */ (function () {
         Favicon.reset();
     };
     FaviconBadge.prototype.destroy = function () {
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
+        this.context = null;
     };
     FaviconBadge.prototype.loadImage = function () {
         var _this = this;
@@ -110,16 +109,19 @@ var FaviconBadge = /** @class */ (function () {
         };
         this.image.src = this.options.faviconSrc;
     };
-    FaviconBadge.prototype.setDefaultOptions = function (options) {
+    FaviconBadge.prototype.prepareOptions = function (options) {
+        if (options === void 0) { options = {}; }
         var result = {};
         Object.keys(defaultOptions).forEach(function (name) {
             var _a;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             result[name] = (_a = options[name]) !== null && _a !== void 0 ? _a : defaultOptions[name];
         });
-        this.options = result;
+        return result;
     };
     FaviconBadge.prototype.draw = function (count, formattedCount) {
-        if (!this.imageReady || count === this.lastCount) {
+        if (!this.imageReady || count === this.lastCount || !this.context) {
             return;
         }
         this.lastCount = count;
@@ -132,14 +134,17 @@ var FaviconBadge = /** @class */ (function () {
         Favicon.set(this.canvas, this.options.links);
     };
     FaviconBadge.prototype.drawNumber = function (formattedCount) {
+        if (!this.context) {
+            return;
+        }
         var paddingX = 5;
         var paddingY = 1;
         var size = this.options.size;
         var height = size * 0.55;
-        var context = this.context;
         var positionX = this.options.positionX;
         var positionY = this.options.positionY;
-        context.font = this.options.fontStyle + " " + (height - 2 * paddingY) + "px " + this.options.fontFamily;
+        var context = this.context;
+        context.font = "".concat(this.options.fontStyle, " ").concat(height - 2 * paddingY, "px ").concat(this.options.fontFamily);
         context.textAlign = 'left';
         context.textBaseline = 'top';
         context.beginPath();

@@ -3,8 +3,9 @@
     factory();
 })((function () { 'use strict';
 
-    var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
-    var firefox = typeof window.InstallTrigger !== 'undefined';
+    var ua = navigator.userAgent;
+    var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    var firefox = ua.toLowerCase().indexOf('firefox') > -1;
     var chrome = Boolean(window.chrome);
     var hasSupport = chrome || firefox || opera;
 
@@ -55,69 +56,50 @@
     var FaviconVideo = /** @class */ (function () {
         function FaviconVideo(options) {
             var _this = this;
-            var _a;
-            this.onplay = function () {
-                _this.play();
+            this.handleTimeupdate = function () {
+                if (!_this.context) {
+                    return;
+                }
+                try {
+                    var _a = _this.options, size = _a.size, video = _a.video;
+                    _this.context.clearRect(0, 0, size, size);
+                    _this.context.drawImage(video, 0, 0, size, size);
+                }
+                catch (e) {
+                    console.error(e);
+                }
+                Favicon.set(_this.canvas, _this.options.links);
             };
-            this.onpause = function () {
-                _this.pause();
-            };
-            var size = (_a = options.size) !== null && _a !== void 0 ? _a : Favicon.size;
-            var video = options.video;
+            var size = options.size || Favicon.size;
             this.options = {
                 links: options.links,
                 size: size,
-                video: video,
+                video: options.video,
             };
             this.canvas = document.createElement('canvas');
             this.canvas.width = size;
             this.canvas.height = size;
             this.context = this.canvas.getContext('2d');
-            video.addEventListener('play', this.onplay, false);
-            video.addEventListener('pause', this.onpause, false);
-            video.addEventListener('ended', this.onpause, false);
-            video.addEventListener('abort', this.onpause, false);
         }
-        FaviconVideo.prototype.play = function () {
-            var _this = this;
-            this.options.video.muted = true;
-            this.options.video.play();
-            this.timer = window.setInterval(function () { return _this.draw(); }, this.options.timeout || 25);
+        FaviconVideo.prototype.start = function () {
+            this.unbindEvents();
+            this.bindEvents();
         };
-        FaviconVideo.prototype.pause = function () {
-            this.options.video.pause();
-            this.reset();
-            window.clearInterval(this.timer);
+        FaviconVideo.prototype.stop = function () {
+            this.unbindEvents();
+        };
+        FaviconVideo.prototype.bindEvents = function () {
+            this.options.video.addEventListener('timeupdate', this.handleTimeupdate, false);
+        };
+        FaviconVideo.prototype.unbindEvents = function () {
+            this.options.video.removeEventListener('timeupdate', this.handleTimeupdate, false);
         };
         FaviconVideo.prototype.reset = function () {
             Favicon.reset();
         };
         FaviconVideo.prototype.destroy = function () {
-            this.pause();
             var video = this.options.video;
-            video.removeEventListener('play', this.onplay, false);
-            video.removeEventListener('pause', this.onpause, false);
-            video.removeEventListener('ended', this.onpause, false);
-            video.removeEventListener('abort', this.onpause, false);
-            delete this.canvas;
-            delete this.context;
-            delete this.options;
-        };
-        FaviconVideo.prototype.draw = function () {
-            var video = this.options.video;
-            if (video.paused || video.ended) {
-                this.pause();
-                return;
-            }
-            try {
-                var size = this.options.size;
-                this.context.clearRect(0, 0, size, size);
-                this.context.drawImage(video, 0, 0, size, size);
-            }
-            catch (e) {
-                console.error(e);
-            }
-            Favicon.set(this.canvas, this.options.links);
+            video.removeEventListener('timeupdate', this.handleTimeupdate, false);
         };
         return FaviconVideo;
     }());
@@ -143,19 +125,23 @@
             return location.pathname.search('/' + item + '\\.') > -1;
         });
         var nav = document.createElement('div');
-        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./" + prev + ".html\" class=\"button prev\">\u25C0</a>        " + (num + 1) + "/" + examples.length + "\n        <a href=\"./" + next + ".html\" class=\"button next\">\u25B6</a>        </div>";
+        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./".concat(prev, ".html\" class=\"button prev\">\u25C0</a>        ").concat(num + 1, "/").concat(examples.length, "\n        <a href=\"./").concat(next, ".html\" class=\"button next\">\u25B6</a>        </div>");
         document.body.appendChild(nav);
     }, false);
 
-    var video = document.querySelector('video');
-    var favVideo = new FaviconVideo({ video: video });
-    new FaviconVideo({
-        links: [
-            document.querySelector('#preview')
-        ],
-        size: 64,
-        video: video,
+    window.addEventListener('load', function () {
+        var video = document.querySelector('video');
+        var favVideo = new FaviconVideo({ video: video });
+        var previewVideo = new FaviconVideo({
+            links: [
+                document.querySelector('#preview')
+            ],
+            size: 64,
+            video: video,
+        });
+        favVideo.start();
+        previewVideo.start();
+        video.play();
     });
-    favVideo.play();
 
 }));

@@ -15,7 +15,7 @@ var TimeoutWorker = (function (exports) {
                 var method = (_a = event === null || event === void 0 ? void 0 : event.data) === null || _a === void 0 ? void 0 : _a.method;
                 if (method === 'setTimeout' || method === 'setInterval') {
                     var callback = _this.idMap.get(event.data.timeoutId);
-                    callback && callback();
+                    callback === null || callback === void 0 ? void 0 : callback();
                 }
             };
         }
@@ -81,8 +81,6 @@ var TimeoutWorker = (function (exports) {
     }());
 
     exports.TimeoutWorker = TimeoutWorker;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
 
     return exports;
 

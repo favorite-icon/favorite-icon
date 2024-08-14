@@ -12,7 +12,7 @@ var TimeoutWorker = /** @class */ (function () {
             var method = (_a = event === null || event === void 0 ? void 0 : event.data) === null || _a === void 0 ? void 0 : _a.method;
             if (method === 'setTimeout' || method === 'setInterval') {
                 var callback = _this.idMap.get(event.data.timeoutId);
-                callback && callback();
+                callback === null || callback === void 0 ? void 0 : callback();
             }
         };
     }

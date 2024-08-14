@@ -3,8 +3,9 @@
     factory();
 })((function () { 'use strict';
 
-    var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
-    var firefox = typeof window.InstallTrigger !== 'undefined';
+    var ua = navigator.userAgent;
+    var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    var firefox = ua.toLowerCase().indexOf('firefox') > -1;
     var chrome = Boolean(window.chrome);
     var hasSupport = chrome || firefox || opera;
 
@@ -56,7 +57,7 @@
         alpha: 1,
         backgroundColor: '#ff0000',
         faviconSrc: Favicon.originalSrc,
-        links: Favicon.icons,
+        links: undefined,
         positionX: 'right',
         positionY: 'top',
         radius: 5,
@@ -65,10 +66,9 @@
     };
     var FaviconDot = /** @class */ (function () {
         function FaviconDot(options) {
-            this.options = {};
             this.imageReady = false;
             this.isShow = false;
-            this.setOptions(options || {});
+            this.options = this.prepareOptions(options);
             this.canvas = document.createElement('canvas');
             this.canvas.width = this.options.size;
             this.canvas.height = this.options.size;
@@ -87,32 +87,46 @@
             };
             this.image.src = this.options.faviconSrc;
         };
-        FaviconDot.prototype.setOptionDefault = function (name, defaultValue) {
-            var _a;
-            this.options[name] = (_a = this.options[name]) !== null && _a !== void 0 ? _a : defaultValue;
-        };
         FaviconDot.prototype.show = function (options) {
             this.isShow = true;
             if (options) {
-                this.setOptions(options);
+                this.options = this.updateOptions(options);
             }
             if (this.imageReady && Favicon.hasSupport) {
                 this.draw();
             }
         };
-        FaviconDot.prototype.setOptions = function (options) {
+        FaviconDot.prototype.prepareOptions = function (options) {
+            if (options === void 0) { options = {}; }
+            var result = {};
+            Object.keys(defaultOptions).forEach(function (key) {
+                var _a;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                result[key] = (_a = options[key]) !== null && _a !== void 0 ? _a : defaultOptions[key];
+            });
+            return result;
+        };
+        FaviconDot.prototype.updateOptions = function (options) {
+            var _this = this;
+            if (options === void 0) { options = {}; }
             var result = {};
             Object.keys(defaultOptions).forEach(function (key) {
                 var _a, _b;
-                result[key] = (_a = options[key]) !== null && _a !== void 0 ? _a : ((_b = result[key]) !== null && _b !== void 0 ? _b : defaultOptions[key]);
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                result[key] = (_a = options[key]) !== null && _a !== void 0 ? _a : ((_b = _this.options[key]) !== null && _b !== void 0 ? _b : defaultOptions[key]);
             });
-            this.options = result;
+            return result;
         };
         FaviconDot.prototype.draw = function () {
             var context = this.context;
+            if (!context || !this.canvas) {
+                return;
+            }
             var _a = this.options, alpha = _a.alpha, size = _a.size, positionX = _a.positionX, positionY = _a.positionY;
-            this.context.clearRect(0, 0, size, size);
-            this.context.drawImage(this.image, 0, 0, size, size);
+            context.clearRect(0, 0, size, size);
+            context.drawImage(this.image, 0, 0, size, size);
             context.save();
             context.globalAlpha = alpha;
             context.fillStyle = this.options.backgroundColor;
@@ -158,9 +172,8 @@
             Favicon.set(this.options.faviconSrc, this.options.links);
         };
         FaviconDot.prototype.destroy = function () {
-            delete this.canvas;
-            delete this.context;
-            delete this.options;
+            this.canvas = null;
+            this.context = null;
         };
         return FaviconDot;
     }());
@@ -179,7 +192,7 @@
                 var method = (_a = event === null || event === void 0 ? void 0 : event.data) === null || _a === void 0 ? void 0 : _a.method;
                 if (method === 'setTimeout' || method === 'setInterval') {
                     var callback = _this.idMap.get(event.data.timeoutId);
-                    callback && callback();
+                    callback === null || callback === void 0 ? void 0 : callback();
                 }
             };
         }
@@ -265,7 +278,7 @@
             return location.pathname.search('/' + item + '\\.') > -1;
         });
         var nav = document.createElement('div');
-        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./" + prev + ".html\" class=\"button prev\">\u25C0</a>        " + (num + 1) + "/" + examples.length + "\n        <a href=\"./" + next + ".html\" class=\"button next\">\u25B6</a>        </div>";
+        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./".concat(prev, ".html\" class=\"button prev\">\u25C0</a>        ").concat(num + 1, "/").concat(examples.length, "\n        <a href=\"./").concat(next, ".html\" class=\"button next\">\u25B6</a>        </div>");
         document.body.appendChild(nav);
     }, false);
 

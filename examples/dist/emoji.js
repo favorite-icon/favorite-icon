@@ -3,8 +3,9 @@
     factory();
 })((function () { 'use strict';
 
-    var opera = Boolean(window.opera) || navigator.userAgent.indexOf('Opera') > -1;
-    var firefox = typeof window.InstallTrigger !== 'undefined';
+    var ua = navigator.userAgent;
+    var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    var firefox = ua.toLowerCase().indexOf('firefox') > -1;
     var chrome = Boolean(window.chrome);
     var hasSupport = chrome || firefox || opera;
 
@@ -64,7 +65,7 @@
             var context = canvas.getContext('2d');
             var fontSize = size;
             context.fillStyle = options.color || '#000';
-            context.font = fontSize + "px/0.5 Arial, sans-serif";
+            context.font = "".concat(fontSize, "px/0.5 Arial, sans-serif");
             context.textAlign = 'center';
             context.textBaseline = 'top';
             context.clearRect(0, 0, size, size);
@@ -98,7 +99,7 @@
             return location.pathname.search('/' + item + '\\.') > -1;
         });
         var nav = document.createElement('div');
-        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./" + prev + ".html\" class=\"button prev\">\u25C0</a>        " + (num + 1) + "/" + examples.length + "\n        <a href=\"./" + next + ".html\" class=\"button next\">\u25B6</a>        </div>";
+        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./".concat(prev, ".html\" class=\"button prev\">\u25C0</a>        ").concat(num + 1, "/").concat(examples.length, "\n        <a href=\"./").concat(next, ".html\" class=\"button next\">\u25B6</a>        </div>");
         document.body.appendChild(nav);
     }, false);
 
@@ -138,5 +139,8 @@
     color.oninput = function () {
         updateFavicon();
     };
+    window.addEventListener('load', function () {
+        updateFavicon('❤️');
+    });
 
 }));
