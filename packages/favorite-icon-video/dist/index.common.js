@@ -1,10 +1,15 @@
 'use strict';
 
-var ua = navigator.userAgent;
-var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
-var firefox = ua.toLowerCase().indexOf('firefox') > -1;
-var chrome = Boolean(window.chrome);
-var hasSupport = chrome || firefox || opera;
+function hasSupport() {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+    var ua = navigator.userAgent;
+    var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    var firefox = ua.toLowerCase().indexOf('firefox') > -1;
+    var chrome = Boolean(window.chrome);
+    return chrome || firefox || opera;
+}
 
 var PNG_MIME_TYPE = 'image/png';
 var Favicon = /** @class */ (function () {
@@ -25,6 +30,9 @@ var Favicon = /** @class */ (function () {
         }
     };
     Favicon.searchIcons = function () {
+        if (typeof window === 'undefined') {
+            return [];
+        }
         var result = [];
         var links = document.querySelectorAll('head link');
         for (var i = 0; i < links.length; i++) {
@@ -46,57 +54,61 @@ var Favicon = /** @class */ (function () {
     Favicon.icons = Favicon.searchIcons();
     Favicon.originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
     Favicon.size = 32;
-    Favicon.hasSupport = hasSupport;
+    Favicon.hasSupport = hasSupport();
     return Favicon;
 }());
 
 var FaviconVideo = /** @class */ (function () {
     function FaviconVideo(options) {
+        if (options === void 0) { options = {}; }
         var _this = this;
         this.handleTimeupdate = function () {
-            if (!_this.context) {
+            if (!_this.context || !_this.video || !_this.canvas) {
                 return;
             }
             try {
-                var _a = _this.options, size = _a.size, video = _a.video;
+                var size = _this.options.size;
                 _this.context.clearRect(0, 0, size, size);
-                _this.context.drawImage(video, 0, 0, size, size);
+                _this.context.drawImage(_this.video, 0, 0, size, size);
             }
             catch (e) {
                 console.error(e);
             }
             Favicon.set(_this.canvas, _this.options.links);
         };
-        var size = options.size || Favicon.size;
         this.options = {
-            links: options.links,
-            size: size,
-            video: options.video,
+            links: options.links || undefined,
+            size: options.size || Favicon.size
         };
-        this.canvas = document.createElement('canvas');
-        this.canvas.width = size;
-        this.canvas.height = size;
-        this.context = this.canvas.getContext('2d');
     }
-    FaviconVideo.prototype.start = function () {
+    FaviconVideo.prototype.start = function (video) {
         this.unbindEvents();
+        this.video = video;
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = this.options.size;
+        this.canvas.height = this.options.size;
+        this.context = this.canvas.getContext('2d');
         this.bindEvents();
     };
     FaviconVideo.prototype.stop = function () {
         this.unbindEvents();
     };
     FaviconVideo.prototype.bindEvents = function () {
-        this.options.video.addEventListener('timeupdate', this.handleTimeupdate, false);
+        var _a;
+        (_a = this.video) === null || _a === void 0 ? void 0 : _a.addEventListener('timeupdate', this.handleTimeupdate, false);
     };
     FaviconVideo.prototype.unbindEvents = function () {
-        this.options.video.removeEventListener('timeupdate', this.handleTimeupdate, false);
+        var _a;
+        (_a = this.video) === null || _a === void 0 ? void 0 : _a.removeEventListener('timeupdate', this.handleTimeupdate, false);
     };
     FaviconVideo.prototype.reset = function () {
         Favicon.reset();
     };
     FaviconVideo.prototype.destroy = function () {
-        var video = this.options.video;
-        video.removeEventListener('timeupdate', this.handleTimeupdate, false);
+        this.unbindEvents();
+        this.video = undefined;
+        this.canvas = undefined;
+        this.context = undefined;
     };
     return FaviconVideo;
 }());

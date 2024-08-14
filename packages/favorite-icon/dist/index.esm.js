@@ -1,8 +1,13 @@
-var ua = navigator.userAgent;
-var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
-var firefox = ua.toLowerCase().indexOf('firefox') > -1;
-var chrome = Boolean(window.chrome);
-var hasSupport = chrome || firefox || opera;
+function hasSupport() {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+    var ua = navigator.userAgent;
+    var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
+    var firefox = ua.toLowerCase().indexOf('firefox') > -1;
+    var chrome = Boolean(window.chrome);
+    return chrome || firefox || opera;
+}
 
 var PNG_MIME_TYPE = 'image/png';
 var Favicon = /** @class */ (function () {
@@ -23,6 +28,9 @@ var Favicon = /** @class */ (function () {
         }
     };
     Favicon.searchIcons = function () {
+        if (typeof window === 'undefined') {
+            return [];
+        }
         var result = [];
         var links = document.querySelectorAll('head link');
         for (var i = 0; i < links.length; i++) {
@@ -44,7 +52,7 @@ var Favicon = /** @class */ (function () {
     Favicon.icons = Favicon.searchIcons();
     Favicon.originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
     Favicon.size = 32;
-    Favicon.hasSupport = hasSupport;
+    Favicon.hasSupport = hasSupport();
     return Favicon;
 }());
 
