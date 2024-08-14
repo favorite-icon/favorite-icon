@@ -5,7 +5,7 @@ const defaultOptions: FaviconDotDefaultOptions = {
     alpha: 1,
     backgroundColor: '#ff0000',
     faviconSrc: Favicon.originalSrc,
-    links: Favicon.icons,
+    links: undefined,
     positionX: 'right',
     positionY: 'top',
     radius: 5,
@@ -14,15 +14,15 @@ const defaultOptions: FaviconDotDefaultOptions = {
 };
 
 export class FaviconDot {
-    private options: FaviconDotOptions = {};
-    private canvas: HTMLCanvasElement;
-    private context: CanvasRenderingContext2D;
+    private options: Required<FaviconDotOptions>;
+    private canvas: HTMLCanvasElement | null;
+    private context: CanvasRenderingContext2D | null;
     private image: HTMLImageElement;
     private imageReady = false;
     private isShow = false;
 
     constructor(options?: FaviconDotOptions) {
-        this.setOptions(options || {});
+        this.options = this.prepareOptions(options);
 
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.options.size;
@@ -45,15 +45,11 @@ export class FaviconDot {
         this.image.src = this.options.faviconSrc;
     }
 
-    private setOptionDefault<T extends keyof FaviconDotDefaultOptions>(name: T, defaultValue: FaviconDotDefaultOptions[T]): void {
-        this.options[name] = this.options[name] ?? defaultValue;
-    }
-
     public show(options?: FaviconDotOptions): void {
         this.isShow = true;
 
         if (options) {
-            this.setOptions(options);
+            this.options = this.updateOptions(options);
         }
 
         if (this.imageReady && Favicon.hasSupport) {
@@ -61,21 +57,39 @@ export class FaviconDot {
         }
     }
 
-    private setOptions(options?: FaviconDotOptions): void {
-        const result = {};
+    private prepareOptions(options: FaviconDotOptions = {}): Required<FaviconDotOptions> {
+        const result = {} as Required<FaviconDotOptions>;
 
         Object.keys(defaultOptions).forEach(key => {
-            result[key] = options[key] ?? (result[key] ?? defaultOptions[key]);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            result[key] = options[key] ?? defaultOptions[key];
         });
 
-        this.options = result as FaviconDotDefaultOptions;
+        return result;
     }
+
+    private updateOptions(options: FaviconDotOptions = {}): Required<FaviconDotOptions> {
+        const result = {} as Required<FaviconDotOptions>;
+
+        Object.keys(defaultOptions).forEach(key => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            result[key] = options[key] ?? (this.options[key] ?? defaultOptions[key]);
+        });
+
+        return result;
+    }    
 
     private draw(): void {
         const context = this.context;
+        if (!context || !this.canvas) {
+            return;
+        }
+
         const { alpha, size, positionX, positionY } = this.options;
-        this.context.clearRect(0, 0, size, size);
-        this.context.drawImage(this.image, 0, 0, size, size);
+        context.clearRect(0, 0, size, size);
+        context.drawImage(this.image, 0, 0, size, size);
 
         context.save();
         context.globalAlpha = alpha;
@@ -126,8 +140,7 @@ export class FaviconDot {
     }
 
     public destroy(): void {
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
+        this.canvas = null;
+        this.context = null;
     }
 }

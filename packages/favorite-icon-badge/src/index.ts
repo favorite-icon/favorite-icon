@@ -27,16 +27,16 @@ const defaultOptions: FaviconBadgeDefaultOptions = {
 };
 
 export class FaviconBadge {
-    private options: FaviconBadgeDefaultOptions;
+    private options: Required<FaviconBadgeOptions>;
     private canvas: HTMLCanvasElement;
-    private context: CanvasRenderingContext2D;
+    private context: CanvasRenderingContext2D | null;
     private image: HTMLImageElement;
     private imageReady = false;
     private count: number;
     private lastCount: number;
 
     constructor(options?: FaviconBadgeOptions) {
-        this.setDefaultOptions(options || {});
+        this.options = this.prepareOptions(options);
 
         this.count = this.options.count;
 
@@ -64,9 +64,7 @@ export class FaviconBadge {
     }
 
     public destroy(): void {
-        delete this.canvas;
-        delete this.context;
-        delete this.options;
+        this.context = null;
     }
 
     private loadImage(): void {
@@ -80,23 +78,25 @@ export class FaviconBadge {
         this.image.src = this.options.faviconSrc;
     }
 
-    private setDefaultOptions(options: FaviconBadgeOptions): void {
-        const result = {};
+    private prepareOptions(options: FaviconBadgeOptions = {}): Required<FaviconBadgeOptions> {
+        const result = {} as Required<FaviconBadgeOptions>;
         Object.keys(defaultOptions).forEach(name => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             result[name] = options[name] ?? defaultOptions[name];
         });
 
-        this.options = result as FaviconBadgeDefaultOptions;
+        return result;
     }
 
     private draw(count: number, formattedCount: string): void {
-        if (!this.imageReady || count === this.lastCount) {
+        if (!this.imageReady || count === this.lastCount || !this.context) {
             return;
         }
 
         this.lastCount = count;
 
-        const size = this.options.size;
+        const { size } = this.options;
         this.context.clearRect(0, 0, size, size);
         this.context.drawImage(this.image, 0, 0, size, size);
 
@@ -108,14 +108,18 @@ export class FaviconBadge {
     }
 
     private drawNumber(formattedCount: string): void {
+        if (!this.context) {
+            return;
+        }
+
         const paddingX = 5;
         const paddingY = 1;
         const size = this.options.size;
         const height = size * 0.55;
 
-        const context = this.context;
         const positionX = this.options.positionX;
         const positionY = this.options.positionY;
+        const context = this.context;
         context.font = `${this.options.fontStyle} ${height - 2 * paddingY}px ${this.options.fontFamily}`;
         context.textAlign = 'left';
         context.textBaseline = 'top';
@@ -152,6 +156,7 @@ export class FaviconBadge {
             context.fillRect(x, y, width - 1, height - 1)
             context.strokeRect(x, y, width - 1, height - 1);
         }
+        
         context.fillStyle = this.options.textColor;
         context.fillText(formattedCount, x + paddingX, y + paddingY + 1);
 

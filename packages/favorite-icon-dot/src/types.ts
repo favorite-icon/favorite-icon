@@ -17,7 +17,7 @@ export interface FaviconDotDefaultOptions {
     alpha: number;
     backgroundColor: string;
     faviconSrc: string;
-    links: Array<HTMLLinkElement | HTMLImageElement>;
+    links: Array<HTMLLinkElement | HTMLImageElement> | undefined;
     positionX: FaviconDotPositionX;
     positionY: FaviconDotPositionY;
     radius: number;
