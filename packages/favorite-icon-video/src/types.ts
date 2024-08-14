@@ -1,5 +1,4 @@
 export interface FaviconVideoOptions {
     size?: number;
-    links: Array<HTMLLinkElement | HTMLImageElement> | undefined;
-    video: HTMLVideoElement;
+    links?: Array<HTMLLinkElement | HTMLImageElement>;
 }

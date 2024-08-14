@@ -1,20 +1,18 @@
 declare namespace favicon {
 	interface Video {
 		destroy(): void;
-		pause(): void;
 		reset(): void;
-		start(): void;
+		start(video: HTMLVideoElement): void;
+		stop(): void;
 	}
 
 	interface VideoStatic {
-		new (options: VideoOptions): Video;
+		new (options?: VideoOptions): Video;
 	}
 
 	interface VideoOptions {
-		links?: Array<HTMLLinkElement | HTMLImageElement>;
+		links?: Array<HTMLLinkElement | HTMLImageElement> | undefined;
 		size?: number;
-		timeout?: number;
-		video: HTMLVideoElement;
 	}
 }
 
