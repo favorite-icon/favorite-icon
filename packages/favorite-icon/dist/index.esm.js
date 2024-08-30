@@ -1,4 +1,4 @@
-function hasSupport() {
+function hasSupport$1() {
     if (typeof window === 'undefined') {
         return false;
     }
@@ -10,6 +10,7 @@ function hasSupport() {
 }
 
 var PNG_MIME_TYPE = 'image/png';
+var hasSupport = hasSupport$1();
 var Favicon = /** @class */ (function () {
     function Favicon() {
     }
@@ -49,10 +50,11 @@ var Favicon = /** @class */ (function () {
         });
         return result;
     };
+    var _a;
     Favicon.icons = Favicon.searchIcons();
-    Favicon.originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
+    Favicon.originalSrc = hasSupport ? (_a = Favicon.icons[Favicon.icons.length - 1]) === null || _a === void 0 ? void 0 : _a.href : '';
     Favicon.size = 32;
-    Favicon.hasSupport = hasSupport();
+    Favicon.hasSupport = hasSupport;
     return Favicon;
 }());
 

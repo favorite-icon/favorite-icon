@@ -1,13 +1,15 @@
 const PNG_MIME_TYPE = 'image/png';
 
-import { hasSupport } from './support';
+import { hasSupport as hasSupportOriginal } from './support';
+
+const hasSupport = hasSupportOriginal();
 
 export class Favicon {
     public static icons: HTMLLinkElement[] = Favicon.searchIcons();
-    public static originalSrc = Favicon.icons[Favicon.icons.length - 1].href;
+    public static originalSrc = hasSupport ? Favicon.icons[Favicon.icons.length - 1]?.href : '';
     public static size = 32;
 
-    public static hasSupport = hasSupport();
+    public static hasSupport = hasSupport;
 
     public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void {
         if (!this.hasSupport) {
