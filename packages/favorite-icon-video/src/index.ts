@@ -10,16 +10,20 @@ export class FaviconVideo {
     private options: Options;
     private canvas?: HTMLCanvasElement;
     private context?: CanvasRenderingContext2D | null;
-    private video: HTMLVideoElement | undefined;
+    private video?: HTMLVideoElement;
 
     constructor(options: FaviconVideoOptions = {}) {
         this.options = {
             links: options.links || undefined,
-            size: options.size,
+            size: options.size || Favicon.size,
         };
     }
 
     public start(video: HTMLVideoElement) {
+        if (!Favicon.hasSupport) {
+            return;
+        }
+
         this.unbindEvents();
 
         this.video = video;
@@ -35,6 +39,10 @@ export class FaviconVideo {
     }
 
     public stop() {
+        if (!Favicon.hasSupport) {
+            return;
+        }
+
         this.unbindEvents();
     }
 
@@ -47,10 +55,18 @@ export class FaviconVideo {
     }
 
     public reset(): void {
+        if (!Favicon.hasSupport) {
+            return;
+        }
+
         Favicon.reset();
     }
 
     public destroy(): void {
+        if (!Favicon.hasSupport) {
+            return;
+        }
+                
         this.unbindEvents();
         this.video = undefined;
         this.canvas = undefined;
