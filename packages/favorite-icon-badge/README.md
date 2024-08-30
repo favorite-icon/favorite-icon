@@ -3,9 +3,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-badge.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-badge)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-badge.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-badge)
-[![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-badge)](https://bundlephobia.com/result?p=favorite-icon-badge)
 
-A small library for badge manipulating in favicon.
+Small library for badge manipulating in favicon.
 
 # Installation
 `npm install favorite-icon-badge`

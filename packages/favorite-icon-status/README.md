@@ -3,9 +3,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
-[![Bundlephobia](https://badgen.net/bundlephobia/minzip/favorite-icon-status)](https://bundlephobia.com/result?p=favorite-icon-status)
 
-A small library for status manipulating in favicon.
+Small library for status manipulating in favicon.
 
 # Installation
 `npm install favorite-icon-status`

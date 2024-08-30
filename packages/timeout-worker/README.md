@@ -3,7 +3,6 @@
 
 [![NPM version](https://img.shields.io/npm/v/timeout-worker.svg?style=flat)](https://www.npmjs.com/package/timeout-worker)
 [![NPM downloads](https://img.shields.io/npm/dm/timeout-worker.svg?style=flat)](https://www.npmjs.com/package/timeout-worker)
-[![Bundlephobia](https://badgen.net/bundlephobia/minzip/timeout-worker)](https://bundlephobia.com/result?p=timeout-worker)
 
 A worker for favicon animations without brakes. Used for inactive tabs when the browser slows down.
 

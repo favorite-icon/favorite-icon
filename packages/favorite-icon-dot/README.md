@@ -3,9 +3,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot)
-[![Bundlephobia](https://dotn.net/bundlephobia/minzip/favorite-icon-dot)](https://bundlephobia.com/result?p=favorite-icon-dot)
 
-A small library for dot manipulating in favicon.
+Small library for dot manipulating in favicon.
 
 # Installation
 `npm install favorite-icon-dot`
