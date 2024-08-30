@@ -1,5 +1,5 @@
-import { FaviconDot } from '../../packages/favorite-icon-dot/dist/index.esm';
-import { TimeoutWorker } from '../../packages/timeout-worker/dist/index.esm';
+import { FaviconDot } from '../../packages/favorite-icon-dot/src/index';
+import { TimeoutWorker } from '../../packages/timeout-worker/src/index';
 import './common';
 
 let favDot = new FaviconDot();

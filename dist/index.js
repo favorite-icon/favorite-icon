@@ -1,4 +1,4 @@
-var Favicon = (function () {
+(function () {
     'use strict';
 
     function hasSupport() {
@@ -59,6 +59,34 @@ var Favicon = (function () {
         return Favicon;
     }());
 
-    return Favicon;
+    var pages = [
+        'index',
+        'badge',
+        'blinking-dot',
+        'dot',
+        'emoji',
+        'status',
+        'video',
+    ];
+    window.addEventListener('load', function () {
+        var prev = pages[pages.length - 1];
+        var next = pages[1];
+        var num = -1;
+        pages.some(function (item, i) {
+            num++;
+            prev = pages[i - 1] || pages[pages.length - 1];
+            next = pages[i + 1] || pages[0];
+            return location.pathname.search('/' + item + '\\.') > -1;
+        });
+        var nav = document.createElement('div');
+        nav.innerHTML = "<div class=\"nav\">        <a href=\"https://github.com/hcodes/favorite-icon\" class=\"button back\">\uD83C\uDFE0</a>        <a href=\"./".concat(prev, ".html\" class=\"button prev\">\u25C0</a>        ").concat(num + 1, "/").concat(pages.length, "\n        <a href=\"./").concat(next, ".html\" class=\"button next\">\u25B6</a>        </div>");
+        document.body.appendChild(nav);
+    }, false);
+
+    document.querySelector('#button-set').onclick = function () {
+        var value = document.querySelector('#favicon-src').value;
+        Favicon.set(value, document.querySelector('#preview'));
+        Favicon.set(value);
+    };
 
 })();

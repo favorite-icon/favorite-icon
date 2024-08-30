@@ -1,4 +1,4 @@
-var FaviconVideo = (function (exports) {
+var FaviconVideo = (function () {
     'use strict';
 
     function hasSupport() {
@@ -79,7 +79,7 @@ var FaviconVideo = (function (exports) {
             };
             this.options = {
                 links: options.links || undefined,
-                size: options.size || Favicon.size
+                size: options.size,
             };
         }
         FaviconVideo.prototype.start = function (video) {
@@ -114,8 +114,6 @@ var FaviconVideo = (function (exports) {
         return FaviconVideo;
     }());
 
-    exports.FaviconVideo = FaviconVideo;
+    return FaviconVideo;
 
-    return exports;
-
-})({});
+})();

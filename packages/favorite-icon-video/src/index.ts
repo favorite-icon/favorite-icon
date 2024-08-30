@@ -1,4 +1,4 @@
-import { Favicon } from '../../favorite-icon/src/index';
+import { Favicon } from 'favorite-icon';
 import { FaviconVideoOptions } from './types';
 
 export interface Options {
@@ -15,7 +15,7 @@ export class FaviconVideo {
     constructor(options: FaviconVideoOptions = {}) {
         this.options = {
             links: options.links || undefined,
-            size: options.size || Favicon.size
+            size: options.size,
         };
     }
 

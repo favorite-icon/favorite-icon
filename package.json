@@ -15,20 +15,14 @@
     "favico"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
-    "eslint": "^8.0.1",
-    "rollup": "^4.20.0",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "tslib": "^2.6.3",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.21.2",
+    "tslib": "^2.7.0",
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "test": "eslint --ext .ts ./packages/**",
-    "build": "npm run build:packages && npm run build:examples",
-    "build:packages": "node build/build-packages.mjs",
-    "build:examples": "node build/build-examples.mjs",
-    "prepare": "npm run build"
+    "build:examples": "rollup -c rollup.config.mjs"
   },
   "private": true
 }

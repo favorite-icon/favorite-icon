@@ -1,4 +1,12 @@
-import { examples as pages } from '../../build/examples.mjs';
+const pages = [
+    'index',
+    'badge',
+    'blinking-dot',
+    'dot',
+    'emoji',
+    'status',
+    'video',
+];
 
 window.addEventListener('load', () => {
     let prev = pages[pages.length - 1];

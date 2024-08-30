@@ -23,7 +23,7 @@ export class TimeoutWorker {
         };
     }
 
-    setTimeout(callback: () => number, delay: number): number {
+    setTimeout(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
             return window.setTimeout(callback, delay);
         }
@@ -41,7 +41,7 @@ export class TimeoutWorker {
         return timeoutId;
     }
 
-    setInterval(callback: () => number, delay: number): number {
+    setInterval(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
             return window.setInterval(callback, delay);
         }

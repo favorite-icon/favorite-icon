@@ -1,9 +1,10 @@
 {
   "name": "favorite-icon",
-  "version": "0.5.0",
-  "description": "A small library for manipulating the favicon.",
+  "version": "1.0.0",
+  "description": "A small library for manipulating the favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
@@ -15,12 +16,16 @@
     "favicon",
     "favico"
   ],
+  "scripts": {
+    "test": "npm run typecheck",
+    "eslint": "eslint ./src/**",
+    "build": "rollup --config rollup.config.mjs",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
   "files": [
     "dist",
-    "src",
     "LICENSE",
-    "README.md",
-    "index.d.ts"
-  ],
-  "typings": "./index.d.ts"
+    "README.md"
+  ]
 }

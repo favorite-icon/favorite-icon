@@ -78,7 +78,7 @@ var FaviconVideo = /** @class */ (function () {
         };
         this.options = {
             links: options.links || undefined,
-            size: options.size || Favicon.size
+            size: options.size,
         };
     }
     FaviconVideo.prototype.start = function (video) {

@@ -1,4 +1,5 @@
-import { FaviconStatus } from '../../packages/favorite-icon-status/dist/index.esm';
+import { FaviconStatus } from '../../packages/favorite-icon-status/src/index';
+import { FaviconStatusType } from '../../packages/favorite-icon-status/src/types';
 import './common';
 
 const preview = new FaviconStatus({
@@ -10,8 +11,8 @@ const preview = new FaviconStatus({
 const favicon = new FaviconStatus();
 
 function updateFavicons(status: string) {
-    preview.set(status);
-    favicon.set(status);
+    preview.set(status as FaviconStatusType);
+    favicon.set(status as FaviconStatusType);
 }
 
 updateFavicons('ok');

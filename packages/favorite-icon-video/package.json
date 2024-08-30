@@ -1,9 +1,10 @@
 {
   "name": "favorite-icon-video",
-  "version": "2.0.0",
-  "description": "A small library for video manipulating in favicon.",
+  "version": "2.1.0",
+  "description": "A small library for video manipulating in favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
+  "typings": "./dist/index.d.ts",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
@@ -13,14 +14,22 @@
   "keywords": [
     "favorite icon",
     "favicon",
-    "favico"
+    "favico",
+    "video",
+    "video favicon"
   ],
+  "scripts": {
+    "test": "npm run typecheck",
+    "build": "rollup --config rollup.config.mjs",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
   "files": [
     "dist",
-    "src",
     "LICENSE",
-    "README.md",
-    "index.d.ts"
+    "README.md"
   ],
-  "typings": "./index.d.ts"
+  "devDependencies": {
+    "favorite-icon": "^1.0.0"
+  }
 }

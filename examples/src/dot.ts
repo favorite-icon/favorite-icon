@@ -1,4 +1,4 @@
-import { FaviconDot } from '../../packages/favorite-icon-dot/dist/index.esm';
+import { FaviconDot } from '../../packages/favorite-icon-dot/src/index';
 import './common';
 
 const buttonShow: HTMLInputElement = document.querySelector('#show');
@@ -23,8 +23,8 @@ let imageDot = new FaviconDot({
 function updateSettings() {
     const radius = parseInt(inputRadius.value, 10);
     const alpha = parseFloat(inputAlpha.value);
-    const positionX = inputPositionX.value;
-    const positionY = inputPositionY.value;
+    const positionX = Number(inputPositionX.value);
+    const positionY = Number(inputPositionY.value);
 
     const options = {
         alpha,
