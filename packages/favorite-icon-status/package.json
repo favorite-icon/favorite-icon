@@ -1,9 +1,10 @@
 {
   "name": "favorite-icon-status",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "A small library for status manipulating in favicon.",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
@@ -17,10 +18,16 @@
   ],
   "files": [
     "dist",
-    "src",
     "LICENSE",
-    "README.md",
-    "index.d.ts"
+    "README.md"
   ],
-  "typings": "./index.d.ts"
+  "devDependencies": {
+    "favorite-icon": "^1.0.1"
+  },
+  "scripts": {
+    "test": "npm run typecheck",
+    "build": "rollup --config rollup.config.mjs",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit"
+  }  
 }

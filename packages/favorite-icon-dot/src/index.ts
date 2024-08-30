@@ -1,4 +1,4 @@
-import { Favicon } from '../../favorite-icon/src/index';
+import { Favicon } from 'favorite-icon';
 import { FaviconDotDefaultOptions, FaviconDotOptions } from './types';
 
 const defaultOptions: FaviconDotDefaultOptions = {

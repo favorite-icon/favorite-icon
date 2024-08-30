@@ -1,4 +1,4 @@
-import { Favicon } from '../../favorite-icon/src/index';
+import { Favicon } from 'favorite-icon';
 import { FaviconEmojiOptions } from './types';
 
 export class FaviconEmoji {

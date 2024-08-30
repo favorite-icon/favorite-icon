@@ -1,4 +1,4 @@
-import { Favicon } from '../../favorite-icon/src/index';
+import { Favicon } from 'favorite-icon';
 import { FaviconStatusType, FaviconStatusOptions } from './types';
 
 const MAX_STATUS_IMAGE = 3;

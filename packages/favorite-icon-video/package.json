@@ -4,7 +4,7 @@
   "description": "A small library for video manipulating in favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
-  "typings": "./dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
