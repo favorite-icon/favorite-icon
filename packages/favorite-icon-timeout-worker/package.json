@@ -1,6 +1,6 @@
 {
   "name": "favorite-icon-timeout-worker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Timeout worker for favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
