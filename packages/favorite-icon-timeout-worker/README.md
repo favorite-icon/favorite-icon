@@ -1,8 +1,8 @@
 ⏱️ Favicon Timeout Worker
 =============
 
-[![NPM version](https://img.shields.io/npm/v/timeout-worker.svg?style=flat)](https://www.npmjs.com/package/timeout-worker)
-[![NPM downloads](https://img.shields.io/npm/dm/timeout-worker.svg?style=flat)](https://www.npmjs.com/package/timeout-worker)
+[![NPM version](https://img.shields.io/npm/v/favorite-icon-timeout-worker.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-timeout-worker)
+[![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-timeout-worker.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-timeout-worker)
 
 A worker for favicon animations without brakes. Used for inactive tabs when the browser slows down.
 
