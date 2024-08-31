@@ -1,6 +1,6 @@
 {
   "name": "favorite-icon-video",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A small library for video manipulating in favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
@@ -30,6 +30,6 @@
     "README.md"
   ],
   "devDependencies": {
-    "favorite-icon": "^1.0.1"
+    "favorite-icon": "^1.1.0"
   }
 }
