@@ -1,5 +1,6 @@
 import { Favicon } from 'favorite-icon';
 import { FaviconBadgeDefaultOptions, FaviconBadgeOptions } from './types';
+export type { FaviconBadgeOptions };
 
 const defaultOptions: FaviconBadgeDefaultOptions = {
     backgroundColor: '#ff0000',

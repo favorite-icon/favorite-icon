@@ -1,5 +1,7 @@
 import { Favicon } from 'favorite-icon';
 import { FaviconVideoOptions } from './types';
+export type { FaviconVideoOptions };
+
 
 export interface Options {
     size: number;

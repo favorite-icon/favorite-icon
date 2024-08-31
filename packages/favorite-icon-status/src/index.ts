@@ -1,5 +1,6 @@
 import { Favicon } from 'favorite-icon';
 import { FaviconStatusType, FaviconStatusOptions } from './types';
+export type { FaviconStatusType, FaviconStatusOptions };
 
 const MAX_STATUS_IMAGE = 3;
 const IMAGE_WIDTH = 12;

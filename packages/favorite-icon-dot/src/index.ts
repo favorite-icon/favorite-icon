@@ -1,5 +1,6 @@
 import { Favicon } from 'favorite-icon';
 import { FaviconDotDefaultOptions, FaviconDotOptions } from './types';
+export type { FaviconDotOptions };
 
 const defaultOptions: FaviconDotDefaultOptions = {
     alpha: 1,

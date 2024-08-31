@@ -1,5 +1,6 @@
 import { Favicon } from 'favorite-icon';
 import { FaviconEmojiOptions } from './types';
+export type { FaviconEmojiOptions };
 
 export class FaviconEmoji {
     public static set(symbol: string, rawOptions: FaviconEmojiOptions): void {
