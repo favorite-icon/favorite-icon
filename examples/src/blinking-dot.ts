@@ -1,5 +1,5 @@
 import { FaviconDot } from 'favorite-icon-dot';
-import { TimeoutWorker } from 'favicon-timeout-worker';
+import { FaviconTimeoutWorker } from 'favicon-timeout-worker';
 import './common';
 
 let favDot = new FaviconDot();
@@ -15,7 +15,7 @@ let coefficient = -1;
 let step = 0.2;
 let value = 1;
 
-const worker = new TimeoutWorker();
+const worker = new FaviconTimeoutWorker();
 worker.setInterval(() => {
     value += coefficient * step;
 

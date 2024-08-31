@@ -1,5 +1,4 @@
 import { FaviconBadge } from 'favorite-icon-badge';
-
 import './common';
 
 const inputBackgroundColor = document.querySelector('#backgroundColor') as HTMLInputElement;
