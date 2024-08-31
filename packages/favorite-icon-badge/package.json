@@ -1,6 +1,6 @@
 {
   "name": "favorite-icon-badge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A small library for manipulating the favicon, in particular adding alert bubbles and changing images.",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
