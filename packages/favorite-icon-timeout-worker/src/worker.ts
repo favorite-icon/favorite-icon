@@ -10,7 +10,7 @@ self.onmessage = (event: FaviconTimeoutWorkerEvent) => {
     const timeoutId = event.data.timeoutId;
     const workerTimeoutId = idMap.get(timeoutId);
 
-    if (!workerTimeoutId) {
+    if (workerTimeoutId) {
         return;
     }
 
@@ -27,7 +27,7 @@ self.onmessage = (event: FaviconTimeoutWorkerEvent) => {
             {
                 const delay = event.data.delay;
 
-                idMap.set(timeoutId, self.setTimeout(() => {
+                idMap.set(timeoutId, setTimeout(() => {
                     const message: FaviconTimeoutWorkerMethod = {
                         method: 'setTimeout',
                         timeoutId,
@@ -43,7 +43,7 @@ self.onmessage = (event: FaviconTimeoutWorkerEvent) => {
             {
                 const delay = event.data.delay;
 
-                idMap.set(timeoutId, self.setInterval(() => {
+                idMap.set(timeoutId, setInterval(() => {
                     const message: FaviconTimeoutWorkerMethod = {
                         method: 'setInterval',
                         timeoutId,
