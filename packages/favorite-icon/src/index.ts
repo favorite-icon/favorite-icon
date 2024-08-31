@@ -12,7 +12,7 @@ export class Favicon {
     public static hasSupport = hasSupport;
 
     public static set(src: string | HTMLCanvasElement, elems?: HTMLImageElement | HTMLLinkElement | Array<HTMLLinkElement | HTMLImageElement>): void {
-        if (!this.hasSupport) {
+        if (!hasSupport) {
             return;
         }
 
@@ -27,13 +27,15 @@ export class Favicon {
     }
 
     public static reset(): void {
-        if (this.hasSupport) {
-            this.set(Favicon.originalSrc);
+        if (!hasSupport) {
+            return;
         }
+        
+        this.set(Favicon.originalSrc);
     }
 
     public static searchIcons(): HTMLLinkElement[] {
-        if (typeof window === 'undefined') {
+        if (!hasSupport) {
             return [];
         }
         
@@ -53,11 +55,10 @@ export class Favicon {
             result.push(icon);
         }
 
-        result.forEach((item) => {
+        result.forEach(item => {
             item.setAttribute('type', PNG_MIME_TYPE);
         });
 
         return result;
     }
 }
-
