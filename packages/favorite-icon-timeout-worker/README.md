@@ -38,13 +38,13 @@ worker.terminate();
 
 # API
 
-## `.setTimeout(callback: () => void, delay: number)`
+`.setTimeout(callback: () => void, delay: number)`
 
-## `.clearTimeout(id: number)`
+`.clearTimeout(id: number)`
 
-## `.setInterval(callback: () => void, delay: number)`
+`.setInterval(callback: () => void, delay: number)`
 
-## `.clearInterval(id: number)`
+`.clearInterval(id: number)`
 
 # [License](./LICENSE)
 MIT License
