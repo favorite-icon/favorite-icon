@@ -1,4 +1,4 @@
-import { TimeoutWorkerMethod, TimeoutWorkerEvent } from './types';
+import { FaviconTimeoutWorkerMethod, FaviconTimeoutWorkerEvent } from './types';
 
 export class FaviconTimeoutWorker {
     static gid = 1;
@@ -14,7 +14,7 @@ export class FaviconTimeoutWorker {
 
         this.idMap = new Map();
         this.worker = new Worker('{worker}');
-        this.worker.onmessage = (event: TimeoutWorkerEvent) => {
+        this.worker.onmessage = (event: FaviconTimeoutWorkerEvent) => {
             const method = event?.data?.method;
             if (method === 'setTimeout' || method === 'setInterval') {
                 const callback = this.idMap.get(event.data.timeoutId);
@@ -29,7 +29,7 @@ export class FaviconTimeoutWorker {
         }
 
         const timeoutId = this.getTimeoutId();
-        const message: TimeoutWorkerMethod = {
+        const message: FaviconTimeoutWorkerMethod = {
             method: 'setTimeout',
             timeoutId,
             delay,
@@ -47,7 +47,7 @@ export class FaviconTimeoutWorker {
         }
 
         const timeoutId = this.getTimeoutId();
-        const message: TimeoutWorkerMethod = {
+        const message: FaviconTimeoutWorkerMethod = {
             method: 'setInterval',
             timeoutId,
             delay,
@@ -64,7 +64,7 @@ export class FaviconTimeoutWorker {
             return clearTimeout(timeoutId);
         }
 
-        const message: TimeoutWorkerMethod = {
+        const message: FaviconTimeoutWorkerMethod = {
             method: 'clearTimeout',
             timeoutId,
         };
@@ -78,7 +78,7 @@ export class FaviconTimeoutWorker {
             return clearInterval(timeoutId);
         }
 
-        const message: TimeoutWorkerMethod = {
+        const message: FaviconTimeoutWorkerMethod = {
             method: 'clearInterval',
             timeoutId,
         };
@@ -88,7 +88,7 @@ export class FaviconTimeoutWorker {
     }
 
     private getTimeoutId() {
-        return TimeoutWorker.gid++;
+        return FaviconTimeoutWorker.gid++;
     }
 
     terminate(): void {

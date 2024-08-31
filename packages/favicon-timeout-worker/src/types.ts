@@ -1,4 +1,4 @@
-export type TimeoutWorkerMethod = {
+export type FaviconTimeoutWorkerMethod = {
         method: 'clearTimeout';
         timeoutId: number;
     } | {
@@ -14,6 +14,6 @@ export type TimeoutWorkerMethod = {
         delay: number;
     };
 
-export interface TimeoutWorkerEvent extends MessageEvent {
-    data: TimeoutWorkerMethod;
+export interface FaviconTimeoutWorkerEvent extends MessageEvent {
+    data: FaviconTimeoutWorkerMethod;
 }

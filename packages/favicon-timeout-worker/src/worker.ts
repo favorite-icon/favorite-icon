@@ -2,11 +2,11 @@
 /// <reference lib="es2015" />
 /// <reference lib="webworker" />
 
-import { TimeoutWorkerMethod, TimeoutWorkerEvent } from './types';
+import { FaviconTimeoutWorkerMethod, FaviconTimeoutWorkerEvent } from './types';
 
 const idMap = new Map<number, number>();
 
-self.onmessage = (event: TimeoutWorkerEvent) => {
+self.onmessage = (event: FaviconTimeoutWorkerEvent) => {
     const timeoutId = event.data.timeoutId;
     const workerTimeoutId = idMap.get(timeoutId);
 
@@ -28,7 +28,7 @@ self.onmessage = (event: TimeoutWorkerEvent) => {
                 const delay = event.data.delay;
 
                 idMap.set(timeoutId, self.setTimeout(() => {
-                    const message: TimeoutWorkerMethod = {
+                    const message: FaviconTimeoutWorkerMethod = {
                         method: 'setTimeout',
                         timeoutId,
                         delay,
@@ -44,7 +44,7 @@ self.onmessage = (event: TimeoutWorkerEvent) => {
                 const delay = event.data.delay;
 
                 idMap.set(timeoutId, self.setInterval(() => {
-                    const message: TimeoutWorkerMethod = {
+                    const message: FaviconTimeoutWorkerMethod = {
                         method: 'setInterval',
                         timeoutId,
                         delay,
