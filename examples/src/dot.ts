@@ -23,8 +23,8 @@ let imageDot = new FaviconDot({
 function updateSettings() {
     const radius = parseInt(inputRadius.value, 10);
     const alpha = parseFloat(inputAlpha.value);
-    const positionX = Number(inputPositionX.value);
-    const positionY = Number(inputPositionY.value);
+    const positionX = inputPositionX.value as any;
+    const positionY = inputPositionY.value as any;
 
     const options = {
         alpha,

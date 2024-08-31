@@ -1,4 +1,4 @@
-import { FaviconVideo } from '../../packages/favorite-icon-video/src/index';
+import { FaviconVideo } from 'favorite-icon-video';
 import './common';
 
 window.addEventListener('load', () => {
