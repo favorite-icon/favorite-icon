@@ -23,7 +23,7 @@ export class FaviconTimeoutWorker {
         };
     }
 
-    setTimeout(callback: () => void, delay: number): number {
+    public setTimeout(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
             return setTimeout(callback, delay);
         }
@@ -41,7 +41,7 @@ export class FaviconTimeoutWorker {
         return timeoutId;
     }
 
-    setInterval(callback: () => void, delay: number): number {
+    public setInterval(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
             return setInterval(callback, delay);
         }
@@ -59,7 +59,7 @@ export class FaviconTimeoutWorker {
         return timeoutId;
     }
 
-    clearTimeout(timeoutId: number): void {
+    public clearTimeout(timeoutId: number): void {
         if (!this.hasSupport) {
             return clearTimeout(timeoutId);
         }
@@ -73,7 +73,7 @@ export class FaviconTimeoutWorker {
         this.idMap.delete(timeoutId);
     }
 
-    clearInterval(timeoutId: number): void {
+    public clearInterval(timeoutId: number): void {
         if (!this.hasSupport) {
             return clearInterval(timeoutId);
         }
@@ -87,12 +87,16 @@ export class FaviconTimeoutWorker {
         this.idMap.delete(timeoutId);
     }
 
-    private getTimeoutId() {
-        return FaviconTimeoutWorker.gid++;
-    }
-
-    terminate(): void {
+    public terminate(): void {
+        if (!this.hasSupport) {
+            return;
+        }
+                
         this.idMap.clear();
         this.worker.terminate();
+    }
+
+    private getTimeoutId() {
+        return FaviconTimeoutWorker.gid++;
     }
 }
