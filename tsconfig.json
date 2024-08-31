@@ -1,11 +1,14 @@
 {
+    "exclude": [
+        "packages"
+    ],
     "compilerOptions": {
         "module": "es6",
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "outDir": "./dist/",
         "target": "es5",
-        "allowJs": true,
+        "allowJs": false,
         "lib": [
             "es6",
             "dom"
@@ -16,8 +19,5 @@
         "strictNullChecks": false,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true
-    },
-    "include": [
-        "examples/src/**/*.ts"
-    ]
+    }
 }
