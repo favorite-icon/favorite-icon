@@ -1,5 +1,5 @@
 import { FaviconDot } from 'favorite-icon-dot';
-import { TimeoutWorker } from 'timeout-worker';
+import { TimeoutWorker } from 'favicon-timeout-worker';
 import './common';
 
 let favDot = new FaviconDot();

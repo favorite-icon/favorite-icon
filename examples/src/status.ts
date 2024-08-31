@@ -1,5 +1,4 @@
-import { FaviconStatus } from '../../packages/favorite-icon-status/src/index';
-import { FaviconStatusType } from '../../packages/favorite-icon-status/src/types';
+import { FaviconStatus, FaviconStatusType } from 'favorite-icon-status';
 import './common';
 
 const preview = new FaviconStatus({
