@@ -1,7 +1,7 @@
 {
   "name": "favorite-icon-main",
   "version": "1.0.0",
-  "description": "Libraries for manipulating the favicon.",
+  "description": "Libraries for manipulating desktop favicon",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
