@@ -1,5 +1,5 @@
 {
-  "name": "favicon-timeout-worker",
+  "name": "favorite-icon-timeout-worker",
   "version": "1.0.0",
   "description": "Timeout worker for favicon",
   "main": "dist/index.common.js",
