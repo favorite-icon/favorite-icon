@@ -1,7 +1,7 @@
 {
-  "name": "timeout-worker",
+  "name": "favicon-timeout-worker",
   "version": "1.0.0",
-  "description": "Timeout worker for the favicon",
+  "description": "Timeout worker for favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",

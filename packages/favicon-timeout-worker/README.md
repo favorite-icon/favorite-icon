@@ -1,4 +1,4 @@
-⏱️ Timeout Worker
+⏱️ Favicon Timeout Worker
 =============
 
 [![NPM version](https://img.shields.io/npm/v/timeout-worker.svg?style=flat)](https://www.npmjs.com/package/timeout-worker)
@@ -11,9 +11,9 @@ A worker for favicon animations without brakes. Used for inactive tabs when the 
 
 # Using
 ```js
-import { TimeoutWorker } from 'timeout-worker';
+import { TimeoutWorker } from 'favicon-timeout-worker';
 
-const worker = new TimeoutWorker();
+const worker = new FaviconTimeoutWorker();
 
 const timeoutId1 = worker.setTimeout(() => {
     console.log('tick from setTimeout');

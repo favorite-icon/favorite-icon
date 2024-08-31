@@ -1,6 +1,6 @@
 import { TimeoutWorkerMethod, TimeoutWorkerEvent } from './types';
 
-export class TimeoutWorker {
+export class FaviconTimeoutWorker {
     static gid = 1;
 
     private idMap: Map<number, () => void>;
