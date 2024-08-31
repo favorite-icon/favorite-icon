@@ -1,4 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default [
   'badge',
@@ -10,11 +11,14 @@ export default [
   'video',
 ].map(item => {
   return {
-    input: `examples/src/${item}.ts`,
+    input: `./examples/src/${item}.ts`,
     output: {
       format: 'iife',
-      file: `./dist/${item}.js`
+      file: `./examples/dist/${item}.js`
     },
-    plugins: [typescript()]
+    plugins: [
+      typescript(),
+      nodeResolve(),
+    ]
   }
 });
