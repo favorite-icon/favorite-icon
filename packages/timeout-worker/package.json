@@ -1,9 +1,10 @@
 {
   "name": "timeout-worker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Timeout worker for the favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
   "author": {
     "name": "Denis Seleznev",
     "email": "hcodes@yandex.ru",
@@ -17,12 +18,15 @@
     "worker",
     "timeout"
   ],
+  "scripts": {
+    "test": "npm run typecheck",
+    "build": "rollup --config rollup.config.mjs && node tools/replaceWorker.mjs",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },  
   "files": [
     "dist",
-    "src",
     "LICENSE",
-    "README.md",
-    "index.d.ts"
-  ],
-  "typings": "./index.d.ts"
+    "README.md"
+  ]
 }

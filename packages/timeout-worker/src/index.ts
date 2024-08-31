@@ -13,7 +13,7 @@ export class TimeoutWorker {
         }
 
         this.idMap = new Map();
-        this.worker = new Worker('{./worker.ts}');
+        this.worker = new Worker('{worker}');
         this.worker.onmessage = (event: TimeoutWorkerEvent) => {
             const method = event?.data?.method;
             if (method === 'setTimeout' || method === 'setInterval') {
@@ -25,7 +25,7 @@ export class TimeoutWorker {
 
     setTimeout(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
-            return window.setTimeout(callback, delay);
+            return setTimeout(callback, delay);
         }
 
         const timeoutId = this.getTimeoutId();
@@ -43,7 +43,7 @@ export class TimeoutWorker {
 
     setInterval(callback: () => void, delay: number): number {
         if (!this.hasSupport) {
-            return window.setInterval(callback, delay);
+            return setInterval(callback, delay);
         }
 
         const timeoutId = this.getTimeoutId();
