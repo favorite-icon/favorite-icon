@@ -6,6 +6,9 @@
             return false;
         }
         var ua = navigator.userAgent;
+        if (ua.search(/Mobi|Android/i) > -1) {
+            return false;
+        }
         var opera = Boolean(window.opera) || ua.indexOf('Opera') > -1;
         var firefox = ua.toLowerCase().indexOf('firefox') > -1;
         var chrome = Boolean(window.chrome);
@@ -18,7 +21,7 @@
         function Favicon() {
         }
         Favicon.set = function (src, elems) {
-            if (!this.hasSupport) {
+            if (!hasSupport) {
                 return;
             }
             var items = elems || this.icons;
@@ -27,12 +30,13 @@
             });
         };
         Favicon.reset = function () {
-            if (this.hasSupport) {
-                this.set(Favicon.originalSrc);
+            if (!hasSupport) {
+                return;
             }
+            this.set(Favicon.originalSrc);
         };
         Favicon.searchIcons = function () {
-            if (typeof window === 'undefined') {
+            if (!hasSupport) {
                 return [];
             }
             var result = [];
