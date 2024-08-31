@@ -4,7 +4,15 @@
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-status.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-status)
 
-Small library for status manipulating in favicon.
+Small library for status manipulating with desktop favicon.
+
+# Desktop Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
 
 # Installation
 `npm install favorite-icon-status`

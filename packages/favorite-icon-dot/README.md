@@ -4,7 +4,15 @@
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot)
 
-Small library for dot manipulating in favicon.
+Small library for dot manipulating with desktop favicon.
+
+# Desktop Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
 
 # Installation
 `npm install favorite-icon-dot`

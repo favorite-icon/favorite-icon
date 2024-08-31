@@ -5,7 +5,15 @@
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-emoji.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-emoji)
 
 
-Small library for emoji manipulating in favicon.
+Small library for emoji manipulating with desktop favicon.
+
+# Desktop Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
 
 # Installation
 `npm install favorite-icon-emoji`

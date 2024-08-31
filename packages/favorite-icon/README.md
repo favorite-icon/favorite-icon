@@ -4,7 +4,20 @@
 [![NPM version](https://img.shields.io/npm/v/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
 
-Small library for manipulating favicon.
+Small library for manipulating desktop favicon.
+
+# Desktop Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
+
+# Advantages
+- data: and canvas support
+- GIF, JPEG, PNG, SVG and other browser-supported formats
+- Ultra-small code size
 
 # Installation
 `npm install favorite-icon`
@@ -47,14 +60,6 @@ import { FaviconIcon } from 'favorite-icon';
 
 Favicon.reset();
 ```
-
-# Browser support
-- Chrome: ✅
-- Firefox: ✅
-- Opera: ✅
-- IE: ❌
-- Edge: ❌
-- Safari: ❌ (Safari hides favicons)
 
 # [License](./LICENSE)
 MIT License

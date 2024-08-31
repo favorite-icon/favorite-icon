@@ -4,7 +4,15 @@
 [![NPM version](https://img.shields.io/npm/v/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video)
 [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video)
 
-Small library for video manipulating in favicon.
+Small library for video manipulating with desktop favicon.
+
+# Desktop Browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
 
 # Installation
 `npm install favorite-icon-video`
