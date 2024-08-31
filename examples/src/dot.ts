@@ -1,4 +1,4 @@
-import { FaviconDot } from '../../packages/favorite-icon-dot/src/index';
+import { FaviconDot } from 'favorite-icon-dot';
 import './common';
 
 const buttonShow: HTMLInputElement = document.querySelector('#show');

@@ -1,4 +1,4 @@
-import { FaviconBadge } from '../../packages/favorite-icon-badge/src/index';
+import { FaviconBadge } from 'favorite-icon-badge';
 
 import './common';
 

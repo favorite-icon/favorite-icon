@@ -16,7 +16,13 @@
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "favorite-icon-badge": "^1.0.0",
+    "favorite-icon-dot": "^1.0.0",
+    "favorite-icon-emoji": "^1.0.0",
+    "favorite-icon-status": "^1.0.0",
+    "favorite-icon-video": "^2.1.2",
     "rollup": "^4.21.2",
     "tslib": "^2.7.0",
     "typescript": "^5.5.4"
