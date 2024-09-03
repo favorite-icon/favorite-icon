@@ -1,23 +1,22 @@
 {
-    "exclude": [
-        "packages"
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "module": "es6",
+    "target": "es5",
+    "declaration": true,
+    "declarationDir": ".",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "lib": [
+        "es6",
+        "dom"
     ],
-    "compilerOptions": {
-        "module": "es6",
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "outDir": "./dist/",
-        "target": "es5",
-        "allowJs": false,
-        "lib": [
-            "es6",
-            "dom"
-        ],
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "strictNullChecks": false,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    }
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "skipLibCheck": true,    
+    "forceConsistentCasingInFileNames": true
+  }
 }

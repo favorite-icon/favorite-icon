@@ -1,24 +1,29 @@
 import typescript from '@rollup/plugin-typescript';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default [
-  'badge',
-  'blinking-dot',
-  'dot',
-  'emoji',
-  'index',
-  'status',
-  'video',
-].map(item => {
-  return {
-    input: `./examples/src/${item}.ts`,
+  {
+    input: 'src/default.ts',
     output: {
       format: 'iife',
-      file: `./examples/dist/${item}.js`
+      name: 'Favicon',
+      file: './dist/index.js'
     },
-    plugins: [
-      typescript(),
-      nodeResolve(),
-    ]
+    plugins: [typescript({ tsconfig: './tsconfig.json' })]
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      format: 'cjs',
+      file: './dist/index.common.js'
+    },
+    plugins: [typescript({ tsconfig: './tsconfig.json' })]
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      format: 'es',
+      file: './dist/index.esm.js'
+    },
+    plugins: [typescript({ tsconfig: './tsconfig.json' })]
   }
-});
+];

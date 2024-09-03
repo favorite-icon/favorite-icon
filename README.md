@@ -1,7 +1,70 @@
 ⭐ Favorite Icon
 =============
 
-Small libraries for manipulating favicon.
+[![NPM version](https://img.shields.io/npm/v/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
+[![NPM downloads](https://img.shields.io/npm/dm/favorite-icon.svg?style=flat)](https://www.npmjs.com/package/favorite-icon)
+
+Small library for manipulating desktop favicon.
+
+# Desktop browser support
+- Chrome: ✅
+- Firefox: ✅
+- Opera: ✅
+- IE: ❌
+- Edge: ❌
+- Safari: ❌ (Safari hides favicons)
+
+# Advantages
+- data: and canvas support
+- GIF, JPEG, PNG, SVG and other browser-supported formats
+- Ultra-small code size
+
+# Installation
+`npm install favorite-icon`
+
+# Using
+```js
+import { Favicon } from 'favorite-icon';
+
+Favicon.set('/my-icon.png');
+```
+
+# API
+
+## `Favicon.set(src: string | HTMLCanvasElement)`
+Set the favicon with your own image.
+
+```js
+import { Favicon } from 'favorite-icon';
+
+Favicon.set('./image.png');
+
+// or
+
+Favicon.set('data:image/png;base64,...');
+
+// or
+
+const canvas = document.createElement('canvas');
+//...
+Favicon.set(canvas);
+```
+
+### `Favicon.reset()`
+Reset the favicon.
+
+```js
+import { Favicon } from 'favorite-icon';
+
+// ...
+
+Favicon.reset();
+```
+
+# [License](./LICENSE)
+MIT License
+
+# Packages
 
 | Num. | Package        | Demo           | Version   | Download |
 | ---- | -------------- | -------------- | ------- | ------ |
@@ -12,3 +75,4 @@ Small libraries for manipulating favicon.
 | 5. | ⏩ [Favorite Icon Video](./packages/favorite-icon-video) | [Demo](https://favorite-icon.github.io/favorite-icon/examples/video.html) | [![NPM version](https://img.shields.io/npm/v/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video) | [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-video.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-video) |
 | 6. | 🔴 [Favorite Icon Dot](./packages/favorite-icon-dot) | [Demo](https://favorite-icon.github.io/favorite-icon/examples/dot.html) | [![NPM version](https://img.shields.io/npm/v/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot) | [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-dot.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-dot) |
 | 7. | ⏱️ [Favicon Timeout Worker](./packages/timeout-worker) | [Demo](https://favorite-icon.github.io/favorite-icon/examples/blinking-dot.html) | [![NPM version](https://img.shields.io/npm/v/favorite-icon-timeout-worker.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-timeout-worker) | [![NPM downloads](https://img.shields.io/npm/dm/favorite-icon-timeout-worker.svg?style=flat)](https://www.npmjs.com/package/favorite-icon-timeout-worker) |
+
