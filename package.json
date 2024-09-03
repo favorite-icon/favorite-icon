@@ -1,6 +1,6 @@
 {
   "name": "favorite-icon",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Small library for manipulating desktop favicon",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
@@ -10,6 +10,10 @@
     "email": "hcodes@yandex.ru",
     "url": "https://github.com/favorite-icon/favorite-icon"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/favorite-icon/favorite-icon.git"
+  },  
   "license": "MIT",
   "keywords": [
     "favorite icon",
