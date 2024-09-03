@@ -8,10 +8,10 @@ Small library for manipulating desktop favicon.
 
 # Desktop browser support
 - Chrome: ✅
+- Edge: ✅
 - Firefox: ✅
 - Opera: ✅
 - IE: ❌
-- Edge: ❌
 - Safari: ❌ (Safari hides favicons)
 
 # Advantages
