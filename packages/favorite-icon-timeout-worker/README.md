@@ -11,7 +11,7 @@ A worker for favicon animations without brakes. Used for inactive tabs when the 
 
 # Using
 ```js
-import { TimeoutWorker } from 'favorite-icon-timeout-worker';
+import { FaviconTimeoutWorker } from 'favorite-icon-timeout-worker';
 
 const worker = new FaviconTimeoutWorker();
 
@@ -38,13 +38,13 @@ worker.terminate();
 
 # API
 
-`.setTimeout(callback: () => void, delay: number)`
+`worker.setTimeout(callback: () => void, delay: number)`
 
-`.clearTimeout(id: number)`
+`worker.clearTimeout(id: number)`
 
-`.setInterval(callback: () => void, delay: number)`
+`worker.setInterval(callback: () => void, delay: number)`
 
-`.clearInterval(id: number)`
+`worker.clearInterval(id: number)`
 
 # [License](./LICENSE)
 MIT License
