@@ -6,12 +6,12 @@
 
 Small library for video manipulating with desktop favicon.
 
-# Desktop Browser support
+# Desktop browser support
 - Chrome: ✅
+- Edge: ✅
 - Firefox: ✅
 - Opera: ✅
 - IE: ❌
-- Edge: ❌
 - Safari: ❌ (Safari hides favicons)
 
 # Installation
@@ -77,14 +77,6 @@ const favVideo = new FaviconVideo({
 
 favVideo.destroy();
 ```
-
-# Browser support
-- Chrome: ✅
-- Firefox: ✅
-- Opera: ✅
-- IE: ❌
-- Edge: ❌
-- Safari: ❌ (Safari hides favicons)
 
 # [License](./LICENSE)
 MIT License

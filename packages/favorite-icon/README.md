@@ -6,7 +6,7 @@
 
 Small library for manipulating desktop favicon.
 
-# Desktop Browser support
+# Desktop browser support
 - Chrome: ✅
 - Firefox: ✅
 - Opera: ✅
@@ -54,7 +54,7 @@ Favicon.set(canvas);
 Reset the favicon.
 
 ```js
-import { FaviconIcon } from 'favorite-icon';
+import { Favicon } from 'favorite-icon';
 
 // ...
 

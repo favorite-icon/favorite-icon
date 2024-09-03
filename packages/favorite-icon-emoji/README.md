@@ -7,12 +7,12 @@
 
 Small library for emoji manipulating with desktop favicon.
 
-# Desktop Browser support
+# Desktop browser support
 - Chrome: ✅
+- Edge: ✅
 - Firefox: ✅
 - Opera: ✅
 - IE: ❌
-- Edge: ❌
 - Safari: ❌ (Safari hides favicons)
 
 # Installation
@@ -39,14 +39,6 @@ import { FaviconEmoji } from 'favorite-icon-emoji';
 // ...
 FaviconEmoji.reset();
 ```
-
-# Browser support
-- Chrome: ✅
-- Firefox: ✅
-- Opera: ✅
-- IE: ❌
-- Edge: ❌
-- Safari: ❌ (Safari hides favicons)
 
 # [License](./LICENSE)
 MIT License

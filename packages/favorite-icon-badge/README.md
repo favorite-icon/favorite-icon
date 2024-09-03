@@ -6,12 +6,12 @@
 
 Small library for badge manipulating with desktop favicon.
 
-# Desktop Browser support
+# Desktop browser support
 - Chrome: ✅
+- Edge: ✅
 - Firefox: ✅
 - Opera: ✅
 - IE: ❌
-- Edge: ❌
 - Safari: ❌ (Safari hides favicons)
 
 # Installation
@@ -74,14 +74,6 @@ const badge = new FaviconBadge();
 
 badge.reset();
 ```
-
-# Browser support
-- Chrome: ✅
-- Firefox: ✅
-- Opera: ✅
-- IE: ❌
-- Edge: ❌
-- Safari: ❌ (Safari hides favicons)
 
 # [License](./LICENSE)
 MIT License
